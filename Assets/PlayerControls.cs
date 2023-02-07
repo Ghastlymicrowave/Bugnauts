@@ -9,7 +9,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float force;
     [SerializeField] Camera cam;
     [SerializeField] LayerMask mask;
-    [SerializeField] GameObject camRotater;
+    [SerializeField] GameObject body;
     [SerializeField] GameObject visual;
     [SerializeField] float sensitivity = 1f;
     [SerializeField] Vector3 camOffset;
@@ -37,7 +37,7 @@ public class PlayerControls : MonoBehaviour
         //visualPosition = Vector3.Lerp(visualPosition, transform.position, 0.2f);
         currentAngle = Vector2.Lerp(currentAngle, camAngle, 0.05f);
         visual.transform.rotation = Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f);
-
+        body.transform.rotation = Quaternion.Euler(0f,currentAngle.x,0f);
     }
 
 
