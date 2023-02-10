@@ -18,6 +18,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float friction;
     [SerializeField] float staticFriction;
     [SerializeField] float offset;
+    [SerializeField] Animator anim;
     Vector3 visualPosition;
     Vector2 camAngle;
     Vector2 currentAngle = Vector2.zero;
@@ -25,7 +26,9 @@ public class PlayerControls : MonoBehaviour
     PlayerActions move;
     Vector3 velLastFrame;
     float lastDelta = 0f;
-    float deltaLerp = 0.1f;
+    [SerializeField] float deltaLerp = 0.1f;
+    [SerializeField]float forwardDelta = 90f;
+    [SerializeField] float spdMult =.01f;
     void Start()
     {
         actor = GetComponent<CharacterActor>();
@@ -43,24 +46,50 @@ public class PlayerControls : MonoBehaviour
         //body.transform.rotation = Quaternion.Euler(0f,currentAngle.x,0f);
         //x 90 90
         float delta = Mathf.Atan2(velLastFrame.z, velLastFrame.x) * Mathf.Rad2Deg;
-        if (actor.Velocity.magnitude != 0f)
-        {
-            lastDelta = Mathf.LerpAngle(lastDelta, delta, deltaLerp);
-        }
-        float facingOffset = 0f;
         
-        body.transform.rotation = Quaternion.Euler(-90f, -lastDelta + offset, 0f);;
-        Vector3 a = body.transform.forward;
-        a.y = 0f;
-        a.Normalize();
-        Vector3 b = visual.transform.forward;
-        b.y = 0f;
-        b.Normalize();
-        Debug.Log(Vector3.Dot(a, b));
-        Debug.DrawRay(visual.transform.position, b * 5f, Color.red);
-        Debug.DrawRay(visual.transform.position, a * 5f, Color.blue);
-        currentAngle = Vector2.Lerp(currentAngle, camAngle, 0.05f);
+        currentAngle = Vector2.Lerp(currentAngle, camAngle, 0.1f);
+        
+        float extraOffset = 0f;
+        
+        Vector2 input = move.Main.movement.ReadValue<Vector2>();
+        float horiz = input.x/2f+.5f;
+        anim.SetFloat("Horizontal Direction",horiz);
+        anim.SetFloat("Spd",actor.Velocity.magnitude * spdMult);
+
+
+        float a = -delta + offset;
+        float b = currentAngle.x;
+        if(Mathf.Abs(Mathf.DeltaAngle(a,b))>90f){
+            extraOffset = 180f;
+            
+            //anim.SetFloat("WalkDirection",-1f);
+        }else{
+            //anim.SetFloat("WalkDirection",1f);
+        }
+
+
+        if (input.magnitude != 0f)
+        {
+            
+            if(Mathf.Abs(input.normalized.x)>.75f){
+                lastDelta = Mathf.LerpAngle(lastDelta,currentAngle.x -90f, deltaLerp) ;
+                anim.SetBool("Horiz",true);
+            }else{
+                lastDelta = Mathf.LerpAngle(lastDelta, -delta + extraOffset, deltaLerp) ;
+                anim.SetBool("Horiz",false);
+            }
+        }
+        
+        body.transform.rotation = Quaternion.Euler(-90f, lastDelta + offset, 0f);
+
+        
+        
         visual.transform.rotation = Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f);
+
+        
+        
+        
+
     }
 
 
