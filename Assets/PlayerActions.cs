@@ -53,6 +53,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""net"",
+                    ""type"": ""Button"",
+                    ""id"": ""9698029c-3f17-4ee0-b330-9ebe2572c83f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +174,17 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a61e91ae-7fac-454f-90bb-996010a0830d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""net"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +196,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_Main_movement = m_Main.FindAction("movement", throwIfNotFound: true);
         m_Main_cameraMovement = m_Main.FindAction("cameraMovement", throwIfNotFound: true);
         m_Main_jump = m_Main.FindAction("jump", throwIfNotFound: true);
+        m_Main_net = m_Main.FindAction("net", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -238,6 +259,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_movement;
     private readonly InputAction m_Main_cameraMovement;
     private readonly InputAction m_Main_jump;
+    private readonly InputAction m_Main_net;
     public struct MainActions
     {
         private @PlayerActions m_Wrapper;
@@ -245,6 +267,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @movement => m_Wrapper.m_Main_movement;
         public InputAction @cameraMovement => m_Wrapper.m_Main_cameraMovement;
         public InputAction @jump => m_Wrapper.m_Main_jump;
+        public InputAction @net => m_Wrapper.m_Main_net;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -263,6 +286,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @jump.started -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
                 @jump.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
                 @jump.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
+                @net.started -= m_Wrapper.m_MainActionsCallbackInterface.OnNet;
+                @net.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnNet;
+                @net.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnNet;
             }
             m_Wrapper.m_MainActionsCallbackInterface = instance;
             if (instance != null)
@@ -276,6 +302,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @jump.started += instance.OnJump;
                 @jump.performed += instance.OnJump;
                 @jump.canceled += instance.OnJump;
+                @net.started += instance.OnNet;
+                @net.performed += instance.OnNet;
+                @net.canceled += instance.OnNet;
             }
         }
     }
@@ -285,5 +314,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnCameraMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnNet(InputAction.CallbackContext context);
     }
 }

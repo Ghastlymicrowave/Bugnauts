@@ -153,4 +153,11 @@ public class PlayerControls : MonoBehaviour
             actor.VerticalVelocity += new Vector3(0f, jumpforce, 0f);
         }
     }
+    public void Net(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            anim.SetTrigger("Swing");
+        }
+    }
 }
