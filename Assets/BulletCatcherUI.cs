@@ -21,7 +21,7 @@ public class BulletCatcherUI : MonoBehaviour
         }
     }
 
-    void AddBullet(Bullet newBullet){
+    public void AddBullet(Bullet newBullet){
         if(storedBullets.Count==maxBullets){
             storedBullets.RemoveAt(maxBullets-1);
         }
@@ -37,41 +37,10 @@ public class BulletCatcherUI : MonoBehaviour
 
     void Start(){
         storedBullets = new List<Bullet>();
-        storedBullets.Add(new Bullet(Bullet.bulletTypes.Red));
-        storedBullets.Add(new Bullet(Bullet.bulletTypes.Green));
-        storedBullets.Add(new Bullet(Bullet.bulletTypes.Blue));
-        storedBullets.Add(new Bullet(Bullet.bulletTypes.Yellow));
+        
 
         UpdateUI();
     }
 
 }
 
-public class Bullet{
-    public enum bulletTypes{
-        Red,
-        Green,
-        Blue,
-        Yellow
-    }
-    public Bullet(bulletTypes b){
-        type = b;
-    }
-    bulletTypes type;
-
-    public bulletTypes GetBulletType() => type;
-    public Color GetColor(){
-        switch(type){
-            case bulletTypes.Red:
-                return Color.red;
-            case bulletTypes.Green:
-                return Color.green;
-            case bulletTypes.Blue:
-                return Color.blue;
-            case bulletTypes.Yellow:
-                return Color.yellow;
-            default: return Color.black;
-        }
-    }
-
-}

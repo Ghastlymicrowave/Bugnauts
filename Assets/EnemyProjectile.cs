@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
+    [SerializeField]Bullet storedBullet;
+    public Bullet Bullet => storedBullet;
     [SerializeField]List<BulletEvent> events;
     [SerializeField]int eventIndex = 0;
     [SerializeField]float eventTimer = 0f;
@@ -19,6 +21,7 @@ public class EnemyProjectile : MonoBehaviour
         initalRotation = transform.rotation;
         rotation_last = transform.rotation;
         speed_last = currentSpeed;
+        GetComponent<Renderer>().material.color = storedBullet.GetColor();  
     }
     BulletEvent CurrentEvent(){
         if(eventIndex>events.Count-1){
@@ -95,6 +98,10 @@ public class EnemyProjectile : MonoBehaviour
             }
         }
     }
+    public void SetEvents(List<BulletEvent> newEvents)
+    {
+        events = newEvents;
+    }
 }
 [System.Serializable]
 public class BulletEvent {
@@ -112,4 +119,40 @@ public class BulletEvent {
     public List<bulletEventFlags> initFlags = new List<bulletEventFlags>();
     public List<bulletEventFlags> endFlags = new List<bulletEventFlags>();
     //flags trigger 
+}
+
+
+[System.Serializable]
+public class Bullet
+{
+    [SerializeField] bulletTypes type;
+
+    public enum bulletTypes
+    {
+        Red,
+        Green,
+        Blue,
+        Yellow
+    }
+    public Bullet(bulletTypes b)
+    {
+        type = b;
+    }
+    public bulletTypes GetBulletType() => type;
+    public Color GetColor()
+    {
+        switch (type)
+        {
+            case bulletTypes.Red:
+                return Color.red;
+            case bulletTypes.Green:
+                return Color.green;
+            case bulletTypes.Blue:
+                return Color.blue;
+            case bulletTypes.Yellow:
+                return Color.yellow;
+            default: return Color.black;
+        }
+    }
+
 }
