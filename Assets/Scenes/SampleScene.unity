@@ -2437,6 +2437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overallMultiplier: 2.79
   timeBetweenBursts: 2
   burstLength: 0
   bulletsPerBurst: 12

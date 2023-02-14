@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletSpawner : MonoBehaviour
 {
     //[SerializeField] List<BulletEvent> events;
+    [SerializeField][Range(0f,20f)] float overallMultiplier;
     [SerializeField] float timeBetweenBursts;
     [SerializeField] float burstLength;
     [SerializeField] int bulletsPerBurst;
@@ -39,7 +40,6 @@ public class BulletSpawner : MonoBehaviour
                 float n = Mathf.Floor(l / timeBetween);
                 while (bulletsFired < n)
                 {
-                    
                     CreateBullet(bulletsFired);bulletsFired ++;
                 }
                 if (n >= bulletsPerBurst)
@@ -48,7 +48,6 @@ public class BulletSpawner : MonoBehaviour
                 }
             }else{
                 for(int i = 0; i < bulletsPerBurst;i++){
-                    
                     CreateBullet(bulletsFired);bulletsFired++;
                 }
                 Restart();
@@ -73,7 +72,7 @@ public class BulletSpawner : MonoBehaviour
         //pro.SetEvents(events);
         
         float t = (((float)n)+offset)/ (float)bulletsPerBurst;
-        pro.SetStart(Mathf.Lerp(spdStart,spdEnd,t),Vector3.Lerp(angularVelocityStart,angularVelocityEnd,t));
+        pro.SetStart(Mathf.Lerp(spdStart,spdEnd,t) * overallMultiplier,Vector3.Lerp(angularVelocityStart,angularVelocityEnd,t) * overallMultiplier);
         obj.transform.position = transform.position + Vector3.Lerp(PositionStart,PositionEnd,t);
         obj.transform.localRotation = Quaternion.Euler( Vector3.Lerp(RotationStart,RotationEnd,t));
         pro.lifetime = lifetime;
