@@ -6,26 +6,57 @@ public class EnemyProjectile : MonoBehaviour
 {
     [SerializeField]Bullet storedBullet;
     public Bullet Bullet => storedBullet;
-    [SerializeField]List<BulletEvent> events;
-    [SerializeField]int eventIndex = 0;
-    [SerializeField]float eventTimer = 0f;
+    public float lifetime;
+    //[SerializeField]List<BulletEvent> events;
+    //[SerializeField]int eventIndex = 0;
+    //[SerializeField]float eventTimer = 0f;
 
-    float speed_last;
-    Quaternion rotation_last;
-    Quaternion initalRotation;
+    //float speed_last;
+    //Quaternion rotation_last;
+    //Quaternion initalRotation;
+    [SerializeField]Rigidbody rb;
+    Vector3 ang;
+    float spd;
 
-    [SerializeField]float currentSpeed;
-
-    void Start()
-    {
+    //[SerializeField]float currentSpeed;
+    /*
+    public void SetStartingSpeed(float sp){
+        currentSpeed = sp;
+        speed_last = sp;
+    }
+    public void SetStartingRot(){
         initalRotation = transform.rotation;
         rotation_last = transform.rotation;
-        speed_last = currentSpeed;
-        GetComponent<Renderer>().material.color = storedBullet.GetColor();  
     }
+    */
+    void Start()
+    {
+        //initalRotation = transform.rotation;
+        //rotation_last = transform.rotation;
+        //speed_last = currentSpeed;
+        GetComponent<Renderer>().material.color = storedBullet.GetColor();  
+        //rb = GetComponent<Rigidbody>();
+    }
+
+    public void SetStart(float nspd, Vector3 angVel){
+        ang = angVel;
+        spd = nspd;
+    }
+
+    void FixedUpdate(){
+        transform.Rotate(ang);
+        rb.velocity = transform.forward * spd;
+    }
+
+    void Update(){
+        lifetime-= Time.deltaTime;
+        if(lifetime<=0){
+            Destroy(gameObject);
+        }
+    }
+    /*
     BulletEvent CurrentEvent(){
         if(eventIndex>events.Count-1){
-            Debug.Log("oops");
             return null;
         }
         return events[eventIndex];
@@ -102,7 +133,9 @@ public class EnemyProjectile : MonoBehaviour
     {
         events = newEvents;
     }
+    */
 }
+/*
 [System.Serializable]
 public class BulletEvent {
 
@@ -120,7 +153,7 @@ public class BulletEvent {
     public List<bulletEventFlags> endFlags = new List<bulletEventFlags>();
     //flags trigger 
 }
-
+*/
 
 [System.Serializable]
 public class Bullet

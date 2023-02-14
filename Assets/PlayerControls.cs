@@ -36,6 +36,7 @@ public class PlayerControls : MonoBehaviour
         move.Enable();
         camAngle = new Vector2(0f, 0f);
         velLastFrame = Vector3.zero;
+        Cursor.lockState=CursorLockMode.Locked;
     }
 
     private void Update()
@@ -92,6 +93,15 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+
+    void OnTriggerEnter(Collider collision){
+        if(collision.gameObject.tag=="Bullet"){
+            Debug.Log("hit bullet");
+            //knockback
+            //take damage
+            Destroy(collision.gameObject);
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
