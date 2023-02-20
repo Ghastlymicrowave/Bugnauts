@@ -29,6 +29,11 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float deltaLerp = 0.1f;
     [SerializeField]float forwardDelta = 90f;
     [SerializeField] float spdMult =.01f;
+
+    [SerializeField] GameObject bulletSpawnPoint;
+    [SerializeField] GameObject redBullet;
+
+
     void Start()
     {
         actor = GetComponent<CharacterActor>();
@@ -37,6 +42,10 @@ public class PlayerControls : MonoBehaviour
         camAngle = new Vector2(0f, 0f);
         velLastFrame = Vector3.zero;
         Cursor.lockState=CursorLockMode.Locked;
+    }
+
+    public void Fire(){
+        GameObject pb = Instantiate(redBullet,bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
     }
 
     private void Update()
@@ -168,6 +177,13 @@ public class PlayerControls : MonoBehaviour
         if (ctx.started)
         {
             anim.SetTrigger("Swing");
+        }
+    }
+    public void Fire(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            anim.SetTrigger("Shoot");
         }
     }
 }

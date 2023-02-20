@@ -62,6 +62,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""14537c39-c26c-44cf-be2e-cb3a51d37255"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -178,11 +187,22 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a61e91ae-7fac-454f-90bb-996010a0830d"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""net"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3eeea881-a1e3-479f-a066-5abe863f85b7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -197,6 +217,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_Main_cameraMovement = m_Main.FindAction("cameraMovement", throwIfNotFound: true);
         m_Main_jump = m_Main.FindAction("jump", throwIfNotFound: true);
         m_Main_net = m_Main.FindAction("net", throwIfNotFound: true);
+        m_Main_shoot = m_Main.FindAction("shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -260,6 +281,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_cameraMovement;
     private readonly InputAction m_Main_jump;
     private readonly InputAction m_Main_net;
+    private readonly InputAction m_Main_shoot;
     public struct MainActions
     {
         private @PlayerActions m_Wrapper;
@@ -268,6 +290,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @cameraMovement => m_Wrapper.m_Main_cameraMovement;
         public InputAction @jump => m_Wrapper.m_Main_jump;
         public InputAction @net => m_Wrapper.m_Main_net;
+        public InputAction @shoot => m_Wrapper.m_Main_shoot;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -289,6 +312,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @net.started -= m_Wrapper.m_MainActionsCallbackInterface.OnNet;
                 @net.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnNet;
                 @net.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnNet;
+                @shoot.started -= m_Wrapper.m_MainActionsCallbackInterface.OnShoot;
+                @shoot.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnShoot;
+                @shoot.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_MainActionsCallbackInterface = instance;
             if (instance != null)
@@ -305,6 +331,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @net.started += instance.OnNet;
                 @net.performed += instance.OnNet;
                 @net.canceled += instance.OnNet;
+                @shoot.started += instance.OnShoot;
+                @shoot.performed += instance.OnShoot;
+                @shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -315,5 +344,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnCameraMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnNet(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

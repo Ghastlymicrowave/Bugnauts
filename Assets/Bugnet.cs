@@ -6,11 +6,21 @@ public class Bugnet : MonoBehaviour
 {
     [SerializeField] BulletCatcherUI catcher;
     // Start is called before the first frame update
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] float collectCooldown;
+    float t = 0f;
+    void Update(){
+        if(t>0){
+            t = Mathf.Max(0f,t-Time.deltaTime);
+        }
+    }
+    void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Bullet")
         {
-            catcher.AddBullet(other.GetComponent<EnemyProjectile>().Bullet);
+            if(t == 0f){
+                catcher.AddBullet(other.GetComponent<EnemyProjectile>().Bullet);
+                t = collectCooldown;
+            }
             Destroy(other.gameObject);
         }
     }
