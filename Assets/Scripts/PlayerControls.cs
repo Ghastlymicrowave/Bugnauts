@@ -5,12 +5,9 @@ using Lightbug.CharacterControllerPro.Core;
 using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
-    CharacterActor actor;
+    [Header("Properties")]
     [SerializeField] float force;
-    [SerializeField] Camera cam;
     [SerializeField] LayerMask mask;
-    [SerializeField] GameObject body;
-    [SerializeField] GameObject visual;
     [SerializeField] float sensitivity = 1f;
     [SerializeField] Vector3 camOffset;
     [SerializeField] float jumpforce;
@@ -18,22 +15,30 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float friction;
     [SerializeField] float staticFriction;
     [SerializeField] float offset;
-    [SerializeField] Animator anim;
-    Vector3 visualPosition;
+    [SerializeField] float deltaLerp = 0.1f;
+    [SerializeField] float forwardDelta = 90f;
+    [SerializeField] float spdMult = .01f;
     Vector2 camAngle;
     Vector2 currentAngle = Vector2.zero;
-    // Start is called before the first frame update
     PlayerActions move;
     Vector3 velLastFrame;
     float lastDelta = 0f;
-    [SerializeField] float deltaLerp = 0.1f;
-    [SerializeField]float forwardDelta = 90f;
-    [SerializeField] float spdMult =.01f;
+    
 
-    [SerializeField] GameObject bulletSpawnPoint;
+    [Header("Prefabs")]
+    [SerializeField] GameObject blueBullet;
+    [SerializeField] GameObject greenBullet;
     [SerializeField] GameObject redBullet;
+    [SerializeField] GameObject yellowBullet;
+    CharacterActor actor;
 
-
+    [Header("Object References")]
+    [SerializeField] Camera cam;
+    [SerializeField] GameObject body;
+    [SerializeField] GameObject visual;
+    [SerializeField] Animator anim;
+    [SerializeField] BulletCatcherUI ui;
+    [SerializeField] GameObject bulletSpawnPoint;
     void Start()
     {
         actor = GetComponent<CharacterActor>();
@@ -45,7 +50,28 @@ public class PlayerControls : MonoBehaviour
     }
 
     public void Fire(){
-        GameObject pb = Instantiate(redBullet,bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
+        GameObject toFire = redBullet;
+        Bullet firing = ui.ShootPrimary();
+        if(firing == null)
+        {
+            return;
+        }
+        switch (firing.GetBulletType())
+        {
+            case Bullet.bulletTypes.Blue:
+                toFire = blueBullet;
+                break;
+            case Bullet.bulletTypes.Green:
+                toFire = greenBullet;
+                break;
+            case Bullet.bulletTypes.Red:
+                toFire = redBullet;
+                break;
+            case Bullet.bulletTypes.Yellow:
+                toFire = yellowBullet;
+                break;
+        }
+        GameObject pb = Instantiate(toFire,bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
     }
 
     private void Update()
@@ -89,7 +115,11 @@ public class PlayerControls : MonoBehaviour
                 anim.SetBool("Horiz",false);
             }
         }
-        
+        else
+        {
+            lastDelta = Mathf.LerpAngle(lastDelta, currentAngle.x - 90f, deltaLerp / 2f);
+            anim.SetBool("Horiz", false);
+        }
         body.transform.rotation = Quaternion.Euler(-90f, lastDelta + offset, 0f);
 
         

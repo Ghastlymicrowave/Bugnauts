@@ -650,8 +650,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558154644}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -15, y: 0, z: -28}
-  m_LocalScale: {x: 31, y: 40.99999, z: 1.9999995}
+  m_LocalPosition: {x: -15, y: -0, z: -28}
+  m_LocalScale: {x: 36.75, y: 64.749985, z: 1.9999995}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 457380911}
@@ -1053,6 +1053,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4261236905779764, guid: e308f51763158a0478c96c508bf577e5, type: 3}
   m_PrefabInstance: {fileID: 1190146472}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &752717225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 752717227}
+  - component: {fileID: 752717226}
+  m_Layer: 0
+  m_Name: BulletSpawnerY
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &752717226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752717225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overallMultiplier: 1
+  timeBetweenBursts: 2
+  burstLength: 0
+  bulletsPerBurst: 5
+  initalDelay: 0.1
+  bulletPrefab: {fileID: 815599547527276158, guid: 1d49711e394fc3146b244e6ede59af2f, type: 3}
+  RotationStart: {x: 0, y: 0, z: 0}
+  RotationEnd: {x: 0, y: 360, z: 0}
+  PositionStart: {x: 0, y: 0, z: 0}
+  PositionEnd: {x: 0, y: 0, z: 0}
+  angularVelocityStart: {x: 0, y: 2, z: 0}
+  angularVelocityEnd: {x: 0, y: 2, z: 0}
+  lifetime: 5
+  spdStart: 5
+  spdEnd: 5
+  t: 0
+  offset: 0
+--- !u!4 &752717227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752717225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.44, y: 0.72, z: 30.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &769722537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4320394780166936, guid: 70ccd430aa7dcf64b9eee1a2faa89f6f, type: 3}
@@ -1187,6 +1248,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &894900741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 894900743}
+  - component: {fileID: 894900742}
+  m_Layer: 0
+  m_Name: BulletSpawnerB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &894900742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894900741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overallMultiplier: 1
+  timeBetweenBursts: 2
+  burstLength: 0
+  bulletsPerBurst: 5
+  initalDelay: 0.1
+  bulletPrefab: {fileID: 815599547527276158, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
+  RotationStart: {x: 0, y: 0, z: 0}
+  RotationEnd: {x: 0, y: 360, z: 0}
+  PositionStart: {x: 0, y: 0, z: 0}
+  PositionEnd: {x: 0, y: 0, z: 0}
+  angularVelocityStart: {x: 0, y: 2, z: 0}
+  angularVelocityEnd: {x: 0, y: 2, z: 0}
+  lifetime: 5
+  spdStart: 5
+  spdEnd: 5
+  t: 0
+  offset: 0
+--- !u!4 &894900743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894900741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.86, y: 0.72, z: 13.95}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &901376905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4980619249068862, guid: cd595647b6580ec4ea1440a7dd28a6c7, type: 3}
@@ -1237,6 +1359,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Section: 3
+--- !u!1 &957987508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 957987510}
+  - component: {fileID: 957987509}
+  m_Layer: 0
+  m_Name: BulletSpawnerG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &957987509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957987508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overallMultiplier: 1
+  timeBetweenBursts: 2
+  burstLength: 0
+  bulletsPerBurst: 5
+  initalDelay: 0.1
+  bulletPrefab: {fileID: 815599547527276158, guid: fbd46362269f46a4f828a550dc4c75c1, type: 3}
+  RotationStart: {x: 0, y: 0, z: 0}
+  RotationEnd: {x: 0, y: 360, z: 0}
+  PositionStart: {x: 0, y: 0, z: 0}
+  PositionEnd: {x: 0, y: 0, z: 0}
+  angularVelocityStart: {x: 0, y: 2, z: 0}
+  angularVelocityEnd: {x: 0, y: 2, z: 0}
+  lifetime: 5
+  spdStart: 5
+  spdEnd: 5
+  t: 0
+  offset: 0
+--- !u!4 &957987510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957987508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.08, y: 0.72, z: 14.36}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,7 +2882,7 @@ GameObject:
   - component: {fileID: 2063356609}
   - component: {fileID: 2063356610}
   m_Layer: 0
-  m_Name: BulletSpawner
+  m_Name: BulletSpawnerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2713,7 +2896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063356608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.72, z: 0}
+  m_LocalPosition: {x: 14.39, y: 0.72, z: 28.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2732,10 +2915,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overallMultiplier: 2.79
+  overallMultiplier: 1
   timeBetweenBursts: 2
   burstLength: 0
-  bulletsPerBurst: 12
+  bulletsPerBurst: 5
   initalDelay: 0.1
   bulletPrefab: {fileID: 815599547527276158, guid: 2b977d351cad740418f070df7226e964, type: 3}
   RotationStart: {x: 0, y: 0, z: 0}
@@ -2744,7 +2927,7 @@ MonoBehaviour:
   PositionEnd: {x: 0, y: 0, z: 0}
   angularVelocityStart: {x: 0, y: 2, z: 0}
   angularVelocityEnd: {x: 0, y: 2, z: 0}
-  lifetime: 3
+  lifetime: 5
   spdStart: 5
   spdEnd: 5
   t: 0
@@ -2861,6 +3044,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 100337237}
+    - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194227}
@@ -2868,6 +3055,18 @@ PrefabInstance:
       propertyPath: redBullet
       value: 
       objectReference: {fileID: 6318290566463660983, guid: b36241bb7bf6828479c365871093b4a6, type: 3}
+    - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+      propertyPath: blueBullet
+      value: 
+      objectReference: {fileID: 6318290566463660983, guid: 4ee99f969a7c9ef47a5c720c472a8e91, type: 3}
+    - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+      propertyPath: greenBullet
+      value: 
+      objectReference: {fileID: 6318290566463660983, guid: c185e7c154270e14b909f520c617ff6c, type: 3}
+    - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+      propertyPath: yellowBullet
+      value: 
+      objectReference: {fileID: 6318290566463660983, guid: 558547e1096c23d4c93176729ef410e5, type: 3}
     - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: bulletSpawnPoint
       value: 

@@ -12,11 +12,26 @@ public class BulletCatcherUI : MonoBehaviour
 
     void UpdateUI(){
         Bullet[] bullets = storedBullets.ToArray();
-        for(int i = 0; i < bullets.Length; i++){
+        for(int i = 0; i < 4; i++){
             if(i == 0){
-                primary.color = bullets[i].GetColor();
+                if(i < bullets.Length)
+                {
+                    primary.color = bullets[i].GetColor();
+                }
+                else
+                {
+                    primary.color = Color.white;
+                }
+                
             }else{
-                Secondaries[i-1].color = bullets[i].GetColor();
+                if (i < bullets.Length)
+                {
+                    Secondaries[i - 1].color = bullets[i].GetColor();
+                }
+                else
+                {
+                    Secondaries[i - 1].color = Color.white;
+                }
             }
         }
     }
@@ -29,10 +44,16 @@ public class BulletCatcherUI : MonoBehaviour
         UpdateUI();
     }
 
-    void ShootPrimary(){
+    public Bullet ShootPrimary(){
         //make some projectile using bullet at index 0
+        if (storedBullets.Count<1 || storedBullets[0] == null)
+        {
+            return null;
+        }
+        Bullet b = storedBullets[0];
         storedBullets.RemoveAt(0);
         UpdateUI();
+        return b;
     }
 
     void Start(){
