@@ -18,6 +18,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float deltaLerp = 0.1f;
     [SerializeField] float forwardDelta = 90f;
     [SerializeField] float spdMult = .01f;
+    [SerializeField] LayerMask interactionMask;
     Vector2 camAngle;
     Vector2 currentAngle = Vector2.zero;
     PlayerActions move;
@@ -191,7 +192,12 @@ public class PlayerControls : MonoBehaviour
         {
             velLastFrame = movement;
         }
-        
+        RaycastHit hit;
+        Physics.Raycast(transform.position, visual.transform.forward, out hit, interactionMask );
+        if (hit.collider != null)
+        {
+            Debug.Log("Hit collider");
+        }
     }
 
     public void Jump (InputAction.CallbackContext ctx)
