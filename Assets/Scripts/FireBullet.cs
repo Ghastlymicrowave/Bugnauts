@@ -8,4 +8,7 @@ public class FireBullet : MonoBehaviour
     public void Shoot(){
         pc.Fire();
     }
+    public void BuffEffect(){
+        pc.BuffParticle();
+    }
 }

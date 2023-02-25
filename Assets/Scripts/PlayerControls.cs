@@ -40,6 +40,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] BulletCatcherUI ui;
     [SerializeField] GameObject bulletSpawnPoint;
+    [SerializeField] ParticleSystem part;
     void Start()
     {
         actor = GetComponent<CharacterActor>();
@@ -75,6 +76,16 @@ public class PlayerControls : MonoBehaviour
         GameObject pb = Instantiate(toFire,bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
     }
 
+    public void BuffParticle(){
+        Bullet firing = ui.ShootPrimary();
+        if(firing == null)
+        {
+            return;
+        }
+        var main = part.main;
+        main.startColor = firing.GetColor();
+        part.Play();
+    }
     private void Update()
     {
         //camRotater.transform.position = Vector3.Lerp(camRotater.transform.position, transform.position + camOffset,0.2f);
@@ -220,6 +231,11 @@ public class PlayerControls : MonoBehaviour
         if (ctx.started)
         {
             anim.SetTrigger("Shoot");
+        }
+    }
+    public void Buff(InputAction.CallbackContext ctx){
+        if(ctx.started){
+            anim.SetTrigger("Buff");
         }
     }
 }

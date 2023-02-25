@@ -71,6 +71,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""buff"",
+                    ""type"": ""Button"",
+                    ""id"": ""92725e2b-6fd9-45a2-a0eb-f6618f0a7ddc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -205,6 +214,17 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""926f3025-7890-4e38-b179-c87f7cfe3454"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""buff"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -218,6 +238,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_Main_jump = m_Main.FindAction("jump", throwIfNotFound: true);
         m_Main_net = m_Main.FindAction("net", throwIfNotFound: true);
         m_Main_shoot = m_Main.FindAction("shoot", throwIfNotFound: true);
+        m_Main_buff = m_Main.FindAction("buff", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +303,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_jump;
     private readonly InputAction m_Main_net;
     private readonly InputAction m_Main_shoot;
+    private readonly InputAction m_Main_buff;
     public struct MainActions
     {
         private @PlayerActions m_Wrapper;
@@ -291,6 +313,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @jump => m_Wrapper.m_Main_jump;
         public InputAction @net => m_Wrapper.m_Main_net;
         public InputAction @shoot => m_Wrapper.m_Main_shoot;
+        public InputAction @buff => m_Wrapper.m_Main_buff;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +338,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @shoot.started -= m_Wrapper.m_MainActionsCallbackInterface.OnShoot;
                 @shoot.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnShoot;
                 @shoot.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnShoot;
+                @buff.started -= m_Wrapper.m_MainActionsCallbackInterface.OnBuff;
+                @buff.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnBuff;
+                @buff.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnBuff;
             }
             m_Wrapper.m_MainActionsCallbackInterface = instance;
             if (instance != null)
@@ -334,6 +360,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @shoot.started += instance.OnShoot;
                 @shoot.performed += instance.OnShoot;
                 @shoot.canceled += instance.OnShoot;
+                @buff.started += instance.OnBuff;
+                @buff.performed += instance.OnBuff;
+                @buff.canceled += instance.OnBuff;
             }
         }
     }
@@ -345,5 +374,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnNet(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnBuff(InputAction.CallbackContext context);
     }
 }
