@@ -16,6 +16,7 @@ TagManager:
   - Net
   - Bullet
   - Interaction
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -13,12 +13,16 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float jumpforce;
     [SerializeField] float gravity;
     [SerializeField] float friction;
+    [SerializeField] float knockbackFriction;
     [SerializeField] float staticFriction;
     [SerializeField] float offset;
     [SerializeField] float deltaLerp = 0.1f;
     [SerializeField] float forwardDelta = 90f;
     [SerializeField] float spdMult = .01f;
     [SerializeField] LayerMask interactionMask;
+    [SerializeField] float maxKnockbackTime;
+    [SerializeField] float knockbackForce;
+    float knockbackTime = 0f;
     Vector2 camAngle;
     Vector2 currentAngle = Vector2.zero;
     PlayerActions move;
@@ -41,6 +45,10 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] BulletCatcherUI ui;
     [SerializeField] GameObject bulletSpawnPoint;
     [SerializeField] ParticleSystem part;
+    [SerializeField] Transform playerCenter;
+    [SerializeField] FindNearestEnemy find;
+    bool canStop => _canStop();
+    bool _canStop(){return knockbackTime<=0;}
     void Start()
     {
         actor = GetComponent<CharacterActor>();
@@ -73,7 +81,13 @@ public class PlayerControls : MonoBehaviour
                 toFire = yellowBullet;
                 break;
         }
-        GameObject pb = Instantiate(toFire,bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
+        GameObject pb;
+        if(find.closestEnemy==null){
+            pb = Instantiate(toFire,bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
+        }else{
+            pb = Instantiate(toFire,bulletSpawnPoint.transform.position, Quaternion.LookRotation(find.closestEnemy.transform.position - bulletSpawnPoint.transform.position ,Vector3.up));
+        }
+        
     }
 
     public void BuffParticle(){
@@ -88,11 +102,6 @@ public class PlayerControls : MonoBehaviour
     }
     private void Update()
     {
-        //camRotater.transform.position = Vector3.Lerp(camRotater.transform.position, transform.position + camOffset,0.2f);
-        //visualPosition = Vector3.Lerp(visualPosition, transform.position, 0.2f);
-        
-        //body.transform.rotation = Quaternion.Euler(0f,currentAngle.x,0f);
-        //x 90 90
         float delta = Mathf.Atan2(velLastFrame.z, velLastFrame.x) * Mathf.Rad2Deg;
         
         currentAngle = Vector2.Lerp(currentAngle, camAngle, 0.1f);
@@ -102,8 +111,7 @@ public class PlayerControls : MonoBehaviour
         Vector2 input = move.Main.movement.ReadValue<Vector2>();
         float horiz = input.x/2f+.5f;
         anim.SetFloat("Horizontal Direction",horiz);
-        anim.SetFloat("Spd",actor.Velocity.magnitude * spdMult);
-
+        anim.SetFloat("Spd",actor.PlanarVelocity.magnitude * spdMult);
 
         float a = -delta + offset;
         float b = currentAngle.x;
@@ -114,7 +122,6 @@ public class PlayerControls : MonoBehaviour
         }else{
             //anim.SetFloat("WalkDirection",1f);
         }
-
 
         if (input.magnitude != 0f)
         {
@@ -133,23 +140,18 @@ public class PlayerControls : MonoBehaviour
             anim.SetBool("Horiz", false);
         }
         body.transform.rotation = Quaternion.Euler(-90f, lastDelta + offset, 0f);
-
-        
-        
         visual.transform.rotation = Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f);
-
-        
-        
-        
-
+        if(knockbackTime>0){
+            knockbackTime = Mathf.Max(0f,knockbackTime-Time.deltaTime);
+        }
     }
 
 
     void OnTriggerEnter(Collider collision){
         if(collision.gameObject.tag=="Bullet"){
             Debug.Log("hit bullet");
-            //knockback
-            //take damage
+            knockbackTime = maxKnockbackTime;
+            actor.Velocity = -(collision.gameObject.transform.position - playerCenter.position).normalized * knockbackForce;
             Destroy(collision.gameObject);
         }
     }
@@ -157,22 +159,15 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        
-        
         //y is horiz
         //x is vert
         //Vector2 angle
         camAngle += move.Main.cameraMovement.ReadValue<Vector2>() * sensitivity;
         camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
         
-
         Vector2 input = move.Main.movement.ReadValue<Vector2>();
-
         //Debug.Log(forward);
-
         //Debug.Log(right);
-
         Vector3 movement = new Vector3(0f, 0f, 0f);
         Vector3 forward = cam.transform.forward;
         Vector3 right = cam.transform.right;
@@ -188,11 +183,16 @@ public class PlayerControls : MonoBehaviour
         Debug.DrawRay(transform.position,movement);
         if (actor.IsGrounded)
         {
-            actor.Velocity += movement;
-            actor.Velocity *= friction;
-            if (actor.Velocity.magnitude < staticFriction)
+            actor.Velocity += movement * (1f-knockbackTime/maxKnockbackTime);
+            if(canStop){
+                actor.PlanarVelocity *= friction;
+            }else{
+                actor.PlanarVelocity *= knockbackFriction;
+            }
+            
+            if (actor.PlanarVelocity.magnitude < staticFriction && canStop)
             {
-                actor.Velocity = Vector3.zero;
+                actor.PlanarVelocity = Vector3.zero;
             }
         }
         else

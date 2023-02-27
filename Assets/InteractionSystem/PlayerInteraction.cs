@@ -9,15 +9,11 @@ public class PlayerInteraction : MonoBehaviour
 {
     //checks for interactables on layer: default with tag: interactable
     [SerializeField] Transform headTransform;
-    [SerializeField] float interactionDistace;
-    [SerializeField] float interactionDistace2;
+    [SerializeField] float interactionStartDist;
+    [SerializeField] float interactionEndtDist;
     [SerializeField] float sphereRadius;
     [SerializeField] LayerMask raycastMaskInteract;
     [SerializeField] LayerMask raycastWorld;
-    [SerializeField] GameObject flashlightLight;
-    //[SerializeField] PlayerController controller;
-    [SerializeField] Camera playerCam;
-    //[SerializeField] InventoryManager ivManager;
     [SerializeField] Image handUI;
     [SerializeField] float smoothTime;
     
@@ -40,10 +36,7 @@ public class PlayerInteraction : MonoBehaviour
     bool currentlyInteracting = false;
     InteractableBase hovering;
     Collider hoveringCollider;
-
     public static PlayerInteraction player;
-    
-
     void Awake(){
         player = this;
     }
@@ -62,16 +55,25 @@ public class PlayerInteraction : MonoBehaviour
         return hoveringCollider;
     }
 
-    void InteractPressed(InputAction.CallbackContext obj)
+    public void InteractPressed(InputAction.CallbackContext obj)
     {
+        Debug.Log("proc");
+        if(obj.canceled){
+            InteractReleased();
+            return;
+        }
+        if(obj.started){
         if (!canInteract) { return; }
         if (GetHoverType() == InteractableBase.interactType.press){
             hovering.Interact(true);
+            Debug.Log("interact");
         }else if (GetHoverType() != InteractableBase.interactType.empty){
             currentlyInteracting = true;
         }
+        }
+        
     }
-    void InteractReleased(InputAction.CallbackContext obj)
+    public void InteractReleased()
     {
         if (hovering != null)
         {
@@ -97,9 +99,8 @@ public class PlayerInteraction : MonoBehaviour
     }
     void FixedUpdate()
     {
-
         Collider[] info;
-        info = Physics.OverlapCapsule(headTransform.position + playerCam.transform.forward * interactionDistace,headTransform.position + playerCam.transform.forward * interactionDistace2, sphereRadius,raycastMaskInteract);
+        info = Physics.OverlapCapsule(headTransform.position + headTransform.transform.forward * interactionStartDist,headTransform.position + headTransform.transform.forward * interactionEndtDist, sphereRadius,raycastMaskInteract);
         for(int i = 0; i < info.Length; i ++){
             Debug.DrawLine(headTransform.position, info[i].ClosestPoint(headTransform.position), Color.red, 0.1f);
             if (hovering == null || (hovering.gameObject != info[i].gameObject))
@@ -140,8 +141,8 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void OnDrawGizmos(){
-        Gizmos.DrawSphere(headTransform.position + playerCam.transform.forward * interactionDistace2, sphereRadius);
-        Gizmos.DrawSphere(headTransform.position + playerCam.transform.forward * interactionDistace, sphereRadius);
+        Gizmos.DrawSphere(headTransform.position + headTransform.transform.forward * interactionEndtDist, sphereRadius);
+        Gizmos.DrawSphere(headTransform.position + headTransform.transform.forward * interactionStartDist, sphereRadius);
     }
 
     

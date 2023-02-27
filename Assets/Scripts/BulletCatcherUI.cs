@@ -8,7 +8,7 @@ public class BulletCatcherUI : MonoBehaviour
     int maxBullets = 4;
     [SerializeField] Image primary;
     [SerializeField] Image[] Secondaries;
-
+    [SerializeField] Image reticle;
 
     void UpdateUI(){
         Bullet[] bullets = storedBullets.ToArray();
@@ -34,6 +34,9 @@ public class BulletCatcherUI : MonoBehaviour
                 }
             }
         }
+        Color c = primary.color;
+        c.a = 1f;
+        reticle.color = c;
     }
 
     public void AddBullet(Bullet newBullet){
