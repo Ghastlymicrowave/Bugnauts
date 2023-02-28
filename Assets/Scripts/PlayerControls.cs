@@ -16,19 +16,22 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float knockbackFriction;
     [SerializeField] float staticFriction;
     [SerializeField] float offset;
-    [SerializeField] float deltaLerp = 0.1f;
+    [SerializeField] float camSmoothTime = 0.1f;
+    Vector3 lastCamRot;
+    Vector3 camRotTarget;
+    Smoothing s;
     [SerializeField] float forwardDelta = 90f;
     [SerializeField] float spdMult = .01f;
     [SerializeField] LayerMask interactionMask;
     [SerializeField] float maxKnockbackTime;
     [SerializeField] float knockbackForce;
+    [SerializeField] float mouseSensitivity;
     float knockbackTime = 0f;
     Vector2 camAngle;
     Vector2 currentAngle = Vector2.zero;
     PlayerActions move;
     Vector3 velLastFrame;
     float lastDelta = 0f;
-    
 
     [Header("Prefabs")]
     [SerializeField] GameObject blueBullet;
@@ -47,6 +50,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] ParticleSystem part;
     [SerializeField] Transform playerCenter;
     [SerializeField] FindNearestEnemy find;
+    
     bool canStop => _canStop();
     bool _canStop(){return knockbackTime<=0;}
     void Start()
@@ -103,9 +107,22 @@ public class PlayerControls : MonoBehaviour
     private void Update()
     {
         float delta = Mathf.Atan2(velLastFrame.z, velLastFrame.x) * Mathf.Rad2Deg;
-        
-        currentAngle = Vector2.Lerp(currentAngle, camAngle, 0.1f);
-        
+
+        if (s != null)
+        {
+            
+            float t = s.TickVal(Time.deltaTime);
+            Debug.Log(t);
+            currentAngle = Vector3.Lerp(lastCamRot, camRotTarget, t);
+            if (t >= 1)
+            {
+                s = null;
+            }
+        }
+        else
+        {
+            currentAngle = camRotTarget;
+        }
         float extraOffset = 0f;
         
         Vector2 input = move.Main.movement.ReadValue<Vector2>();
@@ -127,16 +144,16 @@ public class PlayerControls : MonoBehaviour
         {
             
             if(Mathf.Abs(input.normalized.x)>.75f){
-                lastDelta = Mathf.LerpAngle(lastDelta,currentAngle.x -90f, deltaLerp) ;
+                lastDelta = currentAngle.x - 90f;// Mathf.LerpAngle(lastDelta,currentAngle.x -90f, deltaLerp) ;
                 anim.SetBool("Horiz",true);
             }else{
-                lastDelta = Mathf.LerpAngle(lastDelta, -delta + extraOffset, deltaLerp) ;
+                lastDelta = -delta + extraOffset;// Mathf.LerpAngle(lastDelta, -delta + extraOffset, deltaLerp) ;
                 anim.SetBool("Horiz",false);
             }
         }
         else
         {
-            lastDelta = Mathf.LerpAngle(lastDelta, currentAngle.x - 90f, deltaLerp / 2f);
+            lastDelta = currentAngle.x - 90f;//Mathf.LerpAngle(lastDelta, currentAngle.x - 90f, deltaLerp / 2f);
             anim.SetBool("Horiz", false);
         }
         body.transform.rotation = Quaternion.Euler(-90f, lastDelta + offset, 0f);
@@ -162,9 +179,37 @@ public class PlayerControls : MonoBehaviour
         //y is horiz
         //x is vert
         //Vector2 angle
-        camAngle += move.Main.cameraMovement.ReadValue<Vector2>() * sensitivity;
-        camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
+        Vector2 v = move.Main.cameraMovement.ReadValue<Vector2>();
+        if (v.magnitude != 0f)
+        {
+            if (move.Main.cameraMovement.activeControl.displayName == "Delta")
+            {
+                v.x *= Screen.width;
+                v.y *= Screen.height;
+                v *= mouseSensitivity;
+            }
+            else
+            {
+                v *= sensitivity;
+            }
+            //Debug.Log(move.Main.cameraMovement.activeControl.displayName);
+            
+        }
+
+
+        Vector2 a = camAngle;
+
         
+        camAngle += v;
+        camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
+        if(camAngle != a)
+        {
+            s = new Smoothing(0f, camSmoothTime, Smoothing.smoothingTypes.InFastOutSlow);
+            lastCamRot = currentAngle;
+            camRotTarget = camAngle;
+            Debug.Log("new s");
+        }
+
         Vector2 input = move.Main.movement.ReadValue<Vector2>();
         //Debug.Log(forward);
         //Debug.Log(right);
@@ -174,7 +219,8 @@ public class PlayerControls : MonoBehaviour
 
         forward.y = 0f;
         right.y = 0f;
-
+        right.Normalize();
+        forward.Normalize();
         movement += forward * input.y;
         movement += right * input.x;
         movement *= force;
@@ -207,7 +253,7 @@ public class PlayerControls : MonoBehaviour
         Physics.Raycast(transform.position, visual.transform.forward, out hit, interactionMask );
         if (hit.collider != null)
         {
-            Debug.Log("Hit collider");
+            //Debug.Log("Hit collider");
         }
     }
 

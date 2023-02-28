@@ -34,7 +34,7 @@ public class EnemyProjectile : MonoBehaviour
         //initalRotation = transform.rotation;
         //rotation_last = transform.rotation;
         //speed_last = currentSpeed;
-        GetComponent<Renderer>().material.color = storedBullet.GetColor();  
+        //GetComponent<Renderer>().material.color = storedBullet.GetColor();  
         //rb = GetComponent<Rigidbody>();
     }
 

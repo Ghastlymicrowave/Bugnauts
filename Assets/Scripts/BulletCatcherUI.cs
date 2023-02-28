@@ -61,7 +61,10 @@ public class BulletCatcherUI : MonoBehaviour
 
     void Start(){
         storedBullets = new List<Bullet>();
-        
+        AddBullet(new Bullet(Bullet.bulletTypes.Red));
+        AddBullet(new Bullet(Bullet.bulletTypes.Red));
+        AddBullet(new Bullet(Bullet.bulletTypes.Red));
+        AddBullet(new Bullet(Bullet.bulletTypes.Red));
 
         UpdateUI();
     }

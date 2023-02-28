@@ -23,18 +23,30 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField]float t = 0f;
     [SerializeField][Range(0f,1f)] float offset;
     int bulletsFired;
-
+    [SerializeField]bool fire = false;
     private void Start()
     {
-        t = -initalDelay;
+        fireDelay = -initalDelay;
     }
+    [SerializeField] bool firing = false;
+    [SerializeField] float fireDelay;
+    public void Fire()
+    {
+        fire = true;
+    }
+    public bool isFiring() { return t > 0f;}
 
     private void Update()
     {
-        t += Time.deltaTime;
-        if ( t > timeBetweenBursts)
+        fireDelay += Time.deltaTime;
+        if (fireDelay >= timeBetweenBursts) { fireDelay = timeBetweenBursts; }
+        if (fireDelay >= timeBetweenBursts && fire)
         {
-            float l = t - timeBetweenBursts;
+            firing = true;
+        }
+        if (firing) {
+            t += Time.deltaTime;
+            float l = t;
             float timeBetween = burstLength / (float)bulletsPerBurst;
             if(timeBetween!=0){
                 float n = Mathf.Floor(l / timeBetween);
@@ -54,12 +66,15 @@ public class BulletSpawner : MonoBehaviour
             }
             
         }
+        fire = false;
     }
 
     void Restart()
     {
         bulletsFired = 0;
         t = 0f;
+        fireDelay = 0f;
+        firing = false;
     }
 
     void CreateBullet(int n)
