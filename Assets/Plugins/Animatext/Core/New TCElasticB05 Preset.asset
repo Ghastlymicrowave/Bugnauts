@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98fd046395f50b4094b940563106342, type: 3}
+  m_Name: New TCElasticB05 Preset
+  m_EditorClassIdentifier: 
+  _startInterval: 0
+  _tag: 
+  reverse: 0
+  loopCount: 0
+  loopInterval: 0
+  loopBackInterval: 0
+  pingpongLoop: 0
+  continuousLoop: 0
+  interval: 0.5
+  singleTime: 1
+  sortType: 0
+  rotation: 45
+  scale: {x: 0, y: 0}
+  skew: {x: 0, y: 45}
+  anchorType: 4
+  anchorOffset: {x: 0, y: 0}
+  oscillations: 2
+  stiffness: 5
+  easingType: 0
+  fadeMode: 1
+  fadeRange:
+    start: 0
+    end: 0.25

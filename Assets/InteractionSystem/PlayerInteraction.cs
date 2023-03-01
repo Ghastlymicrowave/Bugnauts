@@ -16,6 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] LayerMask raycastWorld;
     [SerializeField] Image handUI;
     [SerializeField] float smoothTime;
+    [SerializeField] PlayerControls controls;
     
     float lastOpacity = 0f;
     float targetOpacity = 0f;
@@ -57,6 +58,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public void InteractPressed(InputAction.CallbackContext obj)
     {
+        if(controls.DialougeOpen){return;}
         Debug.Log("proc");
         if(obj.canceled){
             InteractReleased();
@@ -75,6 +77,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     public void InteractReleased()
     {
+        if(controls.DialougeOpen){return;}
         if (hovering != null)
         {
             hovering.StopGrabbing(); 

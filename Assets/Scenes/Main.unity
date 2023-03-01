@@ -318,6 +318,7 @@ RectTransform:
   - {fileID: 521551623}
   - {fileID: 1235991590}
   - {fileID: 609656459}
+  - {fileID: 1516692317}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12294,6 +12295,130 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1516692316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516692317}
+  - component: {fileID: 1516692320}
+  - component: {fileID: 1516692319}
+  - component: {fileID: 1516692318}
+  m_Layer: 0
+  m_Name: Dialouge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1516692317
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516692316}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -247.94485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 100337241}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000019073, y: -308.23505}
+  m_SizeDelta: {x: 1690.7754, y: 342.7901}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1516692318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516692316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd55b2972a5f95449c5df916bc920b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputText: "fart bastard fart poopy bung hole! wow so cool ! \nfart bastard fart
+    poopy bung hole! wow so cool ! \nfart bastard fart poopy bung hole! wow so cool
+    ! \n"
+  _parsedText: "fart bastard fart poopy bung hole! wow so cool ! \nfart bastard fart
+    poopy bung hole! wow so cool ! \nfart bastard fart poopy bung hole! wow so cool
+    ! \n"
+  _outputText: "fart bastard fart poopy bung hole! wow so cool ! \nfart bastard fart
+    poopy bung hole! wow so cool ! \nfart bastard fart poopy bung hole! wow so cool
+    ! \n"
+  _effectText: 'fart bastard fart poopy bung hole! wow so cool ! fart bastard fart
+    poopy bung hole! wow so cool ! fart bastard fart poopy bung hole! wow so cool
+    ! '
+  _retainedText: "fart bastard fart poopy bung hole! wow so cool ! \nfart bastard
+    fart poopy bung hole! wow so cool ! \nfart bastard fart poopy bung hole! wow
+    so cool ! \n"
+  _settings:
+    retainedText: 0
+    disabledText: 0
+    disabledEffects: 0
+    tagSymbols: 0
+    markerSymbols: 0
+  _effects:
+  - _presets:
+    - {fileID: 11400000, guid: da4a35140ea27494b8889a929fabf575, type: 2}
+    _autoPlay: 1
+    _autoStart: 1
+    _refreshMode: 0
+    _state: 0
+    _speed: 1
+    _time: 0
+--- !u!114 &1516692319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516692316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 58
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "fart bastard fart poopy bung hole! wow so cool ! \nfart bastard fart poopy
+    bung hole! wow so cool ! \nfart bastard fart poopy bung hole! wow so cool ! \n"
+--- !u!222 &1516692320
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516692316}
+  m_CullTransparentMesh: 1
 --- !u!1 &1518906399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5afe5881b5e1f204485319f32aaf6fb0, type: 3}

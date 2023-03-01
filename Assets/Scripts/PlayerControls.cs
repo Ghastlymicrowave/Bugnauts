@@ -5,6 +5,7 @@ using Lightbug.CharacterControllerPro.Core;
 using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
+    public bool DialougeOpen = false;
     [Header("Properties")]
     [SerializeField] float force;
     [SerializeField] LayerMask mask;
@@ -199,9 +200,11 @@ public class PlayerControls : MonoBehaviour
 
         Vector2 a = camAngle;
 
+        if(!DialougeOpen){
+            camAngle += v;
+            camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
+        }
         
-        camAngle += v;
-        camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
         if(camAngle != a)
         {
             s = new Smoothing(0f, camSmoothTime, Smoothing.smoothingTypes.InFastOutSlow);
@@ -210,23 +213,31 @@ public class PlayerControls : MonoBehaviour
             Debug.Log("new s");
         }
 
-        Vector2 input = move.Main.movement.ReadValue<Vector2>();
         //Debug.Log(forward);
         //Debug.Log(right);
         Vector3 movement = new Vector3(0f, 0f, 0f);
-        Vector3 forward = cam.transform.forward;
-        Vector3 right = cam.transform.right;
+        if(!DialougeOpen){
+            camAngle += move.Main.cameraMovement.ReadValue<Vector2>() * sensitivity;
+            camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
+            
+            Vector2 input = move.Main.movement.ReadValue<Vector2>();
+            //Debug.Log(forward);
+            //Debug.Log(right);
+            
+            Vector3 forward = cam.transform.forward;
+            Vector3 right = cam.transform.right;
 
-        forward.y = 0f;
-        right.y = 0f;
-        right.Normalize();
-        forward.Normalize();
-        movement += forward * input.y;
-        movement += right * input.x;
-        movement *= force;
+            forward.y = 0f;
+            right.y = 0f;
+            right.Normalize();
+            forward.Normalize();
+            movement += forward * input.y;
+            movement += right * input.x;
+            movement *= force;
+        }
         
         //Debug.Log(movement);
-        Debug.DrawRay(transform.position,movement);
+        //Debug.DrawRay(transform.position,movement);
         if (actor.IsGrounded)
         {
             actor.Velocity += movement * (1f-knockbackTime/maxKnockbackTime);
@@ -259,7 +270,7 @@ public class PlayerControls : MonoBehaviour
 
     public void Jump (InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && !DialougeOpen)
         {
             actor.ForceNotGrounded();
             actor.VerticalVelocity += new Vector3(0f, jumpforce, 0f);
@@ -267,20 +278,20 @@ public class PlayerControls : MonoBehaviour
     }
     public void Net(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && !DialougeOpen)
         {
             anim.SetTrigger("Swing");
         }
     }
     public void Fire(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && !DialougeOpen)
         {
             anim.SetTrigger("Shoot");
         }
     }
     public void Buff(InputAction.CallbackContext ctx){
-        if(ctx.started){
+        if(ctx.started && !DialougeOpen){
             anim.SetTrigger("Buff");
         }
     }
