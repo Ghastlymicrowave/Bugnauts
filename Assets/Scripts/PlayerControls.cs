@@ -203,16 +203,16 @@ public class PlayerControls : MonoBehaviour
         if(!DialougeOpen){
             camAngle += v;
             camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
-        }
+            //Debug.Log(v);
         
-        if(camAngle != a)
-        {
-            s = new Smoothing(0f, camSmoothTime, Smoothing.smoothingTypes.InFastOutSlow);
-            lastCamRot = currentAngle;
-            camRotTarget = camAngle;
-            Debug.Log("new s");
+            if(camAngle != a)
+            {
+                s = new Smoothing(0f, camSmoothTime, Smoothing.smoothingTypes.InFastOutSlow);
+                lastCamRot = currentAngle;
+                camRotTarget = camAngle;
+                //Debug.Log("new s");
+            }
         }
-
         //Debug.Log(forward);
         //Debug.Log(right);
         Vector3 movement = new Vector3(0f, 0f, 0f);

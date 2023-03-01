@@ -12,6 +12,11 @@ public class BugAI : MonoBehaviour
     [SerializeField] ParticleSystem hitParticles;
     [SerializeField] float upcloseRotationSpd;
     // Update is called once per frame
+
+    void Start(){
+        player = GameObject.Find("PlayerCenter");
+    }
+
     void Update()
     {
         hitParticles.transform.LookAt(player.transform, Vector3.up);
