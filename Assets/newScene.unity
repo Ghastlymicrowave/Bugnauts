@@ -1434,21 +1434,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1309524875102498950, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
+      propertyPath: m_Radius
+      value: 1.65
+      objectReference: {fileID: 0}
     - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.78459823
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.78459823
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.78459823
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.8021164
+      value: 3.44
       objectReference: {fileID: 0}
     - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.368
+      value: 0.648
       objectReference: {fileID: 0}
     - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.208187
+      value: -5.16
       objectReference: {fileID: 0}
     - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1518,6 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autofire: 0
   overallMultiplier: 1
   timeBetweenBursts: 2
   burstLength: 0
@@ -1720,6 +1737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autofire: 0
   overallMultiplier: 1
   timeBetweenBursts: 2
   burstLength: 0
@@ -1834,6 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autofire: 0
   overallMultiplier: 1
   timeBetweenBursts: 2
   burstLength: 0
@@ -4038,6 +4057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b97f2a374302ab4684e4e379d2edc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autofire: 0
   overallMultiplier: 1
   timeBetweenBursts: 2
   burstLength: 0
@@ -4085,10 +4105,6 @@ PrefabInstance:
       propertyPath: find
       value: 
       objectReference: {fileID: 700594490}
-    - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
-      propertyPath: mouseSensitivity
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2194419077952437054, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: m_Camera
       value: 

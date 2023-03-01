@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletSpawner : MonoBehaviour
 {
     //[SerializeField] List<BulletEvent> events;
+    [SerializeField]bool autofire;
     [SerializeField][Range(0f,20f)] float overallMultiplier;
     [SerializeField] float timeBetweenBursts;
     [SerializeField] float burstLength;
@@ -40,7 +41,7 @@ public class BulletSpawner : MonoBehaviour
     {
         fireDelay += Time.deltaTime;
         if (fireDelay >= timeBetweenBursts) { fireDelay = timeBetweenBursts; }
-        if (fireDelay >= timeBetweenBursts && fire)
+        if (fireDelay >= timeBetweenBursts && (fire||autofire))
         {
             firing = true;
         }

@@ -458,7 +458,7 @@ MonoBehaviour:
     m_Bits: 8192
   maxKnockbackTime: 0.5
   knockbackForce: 20
-  mouseSensitivity: 0
+  mouseSensitivity: 0.5
   blueBullet: {fileID: 6318290566463660983, guid: 4ee99f969a7c9ef47a5c720c472a8e91, type: 3}
   greenBullet: {fileID: 6318290566463660983, guid: c185e7c154270e14b909f520c617ff6c, type: 3}
   redBullet: {fileID: 6318290566463660983, guid: b36241bb7bf6828479c365871093b4a6, type: 3}
@@ -1739,20 +1739,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.79, y: 1.37, z: 5.22}
   m_Center: {x: -1.2, y: 0.47, z: 0}
---- !u!114 &2194419078524477422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348068702637406468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d79a03d48622a9c40a98e3a20580a14b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  catcher: {fileID: 0}
-  collectCooldown: 0.4
 --- !u!198 &1360109815
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -6715,3 +6701,17 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2194419078524477422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348068702637406468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79a03d48622a9c40a98e3a20580a14b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catcher: {fileID: 0}
+  collectCooldown: 0.4
