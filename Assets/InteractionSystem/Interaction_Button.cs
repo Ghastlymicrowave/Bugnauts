@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interaction_Button : InteractableBase
 {
-    [SerializeField] List<ActionBase> actions;
+    
     void Awake(){
         intType = interactType.press;
     }

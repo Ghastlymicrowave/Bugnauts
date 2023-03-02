@@ -96,14 +96,18 @@ public class PlayerControls : MonoBehaviour
     }
 
     public void BuffParticle(){
-        Bullet firing = ui.ShootPrimary();
-        if(firing == null)
-        {
-            return;
+        List<Bullet> b = ui.getBullets;
+        if(b.Count>=4 && b[0].GetType() == b[1].GetType() && b[2].GetType() == b[3].GetType() && b[0].GetType() == b[2].GetType()){
+            Bullet firing = ui.ShootPrimary();
+            var main = part.main;
+            main.startColor = firing.GetColor();
+            part.Play();
+            ui.ShootPrimary();
+            ui.ShootPrimary();
+            ui.ShootPrimary();
+
         }
-        var main = part.main;
-        main.startColor = firing.GetColor();
-        part.Play();
+        
     }
     private void Update()
     {
@@ -129,7 +133,7 @@ public class PlayerControls : MonoBehaviour
         Vector2 input = move.Main.movement.ReadValue<Vector2>();
         float horiz = input.x/2f+.5f;
         anim.SetFloat("Horizontal Direction",horiz);
-        anim.SetFloat("Spd",actor.PlanarVelocity.magnitude * spdMult);
+        anim.SetFloat("Spd",actor.PlanarVelocity.magnitude * spdMult * Mathf.Min(move.Main.movement.ReadValue<Vector2>().magnitude,1));
 
         float a = -delta + offset;
         float b = currentAngle.x;

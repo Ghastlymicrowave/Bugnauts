@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class BulletCatcherUI : MonoBehaviour
 {
     List<Bullet> storedBullets;
+    public List<Bullet> getBullets => storedBullets;
     int maxBullets = 4;
     [SerializeField] Image primary;
     [SerializeField] Image[] Secondaries;

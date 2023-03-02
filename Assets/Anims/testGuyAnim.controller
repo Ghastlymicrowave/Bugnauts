@@ -406,6 +406,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Horiz
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Spd
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8130627786818854108}
   m_Solo: 0
@@ -663,6 +666,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Horiz
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Spd
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1346544628825348851}
   m_Solo: 0
@@ -711,8 +717,16 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 54f12ea11fd13cf4194fb2366e0c2d08, type: 2}
+    m_Motion: {fileID: 7400000, guid: f4ea3b1023e6e8544bd1b38e6921aad4, type: 2}
     m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: WalkDirection
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 54f12ea11fd13cf4194fb2366e0c2d08, type: 2}
+    m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -901,6 +915,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Horiz
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Spd
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7985270081206205658}
   m_Solo: 0
@@ -924,7 +941,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 10d8a0207a5a454419a4d8367853c4ed, type: 2}
+    m_Motion: {fileID: 7400000, guid: f4ea3b1023e6e8544bd1b38e6921aad4, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -932,8 +949,16 @@ BlendTree:
     m_DirectBlendParameter: WalkDirection
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: aecabc0b1d4343040b7aba46997947c7, type: 2}
+    m_Motion: {fileID: 7400000, guid: 10d8a0207a5a454419a4d8367853c4ed, type: 2}
     m_Threshold: 1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: WalkDirection
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: aecabc0b1d4343040b7aba46997947c7, type: 2}
+    m_Threshold: 2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -942,10 +967,38 @@ BlendTree:
   m_BlendParameter: WalkDirection
   m_BlendParameterY: WalkDirection
   m_MinThreshold: 0
-  m_MaxThreshold: 1
+  m_MaxThreshold: 2
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!1101 &4437524930633106793
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: Spd
+    m_EventTreshold: 0.01
+  - m_ConditionMode: 1
+    m_ConditionEvent: Horiz
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1146855946811770476}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.625
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!206 &5432703761073659213
 BlendTree:
   m_ObjectHideFlags: 1
@@ -955,8 +1008,16 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 3699cb83036fabe4c9d5f55c6ef4a067, type: 2}
+    m_Motion: {fileID: 7400000, guid: feda2cf57a134544ca56c2cb4f31bf13, type: 2}
     m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: WalkDirection
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 3699cb83036fabe4c9d5f55c6ef4a067, type: 2}
+    m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -989,6 +1050,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2437457662958082573}
+  - {fileID: 4437524930633106793}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -1107,8 +1169,16 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: b5e6b9849ace40040a2539b59b28eef5, type: 2}
+    m_Motion: {fileID: 7400000, guid: feda2cf57a134544ca56c2cb4f31bf13, type: 2}
     m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: WalkDirection
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: b5e6b9849ace40040a2539b59b28eef5, type: 2}
+    m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractableBase : MonoBehaviour
 {
+    [SerializeField] protected List<ActionBase> actions;
     public enum interactType
     {
         press,//short tap or press of E??
