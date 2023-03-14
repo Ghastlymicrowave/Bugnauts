@@ -1589,7 +1589,7 @@ MonoBehaviour:
   burstLength: 0
   bulletsPerBurst: 5
   initalDelay: 0.1
-  bulletPrefab: {fileID: 815599547527276158, guid: 1d49711e394fc3146b244e6ede59af2f, type: 3}
+  bulletPrefab: {fileID: 2971084643983288432, guid: e52e927d8e3875a46a5511d5c456125b, type: 3}
   RotationStart: {x: 0, y: 0, z: 0}
   RotationEnd: {x: 0, y: 360, z: 0}
   PositionStart: {x: 0, y: 0, z: 0}
@@ -1792,7 +1792,7 @@ MonoBehaviour:
   burstLength: 0
   bulletsPerBurst: 5
   initalDelay: 0.1
-  bulletPrefab: {fileID: 815599547527276158, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
+  bulletPrefab: {fileID: 3320248610538639453, guid: d7895fdc71f75234cae87269ed1f47b1, type: 3}
   RotationStart: {x: 0, y: 0, z: 0}
   RotationEnd: {x: 0, y: 360, z: 0}
   PositionStart: {x: 0, y: 0, z: 0}
@@ -1907,7 +1907,7 @@ MonoBehaviour:
   burstLength: 0
   bulletsPerBurst: 5
   initalDelay: 0.1
-  bulletPrefab: {fileID: 815599547527276158, guid: fbd46362269f46a4f828a550dc4c75c1, type: 3}
+  bulletPrefab: {fileID: 6370540570447386782, guid: 60f234fbde2450a4d9b986fd89bcdf76, type: 3}
   RotationStart: {x: 0, y: 0, z: 0}
   RotationEnd: {x: 0, y: 360, z: 0}
   PositionStart: {x: 0, y: 0, z: 0}
@@ -4449,7 +4449,7 @@ MonoBehaviour:
   burstLength: 0
   bulletsPerBurst: 5
   initalDelay: 0.1
-  bulletPrefab: {fileID: 815599547527276158, guid: 2b977d351cad740418f070df7226e964, type: 3}
+  bulletPrefab: {fileID: 632619950357073455, guid: bf2f537a24325c3499332bc9dad987a7, type: 3}
   RotationStart: {x: 0, y: 0, z: 0}
   RotationEnd: {x: 0, y: 360, z: 0}
   PositionStart: {x: 0, y: 0, z: 0}

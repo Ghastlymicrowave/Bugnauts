@@ -17,11 +17,15 @@ public class Bugnet : MonoBehaviour
     {
         if(other.tag == "Bullet")
         {
-            if(t == 0f){
-                catcher.AddBullet(other.GetComponent<EnemyProjectile>().Bullet);
+            Bullet b = (other.GetComponentInParent(typeof(EnemyProjectile), true) as EnemyProjectile).Bullet;
+            if (t == 0f){
+                
+                catcher.AddBullet(b); 
                 t = collectCooldown;
             }
-            Destroy(other.gameObject);
+
+            Destroy(other.transform.parent);
+            
         }
     }
 }

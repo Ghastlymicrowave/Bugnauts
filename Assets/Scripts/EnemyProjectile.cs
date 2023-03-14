@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    [SerializeField]Bullet storedBullet;
+    [SerializeField] Bullet storedBullet;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] GameObject Graphics;
     public Bullet Bullet => storedBullet;
     public float lifetime;
     //[SerializeField]List<BulletEvent> events;
@@ -14,9 +16,29 @@ public class EnemyProjectile : MonoBehaviour
     //float speed_last;
     //Quaternion rotation_last;
     //Quaternion initalRotation;
-    [SerializeField]Rigidbody rb;
+    
     Vector3 ang;
     float spd;
+    public void SetStart(float nspd, Vector3 angVel)
+    {
+        ang = angVel;
+        spd = nspd;
+    }
+
+    void FixedUpdate()
+    {
+        transform.Rotate(ang);
+        rb.velocity = transform.forward * spd;
+    }
+
+    void Update()
+    {
+        lifetime -= Time.deltaTime;
+        if (lifetime <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     //[SerializeField]float currentSpeed;
     /*
@@ -28,7 +50,7 @@ public class EnemyProjectile : MonoBehaviour
         initalRotation = transform.rotation;
         rotation_last = transform.rotation;
     }
-    */
+   
     void Start()
     {
         //initalRotation = transform.rotation;
@@ -38,23 +60,8 @@ public class EnemyProjectile : MonoBehaviour
         //rb = GetComponent<Rigidbody>();
     }
 
-    public void SetStart(float nspd, Vector3 angVel){
-        ang = angVel;
-        spd = nspd;
-    }
-
-    void FixedUpdate(){
-        transform.Rotate(ang);
-        rb.velocity = transform.forward * spd;
-    }
-
-    void Update(){
-        lifetime-= Time.deltaTime;
-        if(lifetime<=0){
-            Destroy(gameObject);
-        }
-    }
-    /*
+    
+    
     BulletEvent CurrentEvent(){
         if(eventIndex>events.Count-1){
             return null;
@@ -154,6 +161,8 @@ public class BulletEvent {
     //flags trigger 
 }
 */
+
+
 
 [System.Serializable]
 public class Bullet

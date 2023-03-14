@@ -7714,38 +7714,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1560185639971115833}
     m_Modifications:
-    - target: {fileID: 6106346013879616205, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: spdEnd
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106346013879616205, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: lifetime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106346013879616205, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: spdStart
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106346013879616205, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: burstLength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106346013879616205, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: bulletsPerBurst
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106346013879616205, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: timeBetweenBursts
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106346013879616205, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: angularVelocityEnd.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106346013879616205, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: angularVelocityStart.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6106346013879616206, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -7793,10 +7761,6 @@ PrefabInstance:
     - target: {fileID: 6106346013879616207, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
       propertyPath: m_Name
       value: BulletSpawnerR
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106346013879616207, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e716c34ed4c3ca408d5fb66d28217de, type: 3}
