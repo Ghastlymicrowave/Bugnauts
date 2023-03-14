@@ -18,6 +18,17 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] Vector3 PositionEnd;
     [SerializeField] Vector3 angularVelocityStart;
     [SerializeField] Vector3 angularVelocityEnd;
+
+    [SerializeField] Vector3 localTranslateScaleStart;
+    [SerializeField] Vector3 localTranslateScaleEnd;
+    [SerializeField] EnemyProjectile.Curves translateCurve;
+    [SerializeField] float LoopsPerLifetimeStart;
+    [SerializeField] float LoopsPerLifetimeEnd;
+    [SerializeField] Vector3 localTranslateOffsetStart;
+    [SerializeField] Vector3 localTranslateOffsetEnd;
+
+
+
     [SerializeField] float lifetime;
     [SerializeField] float spdStart;
     [SerializeField] float spdEnd;
@@ -91,8 +102,13 @@ public class BulletSpawner : MonoBehaviour
         pro.SetStart(Mathf.Lerp(spdStart,spdEnd,t) * overallMultiplier,Vector3.Lerp(angularVelocityStart,angularVelocityEnd,t) * overallMultiplier);
         obj.transform.position = transform.position + Vector3.Lerp(PositionStart,PositionEnd,t);
         obj.transform.localRotation = Quaternion.Euler( Vector3.Lerp(RotationStart,RotationEnd,t));
-        pro.lifetime = lifetime;
+        pro.SetLifetime(lifetime);
+        pro.SetTranslate(Vector3.Lerp(localTranslateScaleStart, localTranslateScaleEnd, t), translateCurve, Mathf.Lerp(LoopsPerLifetimeStart, LoopsPerLifetimeEnd, t), Vector3.Lerp(localTranslateOffsetStart, localTranslateOffsetEnd, t));
         //pro.SetStartingSpeed();
         //pro.SetStartingRot();
+        Debug.Log(LoopsPerLifetimeStart);
+        Debug.Log(LoopsPerLifetimeEnd);
+        Debug.Log(t);
+        Debug.Log(Mathf.Lerp(LoopsPerLifetimeStart, LoopsPerLifetimeEnd, t));
     }
 }

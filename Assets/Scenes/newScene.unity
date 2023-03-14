@@ -1596,6 +1596,13 @@ MonoBehaviour:
   PositionEnd: {x: 0, y: 0, z: 0}
   angularVelocityStart: {x: 0, y: 2, z: 0}
   angularVelocityEnd: {x: 0, y: 2, z: 0}
+  localTranslateScaleStart: {x: 0, y: 0, z: 0}
+  localTranslateScaleEnd: {x: 0, y: 0, z: 0}
+  translateCurve: 0
+  LoopsPerLifetimeStart: 0
+  LoopsPerLifetimeEnd: 0
+  localTranslateOffsetStart: {x: 0, y: 0, z: 0}
+  localTranslateOffsetEnd: {x: 0, y: 0, z: 0}
   lifetime: 5
   spdStart: 5
   spdEnd: 5
@@ -1799,6 +1806,13 @@ MonoBehaviour:
   PositionEnd: {x: 0, y: 0, z: 0}
   angularVelocityStart: {x: 0, y: 2, z: 0}
   angularVelocityEnd: {x: 0, y: 2, z: 0}
+  localTranslateScaleStart: {x: 0, y: 0, z: 0}
+  localTranslateScaleEnd: {x: 0, y: 0, z: 0}
+  translateCurve: 0
+  LoopsPerLifetimeStart: 0
+  LoopsPerLifetimeEnd: 0
+  localTranslateOffsetStart: {x: 0, y: 0, z: 0}
+  localTranslateOffsetEnd: {x: 0, y: 0, z: 0}
   lifetime: 5
   spdStart: 5
   spdEnd: 5
@@ -1914,6 +1928,13 @@ MonoBehaviour:
   PositionEnd: {x: 0, y: 0, z: 0}
   angularVelocityStart: {x: 0, y: 2, z: 0}
   angularVelocityEnd: {x: 0, y: 2, z: 0}
+  localTranslateScaleStart: {x: 0, y: 0, z: 0}
+  localTranslateScaleEnd: {x: 0, y: 0, z: 0}
+  translateCurve: 0
+  LoopsPerLifetimeStart: 0
+  LoopsPerLifetimeEnd: 0
+  localTranslateOffsetStart: {x: 0, y: 0, z: 0}
+  localTranslateOffsetEnd: {x: 0, y: 0, z: 0}
   lifetime: 5
   spdStart: 5
   spdEnd: 5
@@ -4445,8 +4466,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autofire: 1
   overallMultiplier: 1
-  timeBetweenBursts: 2
-  burstLength: 0
+  timeBetweenBursts: 5
+  burstLength: 2
   bulletsPerBurst: 5
   initalDelay: 0.1
   bulletPrefab: {fileID: 632619950357073455, guid: bf2f537a24325c3499332bc9dad987a7, type: 3}
@@ -4456,7 +4477,14 @@ MonoBehaviour:
   PositionEnd: {x: 0, y: 0, z: 0}
   angularVelocityStart: {x: 0, y: 2, z: 0}
   angularVelocityEnd: {x: 0, y: 2, z: 0}
-  lifetime: 5
+  localTranslateScaleStart: {x: 0, y: 5, z: 0}
+  localTranslateScaleEnd: {x: 0, y: 5, z: 0}
+  translateCurve: 1
+  LoopsPerLifetimeStart: 3
+  LoopsPerLifetimeEnd: 3
+  localTranslateOffsetStart: {x: 0, y: 0, z: 0}
+  localTranslateOffsetEnd: {x: 0, y: 0, z: 0}
+  lifetime: 10
   spdStart: 5
   spdEnd: 5
   t: 0

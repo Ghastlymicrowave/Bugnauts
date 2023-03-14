@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 815599547527276158, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
       propertyPath: m_Name
-      value: EnemyBullet_G
+      value: EnemyBullet_G Variant
       objectReference: {fileID: 0}
     - target: {fileID: 815599547527276159, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
       propertyPath: storedBullet.type
@@ -58,6 +58,18 @@ PrefabInstance:
     - target: {fileID: 815599547527276163, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774147360207694539, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774147360207694539, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774147360207694539, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.35315442
       objectReference: {fileID: 0}
     - target: {fileID: 8143518749628804547, guid: 91d44fea80beb194bb702581f27389e0, type: 3}
       propertyPath: m_Materials.Array.data[0]

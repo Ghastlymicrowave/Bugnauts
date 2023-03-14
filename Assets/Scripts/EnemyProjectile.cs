@@ -7,8 +7,23 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] Bullet storedBullet;
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject Graphics;
+    [SerializeField] float fadeoutTime;
     public Bullet Bullet => storedBullet;
-    public float lifetime;
+    float lifetime;
+    float StartingLifetime;
+
+    [SerializeField] Vector3 localTranslateScale;
+    [SerializeField] Curves translateCurve;
+    [SerializeField] float LoopsPerLifetime;
+    [SerializeField] Vector3 localTranslateOffset;
+    Vector3 graphicsStartScale;
+    float loopLength() {
+        return StartingLifetime / LoopsPerLifetime;
+    }
+
+    [SerializeField] ParticleSystem part;
+    bool taggedForDeletion = false;
+
     //[SerializeField]List<BulletEvent> events;
     //[SerializeField]int eventIndex = 0;
     //[SerializeField]float eventTimer = 0f;
@@ -16,7 +31,59 @@ public class EnemyProjectile : MonoBehaviour
     //float speed_last;
     //Quaternion rotation_last;
     //Quaternion initalRotation;
-    
+
+    private void Start()
+    {
+        graphicsStartScale = Graphics.transform.localScale;
+    }
+
+    public enum Curves
+    {
+        SIN, //full sine wave per loop
+        ABS_SIN //2 bounces per loop
+    }
+
+    public void SetLifetime(float l)
+    {
+        lifetime = l;
+        StartingLifetime = l;
+        
+    }
+
+    public void Translate()
+    {
+        Vector3 offset = localTranslateOffset;
+        float t = StartingLifetime - lifetime;
+        float angl = 2f * t * Mathf.PI / loopLength();
+        switch (translateCurve)
+        {
+            case Curves.SIN:
+                offset += localTranslateScale * Mathf.Sin(angl);
+                break;
+            case Curves.ABS_SIN:
+                offset += localTranslateScale * Mathf.Abs(Mathf.Sin(angl));
+                break;
+        }
+        Graphics.transform.localPosition = offset;
+        if(offset != Vector3.zero)
+        {
+            //Debug.Log(localTranslateScale * Mathf.Abs(Mathf.Sin(angl)));
+        }
+        
+    }
+
+    public void SetTranslate(Vector3 scl, Curves c, float loops, Vector3 offset)
+    {
+        localTranslateScale = scl;
+        translateCurve = c;
+        LoopsPerLifetime = loops ;
+        localTranslateOffset = offset;
+        Debug.Log(loopLength());
+        Debug.Log(StartingLifetime);
+        Debug.Log(LoopsPerLifetime);
+    }
+
+
     Vector3 ang;
     float spd;
     public void SetStart(float nspd, Vector3 angVel)
@@ -34,10 +101,23 @@ public class EnemyProjectile : MonoBehaviour
     void Update()
     {
         lifetime -= Time.deltaTime;
-        if (lifetime <= 0)
+        Translate();
+        if (lifetime <= 0 && !taggedForDeletion)
         {
-            Destroy(gameObject);
+            taggedForDeletion = true;
+            Graphics.GetComponent<Collider>().enabled = false;
+            Invoke("Kill", fadeoutTime);
         }
+
+        if (taggedForDeletion)
+        {
+            Graphics.transform.localScale = Vector3.Lerp(graphicsStartScale, Vector3.zero, -lifetime / fadeoutTime);
+        }
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
     }
 
     //[SerializeField]float currentSpeed;
