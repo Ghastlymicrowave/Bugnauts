@@ -51,6 +51,10 @@ public class EnemyProjectile : MonoBehaviour
 
     public void Translate()
     {
+        if (!Graphics)
+        {
+            return;
+        }
         Vector3 offset = localTranslateOffset;
         float t = StartingLifetime - lifetime;
         float angl = 2f * t * Mathf.PI / loopLength();
@@ -93,12 +97,21 @@ public class EnemyProjectile : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (PauseManager.IsPaused) {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            return;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
         transform.Rotate(ang);
         rb.velocity = transform.forward * spd;
     }
 
     void Update()
     {
+        if (PauseManager.IsPaused) { return; }
         lifetime -= Time.deltaTime;
         Translate();
         if (lifetime <= 0 && !taggedForDeletion)
@@ -108,7 +121,7 @@ public class EnemyProjectile : MonoBehaviour
             Invoke("Kill", fadeoutTime);
         }
 
-        if (taggedForDeletion)
+        if (taggedForDeletion && Graphics)
         {
             Graphics.transform.localScale = Vector3.Lerp(graphicsStartScale, Vector3.zero, -lifetime / fadeoutTime);
         }

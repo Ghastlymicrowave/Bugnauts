@@ -50,6 +50,7 @@ public class BulletSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.IsPaused) { return; }
         fireDelay += Time.deltaTime;
         if (fireDelay >= timeBetweenBursts) { fireDelay = timeBetweenBursts; }
         if (fireDelay >= timeBetweenBursts && (fire||autofire))
@@ -106,9 +107,5 @@ public class BulletSpawner : MonoBehaviour
         pro.SetTranslate(Vector3.Lerp(localTranslateScaleStart, localTranslateScaleEnd, t), translateCurve, Mathf.Lerp(LoopsPerLifetimeStart, LoopsPerLifetimeEnd, t), Vector3.Lerp(localTranslateOffsetStart, localTranslateOffsetEnd, t));
         //pro.SetStartingSpeed();
         //pro.SetStartingRot();
-        Debug.Log(LoopsPerLifetimeStart);
-        Debug.Log(LoopsPerLifetimeEnd);
-        Debug.Log(t);
-        Debug.Log(Mathf.Lerp(LoopsPerLifetimeStart, LoopsPerLifetimeEnd, t));
     }
 }

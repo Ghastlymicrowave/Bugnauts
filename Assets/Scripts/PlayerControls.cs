@@ -51,7 +51,10 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] ParticleSystem part;
     [SerializeField] Transform playerCenter;
     [SerializeField] FindNearestEnemy find;
-    
+    [SerializeField] GameObject ControlsUI;
+    [SerializeField] PauseManager pause;
+    Rigidbody rb;
+    bool controlsOpen = false;
     bool canStop => _canStop();
     bool _canStop(){return knockbackTime<=0;}
     void Start()
@@ -62,8 +65,11 @@ public class PlayerControls : MonoBehaviour
         camAngle = new Vector2(0f, 0f);
         velLastFrame = Vector3.zero;
         Cursor.lockState=CursorLockMode.Locked;
+        ControlsUI.SetActive(controlsOpen);
+        rb = GetComponent<Rigidbody>();
     }
 
+    #region triggered from animations
     public void Fire(){
         GameObject toFire = redBullet;
         Bullet firing = ui.ShootPrimary();
@@ -95,9 +101,11 @@ public class PlayerControls : MonoBehaviour
         
     }
 
-    public void BuffParticle(){
+    public void BuffParticle()
+    {
         List<Bullet> b = ui.getBullets;
-        if(b.Count>=4 && b[0].GetType() == b[1].GetType() && b[2].GetType() == b[3].GetType() && b[0].GetType() == b[2].GetType()){
+        if (b.Count >= 4 && b[0].GetType() == b[1].GetType() && b[2].GetType() == b[3].GetType() && b[0].GetType() == b[2].GetType())
+        {
             Bullet firing = ui.ShootPrimary();
             var main = part.main;
             main.startColor = firing.GetColor();
@@ -107,17 +115,34 @@ public class PlayerControls : MonoBehaviour
             ui.ShootPrimary();
 
         }
-        
+
     }
+    #endregion
     private void Update()
     {
+        //this could be replaced w a delegate or smth for later but with adding and removing objects this is faster for now
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+        if (PauseManager.IsPaused)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            anim.speed = 0f;
+            return;
+        }
+        else
+        {
+            anim.speed = 1f;
+            rb.constraints = RigidbodyConstraints.None;
+        }
+
         float delta = Mathf.Atan2(velLastFrame.z, velLastFrame.x) * Mathf.Rad2Deg;
 
         if (s != null)
         {
             
             float t = s.TickVal(Time.deltaTime);
-            Debug.Log(t);
             currentAngle = Vector3.Lerp(lastCamRot, camRotTarget, t);
             if (t >= 1)
             {
@@ -184,6 +209,7 @@ public class PlayerControls : MonoBehaviour
         //y is horiz
         //x is vert
         //Vector2 angle
+        if (PauseManager.IsPaused) { return; }
         Vector2 v = move.Main.cameraMovement.ReadValue<Vector2>();
         if (v.magnitude != 0f)
         {
@@ -271,9 +297,10 @@ public class PlayerControls : MonoBehaviour
             //Debug.Log("Hit collider");
         }
     }
-
+    #region input system actions
     public void Jump (InputAction.CallbackContext ctx)
     {
+        if (PauseManager.IsPaused) { return; }
         if (ctx.started && !DialougeOpen)
         {
             actor.ForceNotGrounded();
@@ -282,6 +309,7 @@ public class PlayerControls : MonoBehaviour
     }
     public void Net(InputAction.CallbackContext ctx)
     {
+        if (PauseManager.IsPaused) { return; }
         if (ctx.started && !DialougeOpen)
         {
             anim.SetTrigger("Swing");
@@ -289,14 +317,42 @@ public class PlayerControls : MonoBehaviour
     }
     public void Fire(InputAction.CallbackContext ctx)
     {
+        if (PauseManager.IsPaused) { return; }
         if (ctx.started && !DialougeOpen)
         {
             anim.SetTrigger("Shoot");
         }
     }
     public void Buff(InputAction.CallbackContext ctx){
-        if(ctx.started && !DialougeOpen){
+        if (PauseManager.IsPaused) { return; }
+        if (ctx.started && !DialougeOpen){
             anim.SetTrigger("Buff");
         }
+    }
+    public void Controls(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            controlsOpen = !controlsOpen;
+            ControlsUI.SetActive(controlsOpen);
+            pause.SetPaused(controlsOpen);
+        }
+    }
+    public void Pause(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            controlsOpen = false;
+            ControlsUI.SetActive(controlsOpen);
+            pause.TogglePaused();
+        }
+    }
+    #endregion
+
+    public void CloseControls()
+    {
+        controlsOpen = false;
+        ControlsUI.SetActive(controlsOpen);
+        pause.SetPaused(controlsOpen);
     }
 }

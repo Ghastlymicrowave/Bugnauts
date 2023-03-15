@@ -29,6 +29,8 @@ public class FindNearestEnemy : MonoBehaviour
     Vector2 reticleTargetPos = Vector2.zero;
 
     void Update(){
+        ChangeViewSize();
+        if (PauseManager.IsPaused) { return; }
         Vector2 center = new Vector2(Screen.width,Screen.height);
         int closestID = -1;
         float closestDist = -1f;
@@ -64,7 +66,7 @@ public class FindNearestEnemy : MonoBehaviour
                 s = null;
             }
         }
-        ChangeViewSize();
+        
     }
 
     void ChangeViewSize(){

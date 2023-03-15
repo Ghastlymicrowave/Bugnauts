@@ -17,5 +17,15 @@ public class PlayerBullet : MonoBehaviour
         if (lifetime<=0){
             Destroy(gameObject);
         }
+
+        if (PauseManager.IsPaused)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            return;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
     }
 }
