@@ -21,7 +21,6 @@ public class EnemyProjectile : MonoBehaviour
         return StartingLifetime / LoopsPerLifetime;
     }
 
-    [SerializeField] ParticleSystem part;
     bool taggedForDeletion = false;
 
     //[SerializeField]List<BulletEvent> events;
