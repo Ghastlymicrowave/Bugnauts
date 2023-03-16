@@ -191,6 +191,41 @@ public class PlayerControls : MonoBehaviour
         if(knockbackTime>0){
             knockbackTime = Mathf.Max(0f,knockbackTime-Time.deltaTime);
         }
+
+        Vector2 v = move.Main.cameraMovement.ReadValue<Vector2>();
+        if (v.magnitude != 0f)
+        {
+            if (move.Main.cameraMovement.activeControl.displayName == "Delta")
+            {
+                //v.x *= Screen.width;
+                // v.y *= Screen.height;
+                v *= mouseSensitivity * 100 ;
+            }
+            else
+            {
+                v *= sensitivity;
+            }
+            //Debug.Log(move.Main.cameraMovement.activeControl.displayName);
+            
+        }
+
+        Vector2 c = camAngle;
+
+        if (!DialougeOpen)
+        {
+
+            camAngle += v;
+            camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
+
+        }
+        if (camAngle != c)
+        {
+            s = new Smoothing(0f, camSmoothTime, Smoothing.smoothingTypes.InFastOutSlow);
+            lastCamRot = currentAngle;
+            camRotTarget = camAngle;
+            //Debug.Log("new s");
+        }
+
     }
 
 
@@ -210,45 +245,14 @@ public class PlayerControls : MonoBehaviour
         //x is vert
         //Vector2 angle
         if (PauseManager.IsPaused) { return; }
-        Vector2 v = move.Main.cameraMovement.ReadValue<Vector2>();
-        if (v.magnitude != 0f)
-        {
-            if (move.Main.cameraMovement.activeControl.displayName == "Delta")
-            {
-                v.x *= Screen.width;
-                v.y *= Screen.height;
-                v *= mouseSensitivity;
-            }
-            else
-            {
-                v *= sensitivity;
-            }
-            //Debug.Log(move.Main.cameraMovement.activeControl.displayName);
-            
-        }
-
-
-        Vector2 a = camAngle;
-
-        if(!DialougeOpen){
-            camAngle += v;
-            camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
-            //Debug.Log(v);
         
-            if(camAngle != a)
-            {
-                s = new Smoothing(0f, camSmoothTime, Smoothing.smoothingTypes.InFastOutSlow);
-                lastCamRot = currentAngle;
-                camRotTarget = camAngle;
-                //Debug.Log("new s");
-            }
-        }
+
+
+        
         //Debug.Log(forward);
         //Debug.Log(right);
         Vector3 movement = new Vector3(0f, 0f, 0f);
         if(!DialougeOpen){
-            camAngle += move.Main.cameraMovement.ReadValue<Vector2>() * sensitivity;
-            camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
             
             Vector2 input = move.Main.movement.ReadValue<Vector2>();
             //Debug.Log(forward);

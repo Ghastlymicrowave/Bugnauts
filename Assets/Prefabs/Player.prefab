@@ -458,7 +458,7 @@ MonoBehaviour:
     m_Bits: 8192
   maxKnockbackTime: 0.5
   knockbackForce: 20
-  mouseSensitivity: 0.5
+  mouseSensitivity: 1
   blueBullet: {fileID: 6318290566463660983, guid: 4ee99f969a7c9ef47a5c720c472a8e91, type: 3}
   greenBullet: {fileID: 6318290566463660983, guid: c185e7c154270e14b909f520c617ff6c, type: 3}
   redBullet: {fileID: 6318290566463660983, guid: b36241bb7bf6828479c365871093b4a6, type: 3}
@@ -472,6 +472,8 @@ MonoBehaviour:
   part: {fileID: 1360109815}
   playerCenter: {fileID: 250709197}
   find: {fileID: 0}
+  ControlsUI: {fileID: 0}
+  pause: {fileID: 0}
 --- !u!114 &2194419077952437054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,6 +587,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: db112cfe-5738-4d55-a77c-940fa72278d0
     m_ActionName: Main/interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2194419077952437050}
+        m_TargetAssemblyTypeName: PlayerControls, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c0c4bb00-f0f5-4bd1-8e87-926df7627539
+    m_ActionName: Main/pause
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2194419077952437050}
+        m_TargetAssemblyTypeName: PlayerControls, Assembly-CSharp
+        m_MethodName: Controls
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bfba741b-876c-466e-a116-e929a096f032
+    m_ActionName: Main/controls[/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Main

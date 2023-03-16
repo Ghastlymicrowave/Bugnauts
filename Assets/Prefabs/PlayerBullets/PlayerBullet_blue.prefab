@@ -115,6 +115,7 @@ MonoBehaviour:
   speed: 15
   lifetime: 4
   rb: {fileID: 8133230099980938192}
+  damage: 1
 --- !u!54 &8133230099980938192
 Rigidbody:
   m_ObjectHideFlags: 0

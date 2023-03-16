@@ -24,7 +24,7 @@ public class Bugnet : MonoBehaviour
                 t = collectCooldown;
             }
 
-            Destroy(other.transform.parent);
+            Destroy(other.transform.parent.gameObject);
             
         }
     }

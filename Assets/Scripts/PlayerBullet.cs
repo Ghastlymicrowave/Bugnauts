@@ -8,6 +8,9 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] float speed = 2f;
     [SerializeField] float lifetime = 4f;
     [SerializeField] Rigidbody rb;
+    [SerializeField] float damage = 1f;
+
+    public float GetDamage => damage;
     void Start(){
         rb = GetComponent<Rigidbody>();
         rb.velocity += transform.forward * speed;

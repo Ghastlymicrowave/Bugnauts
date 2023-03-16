@@ -13,8 +13,23 @@ public class BugAI : MonoBehaviour
     [SerializeField] float upcloseRotationSpd;
     // Update is called once per frame
 
+    [SerializeField] float MaxHealth;
+    [SerializeField] float healthAnimSmoothTime;
+    float Health;
+
+    [SerializeField] SpriteMask mask;
+
+    Smoothing healthSmooth;
+    float startPercent;
+    float targetPercent;
+
+    float PercentHealth()
+    {
+        return Health / MaxHealth;
+    }
     void Start(){
         player = GameObject.Find("PlayerCenter");
+        Health = MaxHealth;
     }
 
     void Update()
@@ -46,6 +61,16 @@ public class BugAI : MonoBehaviour
                 spawner.Fire();
             }
         }
+
+        if(healthSmooth != null)
+        {
+            float t = healthSmooth.TickVal(Time.deltaTime);
+            mask.alphaCutoff = Mathf.Lerp(startPercent, targetPercent, t);
+            if (t >= 1)
+            {
+                healthSmooth = null;
+            }
+        }
     }
 
     private void RotateTowards(Transform target)
@@ -63,6 +88,24 @@ public class BugAI : MonoBehaviour
         {
             hitParticles.transform.LookAt(other.transform, Vector3.up);
             hitParticles.Play();
+            PlayerBullet b = other.GetComponent<PlayerBullet>();
+            TakeDamage(b.GetDamage);
         }
     }
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
+    public void TakeDamage(float damage)
+    {
+        
+        healthSmooth = new Smoothing(0f, healthAnimSmoothTime, Smoothing.smoothingTypes.InFastOutSlow);
+        startPercent = PercentHealth();
+        Health = Mathf.Max(0f, Health - damage);
+        targetPercent = PercentHealth();
+
+        //replace with an animation trigger:
+        if (Health <= 0) { Kill(); }
+    }
+
 }

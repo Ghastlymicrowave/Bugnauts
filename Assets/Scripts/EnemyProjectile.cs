@@ -114,7 +114,7 @@ public class EnemyProjectile : MonoBehaviour
         if (PauseManager.IsPaused) { return; }
         lifetime -= Time.deltaTime;
         Translate();
-        if (lifetime <= 0 && !taggedForDeletion)
+        if (lifetime <= 0 && !taggedForDeletion && Graphics)
         {
             taggedForDeletion = true;
             Graphics.GetComponent<Collider>().enabled = false;
