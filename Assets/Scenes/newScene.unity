@@ -1785,8 +1785,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1309524875102498950, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0
+      propertyPath: m_AngularSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309524875102498951, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
+      propertyPath: stationaryWanderRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309524875102498951, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
+      propertyPath: WanderInStationaryState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309524875102498951, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
+      propertyPath: ReturnToOriginInStationaryState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1560185639971115833, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
       propertyPath: m_RootOrder
