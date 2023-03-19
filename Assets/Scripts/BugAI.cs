@@ -4,13 +4,48 @@ using UnityEngine;
 using UnityEngine.AI;
 public class BugAI : MonoBehaviour
 {
+    [Header("AI properties")]
+    
+    [SerializeField] bool WanderInStationaryState;
+    [SerializeField] bool ReturnToOriginInStationaryState;
+    [SerializeField] bool stopMovingWhenFiring;
+    [SerializeField] bool stopRotatingWhenFiring;
+    [SerializeField] float upcloseRotationSpd;
+    [SerializeField] float visionRange;
+    [SerializeField] LayerMask playerMask;
+    [SerializeField] float attackRange;
+    [SerializeField] float stationaryWanderRadius;
+
+    [Header("References")]
+    [SerializeField] ParticleSystem hitParticles;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] GameObject player;
     [SerializeField] BulletSpawner spawner;
-    [SerializeField] bool stopMovingWhenFiring;
-    [SerializeField] bool stopRotatingWhenFiring;
-    [SerializeField] ParticleSystem hitParticles;
-    [SerializeField] float upcloseRotationSpd;
+
+
+    [SerializeField] bool sawLastFrame;
+    [SerializeField] bool playerSeen = false;
+    [SerializeField] AIState state = AIState.STATIONARY;
+    [SerializeField] float maxSearchingWanderTime;
+    float searchWanderTime =0f;
+
+    float agentSpd;
+    float agentAnglSpd;
+    public enum AIState
+    {
+        STATIONARY,
+        CHASE,
+        SEARCHING,
+        SEARCHING_WANDER
+    }
+
+    Rigidbody rb;
+
+    [SerializeField] Vector3 lastKnownPlayerPosition;
+    [SerializeField] Vector3 lastKnownPlayerDirection;
+
+    Vector3 startPos;
+
     // Update is called once per frame
 
     [SerializeField] float MaxHealth;
@@ -30,10 +65,174 @@ public class BugAI : MonoBehaviour
     void Start(){
         player = GameObject.Find("PlayerCenter");
         Health = MaxHealth;
+        startPos = transform.position;
+        rb = GetComponent<Rigidbody>();
+        agentSpd = agent.speed;
+        agentAnglSpd = agent.angularSpeed;
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (PauseManager.IsPaused)
+        {
+            return;
+        }
+        if (Vector3.Distance(player.transform.position, transform.position) < visionRange)
+        {
+            RaycastHit hit;
+            Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized * visionRange, out hit, visionRange, playerMask);
+            Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * visionRange, Color.red,2f);
+            if (hit.collider != null)
+            {
+                if (hit.transform.tag == "Player")
+                {
+                    if (sawLastFrame)
+                    {
+                        lastKnownPlayerDirection = (player.transform.position - lastKnownPlayerPosition).normalized;
+                    }
+                    lastKnownPlayerPosition = player.transform.position;
+                    sawLastFrame = true;
+                    playerSeen = true;
+                }
+                else
+                {
+                    sawLastFrame = false;
+                    playerSeen = false;
+                    Debug.Log(hit.transform.gameObject.name);
+                }
+            }
+            else
+            {
+                playerSeen = false;
+            }
+        }
     }
 
     void Update()
     {
+        if (PauseManager.IsPaused)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            agent.speed = 0f;
+            agent.angularSpeed = 0f;
+            return;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.None;
+            agent.speed = agentSpd;
+            agent.angularSpeed = agentAnglSpd;
+        }
+        switch (state)
+        {
+            case AIState.STATIONARY:
+
+                
+                if (ReturnToOriginInStationaryState)
+                {
+                    if (Vector3.Distance(transform.position, startPos) > stationaryWanderRadius)
+                    {
+                        agent.SetDestination(startPos);
+                    }
+                    else if (Vector3.Distance(transform.position, agent.destination) < 1f && WanderInStationaryState)
+                    {
+                        float r = Random.Range(0f, Mathf.PI*2f);
+                        float x = Mathf.Cos(r) * stationaryWanderRadius;
+                        float z = Mathf.Sin(r) * stationaryWanderRadius;
+                        agent.SetDestination(startPos + new Vector3(x, 0f, z));
+                    }
+                }
+                else
+                {
+                    if (Vector3.Distance(transform.position, agent.destination) < 1f && WanderInStationaryState)
+                    {
+                        float r = Random.Range(0f, Mathf.PI * 2f);
+                        float x = Mathf.Cos(r) * stationaryWanderRadius;
+                        float z = Mathf.Sin(r) * stationaryWanderRadius;
+                        agent.SetDestination(startPos + new Vector3(x, 0f, z));
+                    }
+                }
+
+
+                if (playerSeen)
+                {
+                    state = AIState.CHASE;
+                }
+                break;
+            case AIState.CHASE:
+
+                if (Vector3.Distance(player.transform.position, transform.position) < attackRange)
+                {
+                    agent.SetDestination(transform.position);
+                }
+                else
+                {
+                    agent.SetDestination(player.transform.position);
+                }
+                
+
+                if (agent.remainingDistance <= attackRange)
+                {
+
+                    if (spawner.isFiring())
+                    {
+                        if (!stopRotatingWhenFiring)
+                        {
+                            RotateTowards(player.transform);
+                        }
+                    }
+                    else
+                    {
+                        spawner.Fire();
+                        RotateTowards(player.transform);
+                    }
+                    
+                }
+
+                if (!playerSeen)
+                {
+                    state = AIState.SEARCHING;
+                }
+                break;
+            case AIState.SEARCHING:
+
+                agent.SetDestination(lastKnownPlayerPosition);
+                if (playerSeen)
+                {
+                    state = AIState.CHASE;
+                }
+                if (Vector3.Distance(transform.position, lastKnownPlayerPosition) < 2f)
+                {
+                    state = AIState.SEARCHING_WANDER;
+                    searchWanderTime = maxSearchingWanderTime;
+                    Vector3 v = lastKnownPlayerDirection;
+                    v.y = 0f;
+                    agent.SetDestination(lastKnownPlayerPosition + v * 1f);
+                }
+                break;
+            case AIState.SEARCHING_WANDER:
+
+
+                if (Vector3.Distance(transform.position, agent.destination) < 1f)
+                {
+                    Vector3 v = lastKnownPlayerDirection;
+                    v.y = 0f;
+                    agent.SetDestination(transform.position + v * 1f);
+                }
+
+                searchWanderTime -= Time.deltaTime;
+                if (playerSeen)
+                {
+                    state = AIState.CHASE;
+                }
+                if (searchWanderTime <= 0)
+                {
+                    state = AIState.STATIONARY;
+                }
+                break;
+        }
+
         hitParticles.transform.LookAt(player.transform, Vector3.up);
         if (spawner.isFiring())
         {
@@ -42,25 +241,10 @@ public class BugAI : MonoBehaviour
             {
                 agent.destination = transform.position;
             }
-            else
-            {
-                agent.SetDestination(player.transform.position);
-            }
             //rotate
-            if (agent.remainingDistance <= agent.stoppingDistance && !stopRotatingWhenFiring)
-            {
-                RotateTowards(player.transform);
-            }
+            
         }
-        else
-        {
-            agent.SetDestination(player.transform.position);
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                RotateTowards(player.transform);
-                spawner.Fire();
-            }
-        }
+        
 
         if(healthSmooth != null)
         {
@@ -89,6 +273,7 @@ public class BugAI : MonoBehaviour
             hitParticles.transform.LookAt(other.transform, Vector3.up);
             hitParticles.Play();
             PlayerBullet b = other.GetComponent<PlayerBullet>();
+            Destroy(b.gameObject);
             TakeDamage(b.GetDamage);
         }
     }

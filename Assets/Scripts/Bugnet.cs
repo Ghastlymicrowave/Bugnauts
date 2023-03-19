@@ -17,11 +17,19 @@ public class Bugnet : MonoBehaviour
     {
         if(other.tag == "Bullet")
         {
-            Bullet b = (other.GetComponentInParent(typeof(EnemyProjectile), true) as EnemyProjectile).Bullet;
-            if (t == 0f){
+            EnemyProjectile e = other.transform.parent.gameObject.GetComponent<EnemyProjectile>();
+
+            if (t == 0f && e!=null){
+                Debug.Log(e.gameObject.name);
+                if (e.Bullet() != null)
+                {
+                    Bullet b = e.Bullet();
+                    catcher.AddBullet(b);
+                    t = collectCooldown;
+                }
                 
-                catcher.AddBullet(b); 
-                t = collectCooldown;
+                
+                
             }
 
             Destroy(other.transform.parent.gameObject);

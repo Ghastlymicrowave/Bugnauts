@@ -8,7 +8,11 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject Graphics;
     [SerializeField] float fadeoutTime;
-    public Bullet Bullet => storedBullet;
+    public Bullet Bullet() {
+        Debug.Log(gameObject.name);
+        Debug.Log(storedBullet);
+        return storedBullet;
+            }
     float lifetime;
     float StartingLifetime;
 

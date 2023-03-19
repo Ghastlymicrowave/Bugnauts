@@ -29,6 +29,16 @@ public class FindNearestEnemy : MonoBehaviour
     Vector2 reticleTargetPos = Vector2.zero;
 
     void Update(){
+
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] == null)
+            {
+                enemies.RemoveAt(i);
+                i--;
+            }
+        }
+
         ChangeViewSize();
         if (PauseManager.IsPaused) { return; }
         Vector2 center = new Vector2(Screen.width,Screen.height);
