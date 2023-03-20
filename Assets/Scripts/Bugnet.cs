@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bugnet : MonoBehaviour
 {
-    [SerializeField] BulletCatcherUI catcher;
+    [SerializeField] PlayerBulletManager catcher;
     // Start is called before the first frame update
     [SerializeField] float collectCooldown;
     float t = 0f;

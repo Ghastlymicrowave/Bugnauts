@@ -28,6 +28,7 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] Vector3 localTranslateOffsetEnd;
 
 
+    public static bool canFire = true;
 
     [SerializeField] float lifetime;
     [SerializeField] float spdStart;
@@ -51,6 +52,7 @@ public class BulletSpawner : MonoBehaviour
     private void Update()
     {
         if (PauseManager.IsPaused) { return; }
+        if(!canFire) { return; }
         fireDelay += Time.deltaTime;
         if (fireDelay >= timeBetweenBursts) { fireDelay = timeBetweenBursts; }
         if (fireDelay >= timeBetweenBursts && (fire||autofire))

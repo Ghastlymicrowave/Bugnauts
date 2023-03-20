@@ -4,15 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class BulletCatcherUI : MonoBehaviour
 {
-    List<Bullet> storedBullets;
-    public List<Bullet> getBullets => storedBullets;
-    int maxBullets = 4;
     [SerializeField] Image primary;
     [SerializeField] Image[] Secondaries;
     [SerializeField] Image reticle;
 
-    void UpdateUI(){
-        Bullet[] bullets = storedBullets.ToArray();
+    public void UpdateUI(Bullet[] bullets){
         for(int i = 0; i < 4; i++){
             if(i == 0){
                 if(i < bullets.Length)
@@ -39,36 +35,5 @@ public class BulletCatcherUI : MonoBehaviour
         c.a = 1f;
         reticle.color = c;
     }
-
-    public void AddBullet(Bullet newBullet){
-        if(storedBullets.Count==maxBullets){
-            storedBullets.RemoveAt(maxBullets-1);
-        }
-        storedBullets.Add(newBullet);
-        UpdateUI();
-    }
-
-    public Bullet ShootPrimary(){
-        //make some projectile using bullet at index 0
-        if (storedBullets.Count<1 || storedBullets[0] == null)
-        {
-            return null;
-        }
-        Bullet b = storedBullets[0];
-        storedBullets.RemoveAt(0);
-        UpdateUI();
-        return b;
-    }
-
-    void Start(){
-        storedBullets = new List<Bullet>();
-        AddBullet(new Bullet(Bullet.bulletTypes.Red));
-        AddBullet(new Bullet(Bullet.bulletTypes.Red));
-        AddBullet(new Bullet(Bullet.bulletTypes.Red));
-        AddBullet(new Bullet(Bullet.bulletTypes.Red));
-
-        UpdateUI();
-    }
-
 }
 

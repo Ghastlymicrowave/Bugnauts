@@ -55,7 +55,6 @@ MonoBehaviour:
   translateCurve: 0
   LoopsPerLifetime: 0
   localTranslateOffset: {x: 0, y: 0, z: 0}
-  part: {fileID: 0}
 --- !u!54 &3166165808102723247
 Rigidbody:
   m_ObjectHideFlags: 0

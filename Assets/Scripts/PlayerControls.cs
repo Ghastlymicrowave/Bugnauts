@@ -39,6 +39,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] GameObject greenBullet;
     [SerializeField] GameObject redBullet;
     [SerializeField] GameObject yellowBullet;
+    [SerializeField] GameObject triBullet;
+    [SerializeField] GameObject absorptionBullet;
     CharacterActor actor;
 
     [Header("Object References")]
@@ -46,7 +48,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] GameObject body;
     [SerializeField] GameObject visual;
     [SerializeField] Animator anim;
-    [SerializeField] BulletCatcherUI ui;
+    [SerializeField] PlayerBulletManager playerBulletManager;
     [SerializeField] GameObject bulletSpawnPoint;
     [SerializeField] ParticleSystem part;
     [SerializeField] Transform playerCenter;
@@ -57,6 +59,10 @@ public class PlayerControls : MonoBehaviour
     bool controlsOpen = false;
     bool canStop => _canStop();
     bool _canStop(){return knockbackTime<=0;}
+
+    bool invincible = false;
+    public void SetInvincibility(bool b) { invincible = b; }
+
     void Start()
     {
         actor = GetComponent<CharacterActor>();
@@ -72,7 +78,7 @@ public class PlayerControls : MonoBehaviour
     #region triggered from animations
     public void Fire(){
         GameObject toFire = redBullet;
-        Bullet firing = ui.ShootPrimary();
+        Bullet firing = playerBulletManager.ShootPrimary();
         if(firing == null)
         {
             return;
@@ -92,30 +98,44 @@ public class PlayerControls : MonoBehaviour
                 toFire = yellowBullet;
                 break;
         }
-        GameObject pb;
-        if(find.closestEnemy==null){
-            pb = Instantiate(toFire,bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
-        }else{
-            pb = Instantiate(toFire,bulletSpawnPoint.transform.position, Quaternion.LookRotation(find.closestEnemy.transform.position - bulletSpawnPoint.transform.position ,Vector3.up));
-        }
-        
+        FireBullet(toFire);
     }
 
-    public void BuffParticle()
+    public void FireTriBullet()
     {
-        List<Bullet> b = ui.getBullets;
-        if (b.Count >= 4 && b[0].GetType() == b[1].GetType() && b[2].GetType() == b[3].GetType() && b[0].GetType() == b[2].GetType())
+        FireBullet(triBullet);
+    }
+
+    public void FireAbsorptionBullet()
+    {
+        FireBullet(absorptionBullet);
+    }
+    private void FireBullet(GameObject bulletType)
+    {
+        GameObject pb;
+        if (find.closestEnemy == null)
         {
-            Bullet firing = ui.ShootPrimary();
+            pb = Instantiate(bulletType, bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
+        }
+        else
+        {
+            pb = Instantiate(bulletType, bulletSpawnPoint.transform.position, Quaternion.LookRotation(find.closestEnemy.transform.position - bulletSpawnPoint.transform.position, Vector3.up));
+        }
+
+        pb.GetComponent<PlayerBullet>().SetDamage(playerBulletManager.GetDamageMult());
+        Debug.Log(pb.GetComponent<PlayerBullet>().GetDamage);
+    }
+
+    public void Phantomize()
+    {
+        Bullet firing = playerBulletManager.PhantomizeBullets();
+
+        if(firing.GetBulletType() != Bullet.bulletTypes.White)
+        {
             var main = part.main;
             main.startColor = firing.GetColor();
             part.Play();
-            ui.ShootPrimary();
-            ui.ShootPrimary();
-            ui.ShootPrimary();
-
         }
-
     }
     #endregion
     private void Update()
@@ -230,12 +250,18 @@ public class PlayerControls : MonoBehaviour
 
 
     void OnTriggerEnter(Collider collision){
-        if(collision.gameObject.tag=="Bullet"){
+        if (collision.gameObject.tag != "Bullet")
+            return;
+
+        if (!invincible)
+        {
             Debug.Log("hit bullet");
             knockbackTime = maxKnockbackTime;
             actor.Velocity = -(collision.gameObject.transform.position - playerCenter.position).normalized * knockbackForce;
-            Destroy(collision.gameObject);
+            playerBulletManager.notHit = false;
         }
+        Destroy(collision.gameObject);
+        
     }
 
     // Update is called once per frame

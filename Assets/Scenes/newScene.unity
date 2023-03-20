@@ -1784,6 +1784,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1309524875102498944, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1309524875102498950, guid: 66a16a0f9b4a62b4bad5054ed0f65033, type: 3}
       propertyPath: m_AngularSpeed
       value: 200
@@ -5644,7 +5648,7 @@ PrefabInstance:
     - target: {fileID: 3325449527562193740, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: catcher
       value: 
-      objectReference: {fileID: 100337237}
+      objectReference: {fileID: 0}
     - target: {fileID: 4061882638079270513, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5652,6 +5656,18 @@ PrefabInstance:
     - target: {fileID: 4202617940928170730, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: constraintRotation
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623168024213219281, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+      propertyPath: bulletUI
+      value: 
+      objectReference: {fileID: 100337237}
+    - target: {fileID: 7122020470500940268, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+      propertyPath: bulletUI
+      value: 
+      objectReference: {fileID: 100337237}
+    - target: {fileID: 7793722040042588333, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+      propertyPath: m_Radius
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}

@@ -85,9 +85,9 @@ public class EnemyProjectile : MonoBehaviour
         translateCurve = c;
         LoopsPerLifetime = loops ;
         localTranslateOffset = offset;
-        Debug.Log(loopLength());
-        Debug.Log(StartingLifetime);
-        Debug.Log(LoopsPerLifetime);
+        //Debug.Log(loopLength());
+        //Debug.Log(StartingLifetime);
+        //Debug.Log(LoopsPerLifetime);
     }
 
 
@@ -270,7 +270,8 @@ public class Bullet
         Red,
         Green,
         Blue,
-        Yellow
+        Yellow,
+        White //Dead bullet, should never be shot by player.
     }
     public Bullet(bulletTypes b)
     {

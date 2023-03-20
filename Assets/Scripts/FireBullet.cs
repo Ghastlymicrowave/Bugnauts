@@ -9,6 +9,6 @@ public class FireBullet : MonoBehaviour
         pc.Fire();
     }
     public void BuffEffect(){
-        pc.BuffParticle();
+        pc.Phantomize();
     }
 }
