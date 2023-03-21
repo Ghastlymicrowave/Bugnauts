@@ -324,7 +324,6 @@ GameObject:
   - component: {fileID: 2194419077952437054}
   - component: {fileID: 2194419077470702476}
   - component: {fileID: 5623168024213219281}
-  - component: {fileID: 1661730474392035429}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -474,7 +473,7 @@ MonoBehaviour:
   anim: {fileID: 2194419077383340080}
   playerBulletManager: {fileID: 5623168024213219281}
   bulletSpawnPoint: {fileID: 1198157587}
-  part: {fileID: 0}
+  part: {fileID: 2891335594165875568}
   playerCenter: {fileID: 250709197}
   find: {fileID: 0}
   ControlsUI: {fileID: 0}
@@ -670,22 +669,6 @@ MonoBehaviour:
   bulletUI: {fileID: 0}
   playerControls: {fileID: 2194419077952437050}
   ScreenBlankTrigger: {fileID: 4072824280605818440}
-  notHit: 1
---- !u!114 &1661730474392035429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4061882638079270513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10368bcd6901542498b481ed01ba6185, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletUI: {fileID: 0}
-  playerControls: {fileID: 2194419077952437050}
-  ScreenBlankTrigger: {fileID: 0}
   notHit: 1
 --- !u!1 &4072824280605818440
 GameObject:
@@ -1766,3 +1749,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b41a5870b4dedfd42aa2d2f57f672ecf, type: 3}
+--- !u!198 &2891335594165875568 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7888113995136193287, guid: b41a5870b4dedfd42aa2d2f57f672ecf, type: 3}
+  m_PrefabInstance: {fileID: 4996782844384796791}
+  m_PrefabAsset: {fileID: 0}

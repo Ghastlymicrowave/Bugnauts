@@ -135,7 +135,7 @@ Material:
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Range_Scale_Mod: 35
+    - _Range_Scale_Mod: 17.2
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -144,10 +144,10 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _mountain_end: 315
-    - _mountain_start: 302.6
-    - _noise_Scale: 5
-    - _noise_Scale_2: 80
+    - _mountain_end: 326.4
+    - _mountain_start: 301.1
+    - _noise_Scale: 55.8
+    - _noise_Scale_2: 47.5
     - _normal_Height: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

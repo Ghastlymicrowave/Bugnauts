@@ -154,7 +154,7 @@ public class PlayerControls : MonoBehaviour
         else
         {
             anim.speed = 1f;
-            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
 
         float delta = Mathf.Atan2(velLastFrame.z, velLastFrame.x) * Mathf.Rad2Deg;

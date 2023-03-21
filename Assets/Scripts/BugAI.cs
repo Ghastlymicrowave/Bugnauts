@@ -73,9 +73,9 @@ public class BugAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (PauseManager.IsPaused)
         {
+            Debug.Log("Paused");
             return;
         }
         if (Vector3.Distance(player.transform.position, transform.position) < visionRange)
@@ -107,6 +107,10 @@ public class BugAI : MonoBehaviour
                 playerSeen = false;
             }
         }
+        else
+        {
+            playerSeen = false;
+        }
     }
 
     void Update()
@@ -120,7 +124,7 @@ public class BugAI : MonoBehaviour
         }
         else
         {
-            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
             agent.speed = agentSpd;
             agent.angularSpeed = agentAnglSpd;
         }
