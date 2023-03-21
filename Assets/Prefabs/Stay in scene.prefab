@@ -1919,10 +1919,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 117625532512241455}
     - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
-      propertyPath: pause
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: ControlsUI
       value: 
       objectReference: {fileID: 117625532488897321}

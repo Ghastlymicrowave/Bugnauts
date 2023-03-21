@@ -398,7 +398,7 @@ MonoBehaviour:
   useStableEdgeWhenLanding: 1
   stepUpDistance: 0.6
   stepDownDistance: 0.5
-  edgeCompensation: 0
+  edgeCompensation: 1
   detectGroundWhileAscending: 1
   preventUnstableClimbing: 1
   preventBadSteps: 1
