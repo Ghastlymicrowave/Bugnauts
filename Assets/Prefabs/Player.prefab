@@ -414,7 +414,7 @@ MonoBehaviour:
   slideOnWalls: 1
   stablePostSimulationVelocity: 2
   unstablePostSimulationVelocity: 2
-  constraintRotation: 0
+  constraintRotation: 1
   upDirectionReference: {fileID: 0}
   upDirectionReferenceMode: 1
   constraintUpDirection: {x: 0, y: 1, z: 0}
@@ -714,7 +714,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 10
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &266980407191984930
 MonoBehaviour:
