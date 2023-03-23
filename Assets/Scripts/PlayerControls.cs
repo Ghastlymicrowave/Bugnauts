@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Lightbug.CharacterControllerPro.Core;
 using UnityEngine.InputSystem;
+using Cinemachine;
 public class PlayerControls : MonoBehaviour
 {
     public bool DialougeOpen = false;
@@ -55,6 +56,13 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] FindNearestEnemy find;
     [SerializeField] GameObject ControlsUI;
     [SerializeField] PauseManager pause;
+    [SerializeField] CinemachineVirtualCamera fieldGuideCam;
+
+    Vector3 currentRot;
+
+    Smoothing smoothTo0;
+
+    bool fieldGuideOpen = false;
     Rigidbody rb;
     bool controlsOpen = false;
     bool canStop => _canStop();
@@ -73,6 +81,7 @@ public class PlayerControls : MonoBehaviour
         Cursor.lockState=CursorLockMode.Locked;
         ControlsUI.SetActive(controlsOpen);
         rb = GetComponent<Rigidbody>();
+        smoothTo0 = new Smoothing(1f, 1f, Smoothing.smoothingTypes.InFastOutSlow);
     }
 
     #region triggered from animations
@@ -148,7 +157,20 @@ public class PlayerControls : MonoBehaviour
         if (PauseManager.IsPaused)
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            anim.speed = 0f;
+            if (PauseManager.stopPlayerAnims)
+            {
+                anim.speed = 0f;
+                visual.transform.rotation = Quaternion.Euler(new Vector3(-currentAngle.y, currentAngle.x, 0f));
+            }
+            else
+            {
+                anim.speed = 1f;
+
+                float t1 = smoothTo0.TickVal(Time.deltaTime);
+                Vector3 r1 = Vector3.Lerp(new Vector3(-currentAngle.y, currentAngle.x, 0f), new Vector3(0f, currentAngle.x, 0f), t1);
+                visual.transform.rotation = Quaternion.Euler(r1);
+            }
+            
             return;
         }
         else
@@ -162,9 +184,10 @@ public class PlayerControls : MonoBehaviour
         if (s != null)
         {
             
-            float t = s.TickVal(Time.deltaTime);
-            currentAngle = Vector3.Lerp(lastCamRot, camRotTarget, t);
-            if (t >= 1)
+            float t3 = s.TickVal(Time.deltaTime);
+            
+            currentAngle = new Vector3(Mathf.LerpAngle(lastCamRot.x, camRotTarget.x, t3), Mathf.LerpAngle(lastCamRot.y, camRotTarget.y, t3), Mathf.LerpAngle(lastCamRot.z, camRotTarget.z, t3));
+            if (t3 >= 1)
             {
                 s = null;
             }
@@ -207,7 +230,12 @@ public class PlayerControls : MonoBehaviour
             anim.SetBool("Horiz", false);
         }
         body.transform.rotation = Quaternion.Euler(-90f, lastDelta + offset, 0f);
-        visual.transform.rotation = Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f);
+
+        float t = smoothTo0.TickVal(Time.deltaTime);
+        Vector3 r = Vector3.Lerp(new Vector3(0f, currentAngle.x, 0f), new Vector3(-currentAngle.y, currentAngle.x, 0f), t);
+        Debug.Log(r);
+        visual.transform.rotation = Quaternion.Euler(r);
+
         if(knockbackTime>0){
             knockbackTime = Mathf.Max(0f,knockbackTime-Time.deltaTime);
         }
@@ -236,6 +264,14 @@ public class PlayerControls : MonoBehaviour
 
             camAngle += v;
             camAngle.y = Mathf.Clamp(camAngle.y, -85f, 85f);
+            while (camAngle.x > 360f)
+            {
+                camAngle.x -= 360f;
+            }
+            while (camAngle.x < 0f)
+            {
+                camAngle.x += 360f;
+            }
 
         }
         if (camAngle != c)
@@ -284,8 +320,8 @@ public class PlayerControls : MonoBehaviour
             //Debug.Log(forward);
             //Debug.Log(right);
             
-            Vector3 forward = cam.transform.forward;
-            Vector3 right = cam.transform.right;
+            Vector3 forward = visual.transform.forward;
+            Vector3 right = visual.transform.right;
 
             forward.y = 0f;
             right.y = 0f;
@@ -374,7 +410,39 @@ public class PlayerControls : MonoBehaviour
         {
             controlsOpen = false;
             ControlsUI.SetActive(controlsOpen);
+            
+            PauseManager.stopPlayerAnims = true;
+            PauseManager.showUI = true;
             pause.TogglePaused();
+        }
+    }
+    public void OpenFieldGuide(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            fieldGuideOpen = !fieldGuideOpen;
+            if (fieldGuideOpen)
+            {
+                PauseManager.stopPlayerAnims = false;
+                PauseManager.showUI = false;
+            }
+            pause.SetPaused(fieldGuideOpen);
+
+            anim.SetBool("GuideOpen", fieldGuideOpen);
+            if (fieldGuideOpen)
+            {
+                fieldGuideCam.Priority = 15;
+                anim.Play("Open", 1);
+                anim.Play("null", 0);
+                anim.SetFloat("Spd", 0f);
+                
+            }
+            else
+            {
+                fieldGuideCam.Priority = 0;
+            }
+            smoothTo0 = new Smoothing(0f, 1f, Smoothing.smoothingTypes.InFastOutSlow);
+            find.SetEnabled(fieldGuideOpen);
         }
     }
     #endregion

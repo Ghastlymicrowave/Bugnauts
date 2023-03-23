@@ -283,6 +283,11 @@ public class BugAI : MonoBehaviour
     }
     public void Kill()
     {
+        GameTracker gt = GameObject.Find("Canvas").GetComponent<GameTracker>();
+        if(gt != null)
+        {
+            gt.KillBug();
+        }
         Destroy(gameObject);
     }
     public void TakeDamage(float damage)

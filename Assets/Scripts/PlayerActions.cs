@@ -107,6 +107,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""field guide"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae555814-de89-4396-b13c-eb2cc2c1e15e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -285,6 +294,17 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""controls"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b98af559-f109-4d98-a81d-467b9b4d002e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""field guide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -302,6 +322,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_Main_interact = m_Main.FindAction("interact", throwIfNotFound: true);
         m_Main_pause = m_Main.FindAction("pause", throwIfNotFound: true);
         m_Main_controls = m_Main.FindAction("controls", throwIfNotFound: true);
+        m_Main_fieldguide = m_Main.FindAction("field guide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -370,6 +391,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_interact;
     private readonly InputAction m_Main_pause;
     private readonly InputAction m_Main_controls;
+    private readonly InputAction m_Main_fieldguide;
     public struct MainActions
     {
         private @PlayerActions m_Wrapper;
@@ -383,6 +405,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @interact => m_Wrapper.m_Main_interact;
         public InputAction @pause => m_Wrapper.m_Main_pause;
         public InputAction @controls => m_Wrapper.m_Main_controls;
+        public InputAction @fieldguide => m_Wrapper.m_Main_fieldguide;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -419,6 +442,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @controls.started -= m_Wrapper.m_MainActionsCallbackInterface.OnControls;
                 @controls.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnControls;
                 @controls.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnControls;
+                @fieldguide.started -= m_Wrapper.m_MainActionsCallbackInterface.OnFieldguide;
+                @fieldguide.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnFieldguide;
+                @fieldguide.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnFieldguide;
             }
             m_Wrapper.m_MainActionsCallbackInterface = instance;
             if (instance != null)
@@ -450,6 +476,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @controls.started += instance.OnControls;
                 @controls.performed += instance.OnControls;
                 @controls.canceled += instance.OnControls;
+                @fieldguide.started += instance.OnFieldguide;
+                @fieldguide.performed += instance.OnFieldguide;
+                @fieldguide.canceled += instance.OnFieldguide;
             }
         }
     }
@@ -465,5 +494,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnControls(InputAction.CallbackContext context);
+        void OnFieldguide(InputAction.CallbackContext context);
     }
 }
