@@ -288,6 +288,7 @@ public class BugAI : MonoBehaviour
         {
             gt.KillBug();
         }
+        GameObject.Find("visionRange").GetComponent<FindNearestEnemy>().ClearActive(gameObject);
         Destroy(gameObject);
     }
     public void TakeDamage(float damage)

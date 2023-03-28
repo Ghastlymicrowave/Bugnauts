@@ -233,7 +233,6 @@ public class PlayerControls : MonoBehaviour
 
         float t = smoothTo0.TickVal(Time.deltaTime);
         Vector3 r = Vector3.Lerp(new Vector3(0f, currentAngle.x, 0f), new Vector3(-currentAngle.y, currentAngle.x, 0f), t);
-        Debug.Log(r);
         visual.transform.rotation = Quaternion.Euler(r);
 
         if(knockbackTime>0){

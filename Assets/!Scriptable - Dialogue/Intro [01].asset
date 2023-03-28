@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e4b9c27c9b72a4c9219612696ddd66, type: 3}
+  m_Name: Intro [01]
+  m_EditorClassIdentifier: 
+  text:
+  - "In BUGNAUTS!, our hero Chloe must contend with monstrous Phantom Bugs that have
+    invaded her home island. <color=red>Phantom Bugs are magical bug-shaped constructs
+    with the real bugs of the island trapped inside.</color> Think of them as giant
+    evil pi\xF1atas."
+  - "By defeating the Phantom Bugs, the REAL bugs will be freed, allowing them to
+    return to their natural place in the ecosystem. Let\u2019s learn a bit about
+    the bugs in front of us! "
+  - '<color=red>Press F to open and close your FIELD GUIDE</color> '

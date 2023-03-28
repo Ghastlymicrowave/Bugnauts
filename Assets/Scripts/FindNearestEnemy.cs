@@ -31,11 +31,23 @@ public class FindNearestEnemy : MonoBehaviour
         cursorGroup.SetActive(t);
     }
 
+    public void ClearActive(GameObject obj)
+    {
+        if(closestEnemy == obj)
+        {
+            closestEnemy = null;
+            reticleTargetPos = Vector2.zero;
+
+            s = new Smoothing(0f, smoothTime, Smoothing.smoothingTypes.InFastOutSlow);
+            reticleTargetPos = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        }
+        
+    }
     Vector2 reticleTargetPos = Vector2.zero;
 
     void Update(){
 
-        for(int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < enemies.Count; i++)
         {
             if (enemies[i] == null)
             {
@@ -87,7 +99,7 @@ public class FindNearestEnemy : MonoBehaviour
     void ChangeViewSize(){
         if (screen != new Vector2(Screen.width,Screen.height)){
             screen = new Vector2(Screen.width,Screen.height);
-            if(closestEnemy==null){
+            if(closestEnemy==null || closestEnemy.name == null){
                 reticleTargetPos = new Vector2(Screen.width/2f,Screen.height/2f);
             }
         }
