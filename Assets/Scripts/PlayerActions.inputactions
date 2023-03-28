@@ -220,6 +220,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f73caf24-0a74-4be6-a3a3-df803300a8b0",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "net",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3eeea881-a1e3-479f-a066-5abe863f85b7",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -231,8 +242,30 @@
                 },
                 {
                     "name": "",
+                    "id": "16290d6b-33b0-48d5-814a-c4628f9c2f89",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "926f3025-7890-4e38-b179-c87f7cfe3454",
-                    "path": "<Mouse>/middleButton",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "buff",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fd1b819-24fa-4631-926b-8f6f45fbddf0",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -253,8 +286,30 @@
                 },
                 {
                     "name": "",
+                    "id": "fa94d456-1703-4a61-9c0a-68f92b9544a7",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "dd60b3c3-4888-4627-876d-b41ed9e70051",
                     "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "968eb810-e6b5-4006-b800-e66e4a169f88",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -275,8 +330,30 @@
                 },
                 {
                     "name": "",
+                    "id": "ec825daa-e2cf-4f2f-9030-a163992ec5f3",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "controls",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b98af559-f109-4d98-a81d-467b9b4d002e",
                     "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "field guide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71b63234-d80e-47a5-b029-921fad5f58dd",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Animatext;
 public class DialogueSystem : MonoBehaviour
 {
     [SerializeField]Text txt;
@@ -10,6 +11,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] PlayerControls player;
     [SerializeField] GameObject box;
     Action_openDialouge opener;
+    [SerializeField] AnimatextUGUI anima;
 
     int line;
 
@@ -24,11 +26,21 @@ public class DialogueSystem : MonoBehaviour
     public void NextLine(InputAction.CallbackContext ctx)
     {
         if(obj==null || !ctx.started){return;}
-        line++;
-        if(line >= obj.text.Count){
-            End();
+        if (anima.effects[0].state == Animatext.EffectState.End)
+        {
+            line++;
+            if (line >= obj.text.Count)
+            {
+                End();
+            }
+            UpdateText();
         }
-        UpdateText();
+        else
+        {
+            anima.EndEffect(0);
+        }
+
+        
     }
     public void UpdateText(){
         if(obj !=null){
