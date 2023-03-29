@@ -30,7 +30,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float mouseSensitivity;
     float knockbackTime = 0f;
     Vector2 camAngle;
-    Vector2 currentAngle = Vector2.zero;
+    [SerializeField] Vector2 currentAngle = Vector2.zero;
     PlayerActions move;
     Vector3 velLastFrame;
     float lastDelta = 0f;
@@ -125,13 +125,24 @@ public class PlayerControls : MonoBehaviour
         if (find.closestEnemy == null)
         {
             pb = Instantiate(bulletType, bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x, 0f));
+            if (playerBulletManager.GetMultiShot())
+            {
+                Instantiate(bulletType, bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x + 15, 0f));
+                Instantiate(bulletType, bulletSpawnPoint.transform.position, Quaternion.Euler(-currentAngle.y, currentAngle.x - 15, 0f));
+            }
         }
         else
         {
             pb = Instantiate(bulletType, bulletSpawnPoint.transform.position, Quaternion.LookRotation(find.closestEnemy.transform.position - bulletSpawnPoint.transform.position, Vector3.up));
+            if (playerBulletManager.GetMultiShot())
+            {
+                Instantiate(bulletType, bulletSpawnPoint.transform.position, Quaternion.LookRotation(find.closestEnemy.transform.position - bulletSpawnPoint.transform.position, Vector3.up) * Quaternion.Euler(0f, 15f, 0f));
+                Instantiate(bulletType, bulletSpawnPoint.transform.position, Quaternion.LookRotation(find.closestEnemy.transform.position - bulletSpawnPoint.transform.position, Vector3.up) * Quaternion.Euler(0f, -15f, 0f));
+            }
         }
 
         pb.GetComponent<PlayerBullet>().SetDamage(playerBulletManager.GetDamageMult());
+        pb.GetComponent<PlayerBullet>().SetSpeed(playerBulletManager.GetSpeedMult());
         Debug.Log(pb.GetComponent<PlayerBullet>().GetDamage);
     }
 

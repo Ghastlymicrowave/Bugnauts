@@ -16,18 +16,11 @@ public class PlayerBulletTriColor : PlayerBullet
         base.Update();
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
-        EnemyProjectile eP = collision.gameObject.GetComponent<EnemyProjectile>();
-        Debug.Log(eP);
-        if (eP != null)
+        if (other.tag == "Bullet")
         {
-            Debug.Log("Blasted");
-            Destroy(eP.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

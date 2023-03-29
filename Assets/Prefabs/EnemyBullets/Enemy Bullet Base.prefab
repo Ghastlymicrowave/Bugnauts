@@ -82,9 +82,9 @@ GameObject:
   - component: {fileID: 9119542907923988563}
   - component: {fileID: 5778050785568186004}
   - component: {fileID: 8143518749628804547}
-  - component: {fileID: 4309609086037665458}
   - component: {fileID: 6774147360207694539}
   - component: {fileID: 7661478644674962135}
+  - component: {fileID: 6592135373359413072}
   m_Layer: 12
   m_Name: Sphere
   m_TagString: Bullet
@@ -157,19 +157,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4309609086037665458
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764150750384108537}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &6774147360207694539
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4959,3 +4946,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!135 &6592135373359413072
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764150750384108537}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

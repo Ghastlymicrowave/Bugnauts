@@ -16,19 +16,17 @@ public class PlayerBulletAbsorption : PlayerBullet
         base.Update();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        EnemyProjectile eP = collision.gameObject.GetComponent<EnemyProjectile>();
-        PlayerBullet pB = collision.gameObject.GetComponent<PlayerBullet>();
-        if (eP != null)
+        if (other.tag == "Bullet")
         {
             damage += 2;
-            Destroy(eP.gameObject);
+            Destroy(other.gameObject);
         }
-        else if(pB != null)
+        else if(other.tag == "PlayerBullet")
         {
             damage += 2;
-            Destroy(pB.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

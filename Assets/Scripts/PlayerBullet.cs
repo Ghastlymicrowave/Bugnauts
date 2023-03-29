@@ -12,6 +12,8 @@ public class PlayerBullet : MonoBehaviour
 
     public float GetDamage => damage;
     public void SetDamage(float mul) { damage *= mul; }
+    public void SetSpeed(float mul) { speed *= mul; }
+
     protected virtual void Start(){
         rb = GetComponent<Rigidbody>();
         rb.velocity += transform.forward * speed;

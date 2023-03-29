@@ -14,10 +14,15 @@ public class PlayerBulletManager : MonoBehaviour
 
     [SerializeField] GameObject ScreenBlankTrigger;
     private float damageMultiplier = 1.0f;
+    private float speedMultiplier = 1.0f;
+
+    private bool multiShot = false;
 
     public bool notHit = true;
 
+    public bool GetMultiShot() => multiShot;
     public float GetDamageMult() => damageMultiplier;
+    public float GetSpeedMult() => speedMultiplier;
 
     public void AddBullet(Bullet newBullet)
     {
@@ -49,7 +54,7 @@ public class PlayerBulletManager : MonoBehaviour
 
         //RGBY color mapped to prime #s. Code for buff is determined by multiplication of them
         int pCode = 1;
-        for (int i = 1; i < storedBullets.Count; i++)
+        for (int i = 0; i < storedBullets.Count; i++)
         {
             switch (storedBullets[i].GetBulletType())
             {
@@ -74,24 +79,23 @@ public class PlayerBulletManager : MonoBehaviour
         IEnumerator buff = null;
         switch (pCode)
         {
-            case 8:
+            case 16:
                 buff = RedBuff_AttackAndNet();
                 break;
-            case 27:
+            case 81:
                 buff = GreenBuff_MultiShot();
                 break;
-            case 125:
+            case 625:
                 buff = BlueBuff_ScreenNuke();
                 break;
-            case 343:
+            case 2401:
                 buff = YellowBuff_BulletAbsorption();
                 break;
-            case 30:
+            case 210:
                 buff = TriBuff_SuperBullet();
                 break;
-            case 12: case 20: case 28: case 18: case 45: case 63:
-            case 50: case 75: case 175: case 98: case 147:
-            case 245:
+            case 36: case 100: case 196: case 225: case 441:
+            case 1225:
                 buff = DualBuff_Heal();
                 break;
             default:
@@ -101,7 +105,7 @@ public class PlayerBulletManager : MonoBehaviour
         if (buff != null)
         {
             Bullet retBullet = storedBullets[1];
-            storedBullets.RemoveRange(1, 3);
+            storedBullets.Clear();
             bulletUI.UpdateUI(storedBullets.ToArray());
             StartCoroutine(buff);
             return retBullet;
@@ -113,28 +117,30 @@ public class PlayerBulletManager : MonoBehaviour
     {
         notHit = true;
         damageMultiplier = 3.0f;
-        //faster net swing?
+        speedMultiplier = 1.5f;
 
         while(notHit)
         {
             yield return null;
         }
 
-        damageMultiplier = 1f;
+        damageMultiplier = 1.0f;
+        speedMultiplier = 1.0f;
 
         yield return null;
     }
 
     IEnumerator GreenBuff_MultiShot()
     {
-        //Multi-Shot
-        //need clearer specs
         notHit = true;
+        multiShot = true;
 
         while (notHit)
         {
             yield return null;
         }
+
+        multiShot = false;
 
         yield return null;
     }

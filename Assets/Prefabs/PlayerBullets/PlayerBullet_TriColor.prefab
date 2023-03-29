@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5670000069449643090}
   - component: {fileID: 177137554234001821}
   - component: {fileID: 2627404341652852813}
-  - component: {fileID: 8707338655484798936}
-  - component: {fileID: -8416074614231192835}
+  - component: {fileID: 3096715900167978114}
+  - component: {fileID: 978376231370853147}
   - component: {fileID: 7738881694925499451}
   m_Layer: 12
   m_Name: PlayerBullet_TriColor
@@ -86,20 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8707338655484798936
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5482602042581771356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8416074614231192835
+--- !u!114 &3096715900167978114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,6 +103,19 @@ MonoBehaviour:
   lifetime: 4
   rb: {fileID: 7738881694925499451}
   damage: 3
+--- !u!135 &978376231370853147
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482602042581771356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7738881694925499451
 Rigidbody:
   m_ObjectHideFlags: 0
