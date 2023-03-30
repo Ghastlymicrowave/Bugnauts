@@ -12,10 +12,11 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] GameObject box;
     Action_openDialouge opener;
     [SerializeField] AnimatextUGUI anima;
+    [SerializeField] GameTracker tracker;
 
     int line;
 
-    public void StartDialogue(Dialogue_scriptableObj scrptObj, Action_openDialouge nopener)
+    public void StartDialogue(Dialogue_scriptableObj scrptObj, Action_openDialouge nopener = null)
     {
         obj = scrptObj;
         line = 0; 
@@ -56,8 +57,15 @@ public class DialogueSystem : MonoBehaviour
         line = 0;
         obj = null;
         Invoke("ClearPlayer",0.01f);
-        opener.Trigger();
-        opener = null;
+        if (opener != null)
+        {
+            opener.Trigger();
+            opener = null;
+        }
+        if (tracker != null)
+        {
+            tracker.EndDialouge();
+        }
     }
     public void ClearPlayer(){
         player.DialougeOpen = false;

@@ -8,11 +8,15 @@ public class PauseManager : MonoBehaviour
     static bool isPaused = false;
     public static bool stopPlayerAnims = true;
     [SerializeField] GameObject pausedUI;
+    static PauseManager thisPM;
+    public static bool playerCanUnpause = false;
     public static bool IsPaused => isPaused; //use this to get paused state, everything else is to set the paused state
     private void Start()
     {
         pausedUI.SetActive(isPaused);
+        thisPM = this;
     }
+
     public void Pause()
     {
         isPaused = true;
@@ -25,26 +29,26 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         pausedUI.SetActive(isPaused && showUI);
     }
-    public void TogglePaused()
+    public static void TogglePaused()
     {
         if (isPaused)
         {
-            Unpause();
+            thisPM.Unpause();
         }
         else
         {
-            Pause();
+            thisPM.Pause();
         }
     }
-    public void SetPaused(bool paused)
+    public static void SetPaused(bool paused)
     {
         if (!paused)
         {
-            Unpause();
+            thisPM.Unpause();
         }
         else
         {
-            Pause();
+            thisPM.Pause();
         }
     }
 }

@@ -55,7 +55,6 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] Transform playerCenter;
     [SerializeField] FindNearestEnemy find;
     [SerializeField] GameObject ControlsUI;
-    [SerializeField] PauseManager pause;
     [SerializeField] CinemachineVirtualCamera fieldGuideCam;
 
     Vector3 currentRot;
@@ -411,19 +410,19 @@ public class PlayerControls : MonoBehaviour
         {
             controlsOpen = !controlsOpen;
             ControlsUI.SetActive(controlsOpen);
-            pause.SetPaused(controlsOpen);
+            PauseManager.SetPaused(controlsOpen);
         }
     }
     public void Pause(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && PauseManager.playerCanUnpause)
         {
             controlsOpen = false;
             ControlsUI.SetActive(controlsOpen);
-            
+             
             PauseManager.stopPlayerAnims = true;
             PauseManager.showUI = true;
-            pause.TogglePaused();
+            PauseManager.TogglePaused();
         }
     }
     public void OpenFieldGuide(InputAction.CallbackContext ctx)
@@ -436,7 +435,7 @@ public class PlayerControls : MonoBehaviour
                 PauseManager.stopPlayerAnims = false;
                 PauseManager.showUI = false;
             }
-            pause.SetPaused(fieldGuideOpen);
+            PauseManager.SetPaused(fieldGuideOpen);
 
             anim.SetBool("GuideOpen", fieldGuideOpen);
             if (fieldGuideOpen)
@@ -461,6 +460,6 @@ public class PlayerControls : MonoBehaviour
     {
         controlsOpen = false;
         ControlsUI.SetActive(controlsOpen);
-        pause.SetPaused(controlsOpen);
+        PauseManager.SetPaused(controlsOpen);
     }
 }
