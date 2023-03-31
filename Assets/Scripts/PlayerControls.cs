@@ -167,7 +167,7 @@ public class PlayerControls : MonoBehaviour
         if (PauseManager.IsPaused)
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            if (PauseManager.stopPlayerAnims)
+            if (PauseManager.stopAnims)
             {
                 anim.speed = 0f;
                 visual.transform.rotation = Quaternion.Euler(new Vector3(-currentAngle.y, currentAngle.x, 0f));
@@ -420,20 +420,25 @@ public class PlayerControls : MonoBehaviour
             controlsOpen = false;
             ControlsUI.SetActive(controlsOpen);
              
-            PauseManager.stopPlayerAnims = true;
+            PauseManager.stopAnims = true;
             PauseManager.showUI = true;
             PauseManager.TogglePaused();
         }
     }
     public void OpenFieldGuide(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && PauseManager.playerCanUnpause)
         {
             fieldGuideOpen = !fieldGuideOpen;
             if (fieldGuideOpen)
             {
-                PauseManager.stopPlayerAnims = false;
+                PauseManager.stopAnims = false;
                 PauseManager.showUI = false;
+            }
+            else
+            {
+                PauseManager.showUI = true;
+
             }
             PauseManager.SetPaused(fieldGuideOpen);
 

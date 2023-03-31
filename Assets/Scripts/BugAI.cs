@@ -75,7 +75,6 @@ public class BugAI : MonoBehaviour
     {
         if (PauseManager.IsPaused)
         {
-            Debug.Log("Paused");
             return;
         }
         if (Vector3.Distance(player.transform.position, transform.position) < visionRange)

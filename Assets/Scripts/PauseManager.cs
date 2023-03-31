@@ -6,7 +6,7 @@ public class PauseManager : MonoBehaviour
 {
     public static bool showUI = true;
     static bool isPaused = false;
-    public static bool stopPlayerAnims = true;
+    public static bool stopAnims = true;
     [SerializeField] GameObject pausedUI;
     static PauseManager thisPM;
     public static bool playerCanUnpause = false;

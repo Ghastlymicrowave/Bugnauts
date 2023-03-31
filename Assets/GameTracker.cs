@@ -86,12 +86,11 @@ public class GameTracker : MonoBehaviour
 
     public void NextSequence()
     {
-        if (activeSequence >= sequences.Count) { return; }
-        activeSequence++;
         ActivateSequence();
     }
     public void ActivateSequence()
     {
+        Debug.Log("active sequence:" + activeSequence.ToString() + " sequences count:" + sequences.Count.ToString());
         if (activeSequence >= sequences.Count)
         {
             return;
@@ -160,15 +159,23 @@ public class GameTracker : MonoBehaviour
             PauseManager.showUI = false;
         }
         PauseManager.SetPaused(s.PauseGame);
-        
+        if (!s.PauseGame)
+        {
+            PauseManager.playerCanUnpause = true;
+        }
+        else
+        {
+            PauseManager.playerCanUnpause = false;
+        }
+        activeSequence++;
     }
 
     public void EndDialouge()
     {
+        Debug.Log("Dialogue Ended");
         PauseManager.SetPaused(false);
-        if (sequences[activeSequence].StartSequenceOnDialougeEnd)
+        if (sequences[activeSequence-1].StartSequenceOnDialougeEnd)
         {
-            activeSequence++;
             ActivateSequence();
         }
     }
@@ -178,6 +185,7 @@ public class GameTracker : MonoBehaviour
         if (activeCam != null)
         {
             activeCam.Priority = 0;
+            Debug.Log("reset cam");
         }
     }
 
