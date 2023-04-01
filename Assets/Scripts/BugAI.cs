@@ -177,7 +177,6 @@ public class BugAI : MonoBehaviour
 
                 if (agent.remainingDistance <= attackRange)
                 {
-
                     if (spawner.isFiring())
                     {
                         if (!stopRotatingWhenFiring)
@@ -188,6 +187,7 @@ public class BugAI : MonoBehaviour
                     else
                     {
                         spawner.Fire();
+                        
                         RotateTowards(player.transform);
                     }
                     
@@ -269,17 +269,18 @@ public class BugAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * upcloseRotationSpd);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.tag == "PlayerBullet")
+        if (collision.gameObject.tag == "PlayerBullet")
         {
-            hitParticles.transform.LookAt(other.transform, Vector3.up);
+            hitParticles.transform.LookAt(collision.transform, Vector3.up);
             hitParticles.Play();
-            PlayerBullet b = other.GetComponent<PlayerBullet>();
+            PlayerBullet b = collision.gameObject.GetComponent<PlayerBullet>();
             Destroy(b.gameObject);
             TakeDamage(b.GetDamage);
         }
     }
+
     public void Kill()
     {
         GameTracker gt = GameObject.Find("Canvas").GetComponent<GameTracker>();

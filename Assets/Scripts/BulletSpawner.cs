@@ -12,6 +12,7 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] int bulletsPerBurst;
     [SerializeField] float initalDelay;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] ParticleSystem FireParticles;
     [SerializeField] Vector3 RotationStart;
     [SerializeField] Vector3 RotationEnd;
     [SerializeField] Vector3 PositionStart;
@@ -42,6 +43,7 @@ public class BulletSpawner : MonoBehaviour
         fireDelay = -initalDelay;
     }
     [SerializeField] bool firing = false;
+    bool playFireParticles = true;
     [SerializeField] float fireDelay;
     public void Fire()
     {
@@ -60,6 +62,12 @@ public class BulletSpawner : MonoBehaviour
             firing = true;
         }
         if (firing) {
+            if (FireParticles != null && playFireParticles)
+            {
+                FireParticles.Play();
+                playFireParticles = false;
+            }
+
             t += Time.deltaTime;
             float l = t;
             float timeBetween = burstLength / (float)bulletsPerBurst;
@@ -90,6 +98,7 @@ public class BulletSpawner : MonoBehaviour
         t = 0f;
         fireDelay = 0f;
         firing = false;
+        playFireParticles = true;
     }
 
     void CreateBullet(int n)

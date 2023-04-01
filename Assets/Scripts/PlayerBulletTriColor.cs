@@ -15,12 +15,4 @@ public class PlayerBulletTriColor : PlayerBullet
     {
         base.Update();
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Bullet")
-        {
-            Destroy(other.gameObject);
-        }
-    }
 }
