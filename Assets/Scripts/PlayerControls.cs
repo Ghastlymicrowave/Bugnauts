@@ -296,18 +296,13 @@ public class PlayerControls : MonoBehaviour
 
 
     void OnTriggerEnter(Collider collision){
-        if (collision.gameObject.tag != "Bullet")
-            return;
-
-        if (!invincible)
+        if (collision.gameObject.tag == "Bullet" && !invincible)
         {
             Debug.Log("hit bullet");
             knockbackTime = maxKnockbackTime;
             actor.Velocity = -(collision.gameObject.transform.position - playerCenter.position).normalized * knockbackForce;
             playerBulletManager.notHit = false;
         }
-        Destroy(collision.gameObject);
-        
     }
 
     // Update is called once per frame

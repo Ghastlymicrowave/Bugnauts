@@ -57,7 +57,7 @@ public class PlayerBullet : MonoBehaviour
         
             Debug.Log("hit bullet");
 
-        Destroy(collision.gameObject);
+        //Destroy(collision.gameObject);
 
     }
 }

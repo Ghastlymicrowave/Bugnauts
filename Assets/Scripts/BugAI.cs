@@ -277,7 +277,11 @@ public class BugAI : MonoBehaviour
             hitParticles.Play();
             PlayerBullet b = collision.gameObject.GetComponent<PlayerBullet>();
             Destroy(b.gameObject);
-            TakeDamage(b.GetDamage);
+            if (isActiveAndEnabled)
+            {
+                TakeDamage(b.GetDamage);
+            }
+            
         }
     }
 
