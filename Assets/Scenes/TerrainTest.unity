@@ -885,9 +885,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71744d63d784d84489d25911c0c16bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 11400000, guid: 92ce4a5970c7df543b595e50c692f985, type: 2}
+  text: {fileID: 11400000, guid: 833ad332cbde8f94bad81d197b1bba04, type: 2}
   endActions:
   - {fileID: 543489197}
+  - {fileID: 543489204}
 --- !u!114 &543489199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,6 +942,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.357392, y: 7.1500006, z: 1.852331}
   m_Center: {x: 0.008367858, y: 0, z: -0.06574959}
+--- !u!114 &543489204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543489196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cc2742b7c8bf941be17e360e534be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerID: huaksa1
+  oneTimeOnly: 1
+  canActivateOutOfOrder: 0
 --- !u!1 &554708779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,6 +2282,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pc: {fileID: 1388382870}
+--- !u!114 &1149992320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149992309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9ca2674f8a8ca4a8c694ae2607a2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: []
+  currentlyEnabled: 0
+  agents: []
+  scripts:
+  - {fileID: 1384661146}
 --- !u!1 &1175795702
 GameObject:
   m_ObjectHideFlags: 0
@@ -5150,16 +5183,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: Actions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.size
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: Actions.Array.data[0]
       value: 
       objectReference: {fileID: 1149992319}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: Actions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1149992320}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.data[3].dialouge
       value: 
@@ -5170,6 +5207,22 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 82e804f32f37eab4c8666b1ec73ea57f, type: 2}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.data[5].dialouge
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[6].dialouge
+      value: 
+      objectReference: {fileID: 11400000, guid: 901db2aabcc98dd48a737d9fc404ea97, type: 2}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[7].dialouge
+      value: 
+      objectReference: {fileID: 11400000, guid: c34f16da2b6a97e43885aa9cba4f48e9, type: 2}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[8].dialouge
+      value: 
+      objectReference: {fileID: 11400000, guid: c34f16da2b6a97e43885aa9cba4f48e9, type: 2}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[9].dialouge
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
@@ -5189,6 +5242,33 @@ PrefabInstance:
       value: 'Interact with HUASKA. <color=red>Press E to INTERACT WITH NPCs.</color> '
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[6].pauseGame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[6].popupText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[7].pauseGame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[8].pauseGame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[9].pauseGame
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[9].popupText
+      value: "<color=red>It looks like the Phantom Ladybugs will attack by shooting
+        projectiles out of their legs if you get too close!</color> Use your NET
+        to throw the Phantom Ladybug\u2019s projectiles back and free the real ladybugs!
+        5 hits should do it. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.data[3].setBugsLeft
       value: -2
       objectReference: {fileID: 0}
@@ -5201,11 +5281,43 @@ PrefabInstance:
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[6].setBugsLeft
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[7].setBugsLeft
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[8].setBugsLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[9].setBugsLeft
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.data[3].customTriggerID
       value: closeGuide
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.data[4].customTriggerID
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[6].customTriggerID
+      value: huaska1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[7].customTriggerID
+      value: closeGuide
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[8].customTriggerID
+      value: closeGuide
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[9].customTriggerID
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
@@ -5241,11 +5353,35 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[6].playerCanUnpause
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[7].playerCanUnpause
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[8].playerCanUnpause
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[9].playerCanUnpause
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.data[3].startSequenceOnDialougeEnd
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.data[4].startSequenceOnDialougeEnd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[7].startSequenceOnDialougeEnd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[8].startSequenceOnDialougeEnd
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
@@ -5262,6 +5398,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
       propertyPath: sequences.Array.data[5].indexOfAction_basetoTrigger
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[6].indexOfAction_basetoTrigger
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[7].indexOfAction_basetoTrigger
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[8].indexOfAction_basetoTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532228400, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
+      propertyPath: sequences.Array.data[9].indexOfAction_basetoTrigger
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1897651980, guid: 5e54f05ab1605b545a4fa02efcd59785, type: 3}
