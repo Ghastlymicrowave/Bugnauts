@@ -94,7 +94,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6318290566463660983}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -116,6 +116,8 @@ MonoBehaviour:
   lifetime: 4
   rb: {fileID: 8133230099980938192}
   damage: 1
+  popColor: {r: 0, g: 0, b: 0, a: 0}
+  popEffect: {fileID: 6420319006915287745, guid: aa0c9484b1627b442b234f575fba9efd, type: 3}
 --- !u!54 &8133230099980938192
 Rigidbody:
   m_ObjectHideFlags: 0

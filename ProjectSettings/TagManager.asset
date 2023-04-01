@@ -18,6 +18,7 @@ TagManager:
   - Interaction
   - Enemy
   - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

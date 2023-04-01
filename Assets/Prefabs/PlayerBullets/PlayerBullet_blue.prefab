@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.99606526, y: 1.8032866, z: 0.7717141}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,7 +94,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6318290566463660983}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -116,6 +116,8 @@ MonoBehaviour:
   lifetime: 4
   rb: {fileID: 8133230099980938192}
   damage: 1
+  popColor: {r: 0, g: 0, b: 0, a: 0}
+  popEffect: {fileID: 898265799577014848, guid: adfab188cf6278d4d9878f38b4ff2ecd, type: 3}
 --- !u!54 &8133230099980938192
 Rigidbody:
   m_ObjectHideFlags: 0

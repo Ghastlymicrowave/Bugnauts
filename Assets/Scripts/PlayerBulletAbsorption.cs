@@ -16,10 +16,18 @@ public class PlayerBulletAbsorption : PlayerBullet
         base.Update();
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*public override void EnemyBulletHitUpdate()
     {
-        if (other.tag == "Bullet")
+        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * 1.2f, gameObject.transform.localScale.y * 1.2f, gameObject.transform.localScale.z * 1.2f);
+        damage += 2;
+    }*/
+
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EnemyBullet")
         {
+            Debug.Log("EatMyAss");
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * 1.2f, gameObject.transform.localScale.y * 1.2f, gameObject.transform.localScale.z * 1.2f);
             damage += 2;
             Destroy(other.gameObject);
         }
@@ -28,5 +36,5 @@ public class PlayerBulletAbsorption : PlayerBullet
             damage += 2;
             Destroy(other.gameObject);
         }
-    }
+    }*/
 }
