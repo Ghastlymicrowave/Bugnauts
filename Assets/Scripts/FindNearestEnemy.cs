@@ -9,7 +9,7 @@ public class FindNearestEnemy : MonoBehaviour
     public GameObject closestEnemy;
     [SerializeField] RectTransform reticle;
     [SerializeField] float smoothTime;
-    [SerializeField] GameObject cursorGroup;
+    
     Smoothing s;
     Vector2 startPos = Vector2.zero;
     Vector2 screen = Vector2.zero;
@@ -26,10 +26,7 @@ public class FindNearestEnemy : MonoBehaviour
             }
         }
     }
-    public void SetEnabled(bool t)
-    {
-        cursorGroup.SetActive(t);
-    }
+    
 
     public void ClearActive(GameObject obj)
     {

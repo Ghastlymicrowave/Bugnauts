@@ -159,14 +159,7 @@ public class GameTracker : MonoBehaviour
             PauseManager.showUI = false;
         }
         PauseManager.SetPaused(s.PauseGame);
-        if (!s.PauseGame)
-        {
-            PauseManager.playerCanUnpause = true;
-        }
-        else
-        {
-            PauseManager.playerCanUnpause = false;
-        }
+        PauseManager.playerCanUnpause = s.PlayerCanUnpause;
         activeSequence++;
     }
 

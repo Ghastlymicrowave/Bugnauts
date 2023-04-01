@@ -22,11 +22,18 @@ public class CustomCinematicTrigger : ActionBase
             if (!triggered)
             {
                 triggered = tracker.SendCustomTrigger(triggerID, canActivateOutOfOrder);
+                Debug.Log("triggered: " + triggerID);
             }
             else
             {
                 tracker.SendCustomTrigger(triggerID, canActivateOutOfOrder);
+                Debug.Log("triggered: " + triggerID);
             }
+        }
+        else
+        {
+            tracker.SendCustomTrigger(triggerID, canActivateOutOfOrder);
+            Debug.Log("triggered: " + triggerID);
         }
     }
 }

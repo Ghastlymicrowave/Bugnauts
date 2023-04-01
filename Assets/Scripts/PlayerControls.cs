@@ -57,6 +57,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] GameObject ControlsUI;
     [SerializeField] CinemachineVirtualCamera fieldGuideCam;
 
+    [SerializeField] CustomCinematicTrigger guideCloseTrigger;
     Vector3 currentRot;
 
     Smoothing smoothTo0;
@@ -454,9 +455,10 @@ public class PlayerControls : MonoBehaviour
             else
             {
                 fieldGuideCam.Priority = 0;
+                guideCloseTrigger.Activate();
             }
             smoothTo0 = new Smoothing(0f, 1f, Smoothing.smoothingTypes.InFastOutSlow);
-            find.SetEnabled(fieldGuideOpen);
+            PauseManager.SetReticleEnabled(!fieldGuideOpen);
         }
     }
     #endregion
@@ -466,5 +468,21 @@ public class PlayerControls : MonoBehaviour
         controlsOpen = false;
         ControlsUI.SetActive(controlsOpen);
         PauseManager.SetPaused(controlsOpen);
+    }
+
+    public void OpenGuide()
+    {
+        fieldGuideOpen = true;
+        PauseManager.stopAnims = false;
+        PauseManager.showUI = false;
+        PauseManager.SetPaused(true);
+
+        anim.SetBool("GuideOpen", fieldGuideOpen);
+        fieldGuideCam.Priority = 15;
+        anim.Play("Open", 1);
+        anim.Play("null", 0);
+        anim.SetFloat("Spd", 0f);
+        smoothTo0 = new Smoothing(0f, 1f, Smoothing.smoothingTypes.InFastOutSlow);
+        PauseManager.SetReticleEnabled(!fieldGuideOpen);
     }
 }

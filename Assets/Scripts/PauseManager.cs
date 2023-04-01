@@ -10,13 +10,22 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject pausedUI;
     static PauseManager thisPM;
     public static bool playerCanUnpause = false;
+    [SerializeField] GameObject cursorGroup;
     public static bool IsPaused => isPaused; //use this to get paused state, everything else is to set the paused state
     private void Start()
     {
         pausedUI.SetActive(isPaused);
         thisPM = this;
     }
+    public static void SetReticleEnabled(bool t)
+    {
+        thisPM.setReticleEnabled(t);
+    }
 
+    public void setReticleEnabled(bool t)
+    {
+        cursorGroup.SetActive(t);
+    }
     public void Pause()
     {
         isPaused = true;
