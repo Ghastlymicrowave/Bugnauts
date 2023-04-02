@@ -594,6 +594,9 @@ MonoBehaviour:
   find: {fileID: 0}
   ControlsUI: {fileID: 0}
   fieldGuideCam: {fileID: 1590363336}
+  guideCloseTrigger: {fileID: 0}
+  fieldGuideButtons: {fileID: 0}
+  guide: {fileID: 0}
 --- !u!114 &2194419077952437054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,31 +992,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1684310172005063979, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798214614971214688, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_text
-      value: This ladybug is crazy, look at this thing, it's pruple. Who asked it
-        to do that? That's just insane dude
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798214614971214688, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_fontSize
-      value: 858.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798214614971214688, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_margin.z
-      value: 712.12646
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798214614971214688, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_fontSizeMax
-      value: 1137.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798214614971214688, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_fontSizeMin
-      value: 2.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798214614971214688, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1990229281036243681, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
@@ -1228,42 +1206,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4819606876684307367, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1314.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4819606876684307367, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 780.7939
-      objectReference: {fileID: 0}
-    - target: {fileID: 4819606876684307367, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.0006177504
-      objectReference: {fileID: 0}
-    - target: {fileID: 4819606876684307367, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4819606876684307367, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4819606876684307367, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4819606876684307367, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.0026
-      objectReference: {fileID: 0}
-    - target: {fileID: 4819606876684307367, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6489482389023516276, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6963931524029470479, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
@@ -1291,10 +1233,6 @@ PrefabInstance:
     - target: {fileID: 6963931524029470479, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7011523847077158993, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7626846447201061793, guid: a99177909a5fa9847b4422d1da72d828, type: 3}
       propertyPath: m_LocalPosition.x

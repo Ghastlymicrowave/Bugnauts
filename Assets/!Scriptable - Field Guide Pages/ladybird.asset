@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf5f5d66e68d77428ba16c876147ab0, type: 3}
+  m_Name: ladybird
+  m_EditorClassIdentifier: 
+  title: Seven-Spotted Ladybird - <i>Coccinella septempunctata)</i>
+  body: "<line-indent=15%><line-height=110%>- The Seven-Spotted Ladybird beetle,
+    also known as a Ladybug, is a common beetle in most parts of the world.<br>-
+    Seven-Spotted Ladybirds are carnivorous and eat other insects such as aphids,
+    scale bugs, mites, and even small spiders.<br>- The Seven-Spotted Ladybird\u2019s
+    natural predation of aphids greatly helps to keep soil and water free from the
+    waste that aphids produce, pesticide free! </line-height> "
+  phantomBody: '<line-indent=15%><line-height=110%>- It seems the Seven-Spotted Ladybirds
+    are much more aggressive in their phantom form!<br>- Be careful, Seven-Spotted
+    Ladybirds are known for attacking by shooting a foul substance out of their legs
+    when things get too close. Be sure to keep your distance!  </line-height> '
+  spr: {fileID: 21300000, guid: 22d08b0b8a3176d47bd4fbe1d583d4b9, type: 3}
