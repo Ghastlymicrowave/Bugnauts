@@ -166,7 +166,6 @@ public class GameTracker : MonoBehaviour
     public void EndDialouge()
     {
         Debug.Log("Dialogue Ended");
-        PauseManager.SetPaused(false);
         if (sequences[activeSequence-1].StartSequenceOnDialougeEnd)
         {
             ActivateSequence();

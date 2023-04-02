@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4324516069555296488}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5490273197253254672}
   - component: {fileID: 7747239260095598020}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2910918637004856564}
   - component: {fileID: 8020576082116830692}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2023259183335344017}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Guide Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 1990229281036243682}
   - component: {fileID: 1990229281036243683}
   - component: {fileID: 1990229281036243684}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 253921990355732270}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7626846447201061793}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Bone.001_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4665914006610834531}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 4819606876684307367}
   - component: {fileID: 7011523847077158993}
   - component: {fileID: 1798214614971214688}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6963931524029470479}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}

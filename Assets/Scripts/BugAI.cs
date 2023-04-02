@@ -27,6 +27,8 @@ public class BugAI : MonoBehaviour
     [SerializeField] bool playerSeen = false;
     [SerializeField] AIState state = AIState.STATIONARY;
     [SerializeField] float maxSearchingWanderTime;
+    [SerializeField] GameObject healthbarContainer;
+
     float searchWanderTime =0f;
 
     float agentSpd;
@@ -69,6 +71,7 @@ public class BugAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         agentSpd = agent.speed;
         agentAnglSpd = agent.angularSpeed;
+        healthbarContainer.SetActive(true);
     }
 
     private void FixedUpdate()
@@ -258,6 +261,7 @@ public class BugAI : MonoBehaviour
                 healthSmooth = null;
             }
         }
+        healthbarContainer.transform.LookAt(player.transform);
     }
 
     private void RotateTowards(Transform target)

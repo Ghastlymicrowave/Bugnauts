@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 306, y: -126.78}
-  m_SizeDelta: {x: 458.0533, y: 135.8471}
+  m_AnchoredPosition: {x: 425.42334, y: -126.78}
+  m_SizeDelta: {x: 696.8998, y: 135.8471}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &303136420
 CanvasRenderer:
@@ -170,11 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd55b2972a5f95449c5df916bc920b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputText: 5
-  _parsedText: 5
-  _outputText: 5
-  _effectText: 5
-  _retainedText: 5
+  _inputText: 
+  _parsedText: 
+  _outputText: 
+  _effectText: 
+  _retainedText: 
   _settings:
     retainedText: 0
     disabledText: 0
@@ -371,7 +371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 197.7, y: 0}
+  m_AnchoredPosition: {x: 321, y: 0}
   m_SizeDelta: {x: 176.6617, y: 171.3221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1815199344
@@ -457,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausedUI: {fileID: 117625531739745072}
+  cursorGroup: {fileID: 4444375267009421045}
 --- !u!1 &1959959110
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,10 +492,10 @@ RectTransform:
   m_Father: {fileID: 303136418}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7085, y: 2.6754}
-  m_SizeDelta: {x: 435.3104, y: 109.7856}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.708496, y: 2.6753998}
+  m_SizeDelta: {x: -22.689606, y: -26.214401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1959959113
 CanvasRenderer:
@@ -524,7 +525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bugs Left:'
+  m_text: 'Phantom Bugs Left:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -552,7 +553,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 72
-  m_fontSizeBase: 36
+  m_fontSizeBase: 36.03
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
@@ -561,7 +562,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -5.7
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -587,7 +588,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 1.236084, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1616,6 +1617,8 @@ GameObject:
   - component: {fileID: 117625532175202383}
   - component: {fileID: 1532228400}
   - component: {fileID: 1849352398}
+  - component: {fileID: 1149992319}
+  - component: {fileID: 1149992320}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1855,6 +1858,7 @@ MonoBehaviour:
     indexOfAction_basetoTrigger: -1
     pauseGame: 0
     startSequenceOnDialougeEnd: 0
+    playerCanUnpause: 1
   - activeCameraName: cam1
     dialouge: {fileID: 11400000, guid: ea1ffda8631b10147ba70ba5a18d0775, type: 2}
     popupText: 
@@ -1863,20 +1867,99 @@ MonoBehaviour:
     indexOfAction_basetoTrigger: -1
     pauseGame: 1
     startSequenceOnDialougeEnd: 1
+    playerCanUnpause: 0
   - activeCameraName: 
     dialouge: {fileID: 0}
     popupText: 
     customTriggerID: 
     setBugsLeft: -2
+    indexOfAction_basetoTrigger: 0
+    pauseGame: 1
+    startSequenceOnDialougeEnd: 0
+    playerCanUnpause: 1
+  - activeCameraName: cam2
+    dialouge: {fileID: 11400000, guid: 219cb2ee690717547b590ebfbc6bf782, type: 2}
+    popupText: 
+    customTriggerID: closeGuide
+    setBugsLeft: -2
+    indexOfAction_basetoTrigger: -1
+    pauseGame: 1
+    startSequenceOnDialougeEnd: 1
+    playerCanUnpause: 0
+  - activeCameraName: cam3
+    dialouge: {fileID: 11400000, guid: 82e804f32f37eab4c8666b1ec73ea57f, type: 2}
+    popupText: 
+    customTriggerID: 
+    setBugsLeft: -2
+    indexOfAction_basetoTrigger: -1
+    pauseGame: 1
+    startSequenceOnDialougeEnd: 1
+    playerCanUnpause: 0
+  - activeCameraName: 
+    dialouge: {fileID: 0}
+    popupText: 'Interact with the npc. <color=red>Press E to INTERACT WITH NPCs.</color> '
+    customTriggerID: 
+    setBugsLeft: -2
     indexOfAction_basetoTrigger: -1
     pauseGame: 0
     startSequenceOnDialougeEnd: 0
+    playerCanUnpause: 1
+  - activeCameraName: 
+    dialouge: {fileID: 11400000, guid: 901db2aabcc98dd48a737d9fc404ea97, type: 2}
+    popupText: 
+    customTriggerID: huaska1
+    setBugsLeft: -2
+    indexOfAction_basetoTrigger: -1
+    pauseGame: 1
+    startSequenceOnDialougeEnd: 1
+    playerCanUnpause: 0
+  - activeCameraName: 
+    dialouge: {fileID: 0}
+    popupText: <color=red>Press "F" to open the Field Guide</color>
+    customTriggerID: 
+    setBugsLeft: -2
+    indexOfAction_basetoTrigger: -1
+    pauseGame: 0
+    startSequenceOnDialougeEnd: 0
+    playerCanUnpause: 1
+  - activeCameraName: 
+    dialouge: {fileID: 11400000, guid: c34f16da2b6a97e43885aa9cba4f48e9, type: 2}
+    popupText: <color=red>Press "F" to open the Field Guide</color>
+    customTriggerID: closeGuide
+    setBugsLeft: -2
+    indexOfAction_basetoTrigger: -1
+    pauseGame: 1
+    startSequenceOnDialougeEnd: 1
+    playerCanUnpause: 0
+  - activeCameraName: 
+    dialouge: {fileID: 0}
+    popupText: 
+    customTriggerID: closeGuide
+    setBugsLeft: 1
+    indexOfAction_basetoTrigger: 1
+    pauseGame: 1
+    startSequenceOnDialougeEnd: 1
+    playerCanUnpause: 0
+  - activeCameraName: 
+    dialouge: {fileID: 0}
+    popupText: "<color=red>It looks like the Phantom Ladybugs will attack by shooting
+      projectiles out of their legs if you get too close!</color> Use your NET to
+      throw the Phantom Ladybug\u2019s projectiles back and free the real ladybugs!
+      5 hits should do it. "
+    customTriggerID: 
+    setBugsLeft: -2
+    indexOfAction_basetoTrigger: -1
+    pauseGame: 0
+    startSequenceOnDialougeEnd: 0
+    playerCanUnpause: 1
   bugsLeft: 3
   trackerText: {fileID: 391031200}
   ds: {fileID: 117625532175202382}
   popupText: {fileID: 2137980347}
   popupTextText: {fileID: 716601219}
-  Actions: []
+  Actions:
+  - {fileID: 1149992319}
+  - {fileID: 1149992320}
   bugsLeftDisplay: {fileID: 303136417}
 --- !u!114 &1849352398
 MonoBehaviour:
@@ -1892,6 +1975,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 0}
   endActions: []
+--- !u!114 &1149992319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117625532175202369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e18682170d234aac1ac9ec73bbd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 117625531765100206}
+--- !u!114 &1149992320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117625532175202369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9ca2674f8a8ca4a8c694ae2607a2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: []
+  currentlyEnabled: 0
+  agents: []
+  scripts:
+  - {fileID: 0}
 --- !u!1 &117625532232995684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,8 +2036,7 @@ Transform:
   m_LocalPosition: {x: 479.74817, y: 284.28925, z: 486.88013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 117625532512241452}
+  m_Children: []
   m_Father: {fileID: 117625530952264520}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2356,70 +2468,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &117625532512241453
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 117625532512241452}
-  - component: {fileID: 117625532512241455}
-  - component: {fileID: 117625532512241448}
-  m_Layer: 11
-  m_Name: visionRange
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &117625532512241452
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117625532512241453}
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0, z: 6.06}
-  m_LocalScale: {x: 3.3069, y: 3.3069, z: 23.935617}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 117625532232995681}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!114 &117625532512241455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117625532512241453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ef75466b0d910498e9e52a55251c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 117625532232995686}
-  closestEnemy: {fileID: 0}
-  reticle: {fileID: 117625531796324626}
-  smoothTime: 0.2
-  cursorGroup: {fileID: 4444375267009421045}
---- !u!64 &117625532512241448
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117625532512241453}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: d24c2fb6d5e72fb41ad627201b9ed883, type: 3}
 --- !u!1 &117625532522188599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2691,11 +2739,15 @@ PrefabInstance:
     - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: find
       value: 
-      objectReference: {fileID: 117625532512241455}
+      objectReference: {fileID: 0}
     - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: ControlsUI
       value: 
       objectReference: {fileID: 117625532488897321}
+    - target: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+      propertyPath: guideCloseTrigger
+      value: 
+      objectReference: {fileID: 1388382871}
     - target: {fileID: 2194419077952437054, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2759,12 +2811,32 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2194419077952437050, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
   m_PrefabInstance: {fileID: 2293958706273056148}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2849498694118239205}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ada2ef0a6bee65e4c8a8cbafed416d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2849498694118239205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4061882638079270513, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}
+  m_PrefabInstance: {fileID: 2293958706273056148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1388382871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2849498694118239205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cc2742b7c8bf941be17e360e534be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerID: closeGuide
+  oneTimeOnly: 0
+  canActivateOutOfOrder: 0
 --- !u!4 &3646084050677930133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3264187696149556481, guid: 0ac36ccc3f0db1f4db51e9a1b0038ee9, type: 3}

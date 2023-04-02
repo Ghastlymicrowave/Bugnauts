@@ -22,6 +22,7 @@ public class DialogueSystem : MonoBehaviour
         line = 0; 
         UpdateText();
         opener = nopener;
+        player.DialougeOpen = true;
     }
     
     public void NextLine(InputAction.CallbackContext ctx)
@@ -57,17 +58,19 @@ public class DialogueSystem : MonoBehaviour
         line = 0;
         obj = null;
         Invoke("ClearPlayer",0.01f);
+        
+    }
+    public void ClearPlayer(){
+        player.DialougeOpen = false;
+        PauseManager.SetPaused(false);
+        if (tracker != null)
+        {
+            tracker.EndDialouge();
+        }
         if (opener != null)
         {
             opener.Trigger();
             opener = null;
         }
-        if (tracker != null)
-        {
-            tracker.EndDialouge();
-        }
-    }
-    public void ClearPlayer(){
-        player.DialougeOpen = false;
     }
 }

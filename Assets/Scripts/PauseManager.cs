@@ -28,12 +28,14 @@ public class PauseManager : MonoBehaviour
     }
     public void Pause()
     {
+        Debug.Log("Paused");
         isPaused = true;
         Cursor.lockState = CursorLockMode.None;
         pausedUI.SetActive(isPaused && showUI);
     }
     public void Unpause()
     {
+        Debug.Log("Unpaused");
         isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         pausedUI.SetActive(isPaused && showUI);
