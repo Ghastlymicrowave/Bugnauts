@@ -29,6 +29,9 @@ public class BugAI : MonoBehaviour
     [SerializeField] float maxSearchingWanderTime;
     [SerializeField] GameObject healthbarContainer;
 
+    bool isDead = false;
+
+    [SerializeField] GameObject particlesObj;
     float searchWanderTime =0f;
 
     float agentSpd;
@@ -117,7 +120,7 @@ public class BugAI : MonoBehaviour
 
     void Update()
     {
-        if (PauseManager.IsPaused)
+        if (PauseManager.IsPaused || isDead)
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
             agent.speed = 0f;
@@ -291,17 +294,33 @@ public class BugAI : MonoBehaviour
 
     public void Kill()
     {
+        if (isDead)
+        {
+            return;
+        }
+        healthbarContainer.SetActive(false);
+        isDead = true;
         GameTracker gt = GameObject.Find("Canvas").GetComponent<GameTracker>();
         if(gt != null)
         {
             gt.KillBug();
         }
         GameObject.Find("visionRange").GetComponent<FindNearestEnemy>().ClearActive(gameObject);
-        Destroy(gameObject);
     }
+
+    public void DestroyThis()
+    {
+        Instantiate(particlesObj, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+
+    }
+
     public void TakeDamage(float damage)
     {
-        
+        if (isDead)
+        {
+            return;
+        }
         healthSmooth = new Smoothing(0f, healthAnimSmoothTime, Smoothing.smoothingTypes.InFastOutSlow);
         startPercent = PercentHealth();
         Health = Mathf.Max(0f, Health - damage);

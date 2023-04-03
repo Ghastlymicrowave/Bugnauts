@@ -10704,6 +10704,7 @@ MonoBehaviour:
   state: 0
   maxSearchingWanderTime: 5
   healthbarContainer: {fileID: 951383686}
+  particlesObj: {fileID: 2434285324024082278, guid: 1e81d811c1c80eb40a5591ca6303e9e2, type: 3}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   lastKnownPlayerDirection: {x: 0, y: 0, z: 0}
   MaxHealth: 5
