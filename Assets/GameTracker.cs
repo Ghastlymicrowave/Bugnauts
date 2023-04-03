@@ -31,7 +31,9 @@ public class GameTracker : MonoBehaviour
     [SerializeField] List<ActionBase> Actions;
     [SerializeField] GameObject bugsLeftDisplay;
     CinemachineVirtualCamera activeCam;
+    bool popupTextThisEvent = false;
     int activeSequence = 0;
+    bool overrideShowPopup = false;
     public void KillBug()
     {
         bugsLeft = Mathf.Max(0, bugsLeft - 1);
@@ -40,16 +42,19 @@ public class GameTracker : MonoBehaviour
     public void UpdateText()
     {
         trackerText.text = bugsLeft.ToString();
+        SendCustomTrigger("bugsleft" + bugsLeft.ToString(), false);
     }
     public void SetBugs(int amt)
     {
-        if(amt == -2)
+        if(amt == -1)
         {
             amt = 0;
             bugsLeftDisplay.SetActive(false);
+        }else if (amt != -2)
+        {
+            bugsLeft = amt;
+            UpdateText();
         }
-        bugsLeft = amt;
-        UpdateText();
     }
 
     public void TriggerIDAtIndex(int i)
@@ -126,10 +131,7 @@ public class GameTracker : MonoBehaviour
         {
             ds.StartDialogue(s.Dialouge);
         }
-        if (s.SetBugsLeft != -1)
-        {
-            SetBugs(s.SetBugsLeft);
-        }
+        SetBugs(s.SetBugsLeft);
 
 
         if (s.IndexOfAction_basetoTrigger != -1)
@@ -148,10 +150,12 @@ public class GameTracker : MonoBehaviour
         {
             popupText.SetActive(true);
             popupTextText.text = s.PopupText;
+            popupTextThisEvent = true;
         }
         else
         {
             popupText.SetActive(false);
+            popupTextThisEvent = false;
         }
 
         if (s.PauseGame)
@@ -161,6 +165,7 @@ public class GameTracker : MonoBehaviour
         PauseManager.SetPaused(s.PauseGame);
         PauseManager.playerCanUnpause = s.PlayerCanUnpause;
         activeSequence++;
+        overrideShowPopup = s.OverrideShowPopup;
     }
 
     public void EndDialouge()
@@ -186,6 +191,20 @@ public class GameTracker : MonoBehaviour
         ResetCam();
         newCam.Priority = 100;
         activeCam = newCam;
+    }
+
+    private void Update()
+    {
+        if(overrideShowPopup)
+        {
+            if (!popupText.activeInHierarchy)
+            {
+                popupText.SetActive(true);
+            }
+        }else if(popupTextThisEvent && !PauseManager.IsPaused != popupText.activeInHierarchy)
+        {
+            popupText.SetActive(!PauseManager.IsPaused);
+        }
     }
 }
 

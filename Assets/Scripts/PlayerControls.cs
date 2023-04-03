@@ -56,10 +56,27 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] FindNearestEnemy find;
     [SerializeField] GameObject ControlsUI;
     [SerializeField] CinemachineVirtualCamera fieldGuideCam;
+    [SerializeField] GameTracker tracker;
 
     [SerializeField] CustomCinematicTrigger guideCloseTrigger;
     [SerializeField] GameObject fieldGuideButtons;
     [SerializeField] FieldGuide guide;
+
+    [SerializeField] SingleKey key;
+
+    public void SetSingleKey(SingleKey nkey)
+    {
+        key = nkey;
+    }
+
+    public enum SingleKey
+    {
+        none,
+        shoot,
+        swing,
+        phantomize
+    }
+
     Vector3 currentRot;
 
     Smoothing smoothTo0;
@@ -397,9 +414,11 @@ public class PlayerControls : MonoBehaviour
         }
     }
     public void Buff(InputAction.CallbackContext ctx){
-        if (PauseManager.IsPaused) { return; }
+        if (PauseManager.IsPaused && key != SingleKey.phantomize) { return; }
         if (ctx.started && !DialougeOpen){
             anim.SetTrigger("Buff");
+            key = SingleKey.none;
+            tracker.SendCustomTrigger("phantomize", false);
         }
     }
     public void Controls(InputAction.CallbackContext ctx)
@@ -415,6 +434,11 @@ public class PlayerControls : MonoBehaviour
     {
         if (ctx.started && PauseManager.playerCanUnpause)
         {
+            if (fieldGuideOpen)
+            {
+                OpenFieldGuide(ctx);
+                return;
+            }
             controlsOpen = false;
             ControlsUI.SetActive(controlsOpen);
              
@@ -425,6 +449,7 @@ public class PlayerControls : MonoBehaviour
     }
     public void OpenFieldGuide(InputAction.CallbackContext ctx)
     {
+        if(guide.NumOfPages < 1 || DialougeOpen) { return; }
         if (ctx.started && PauseManager.playerCanUnpause)
         {
             fieldGuideOpen = !fieldGuideOpen;

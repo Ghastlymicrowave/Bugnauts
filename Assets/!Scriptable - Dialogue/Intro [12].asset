@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10e4b9c27c9b72a4c9219612696ddd66, type: 3}
-  m_Name: Intro [02]
+  m_Name: Intro [12]
   m_EditorClassIdentifier: 
   text:
-  - What are these curious little creatures? They appear to be phantom bugs, but
-    what kind?
+  - "Looks like you\u2019ve freed all the ladybugs! "
+  - The ecosystem in this area has stabilized thanks to the work of the ladybugs,
+    and you!
+  - <color=red>Thank you for playing the BUGNAUTS! Gate 2 Prototype!</color>

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e4b9c27c9b72a4c9219612696ddd66, type: 3}
+  m_Name: Intro [09]
+  m_EditorClassIdentifier: 
+  text:
+  - '<color=red>You can PHANTOMIZE when your hold bar is full, using all the stored
+    projectiles at once to give you an edge in combat.</color> Different projectile
+    combinations give different results, ranging from a temporary buff in power,
+    to healing, to a multi-shot attack and more! '
+  - '<color=red>Press C to OPEN THE CONTROLS & PROJECTILE COMBINATIONS MENU</color>
+    if you need to review anything! '

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class playAnimationAction : ActionBase
 {
-    [SerializeField] Animation anim;
+    [SerializeField] List<Animation> anim;
     public override void Activate()
     {
         base.Activate();
-        anim.Play();
+        for(int i = 0; i < anim.Count; i++)
+        {
+            anim[i].Play();
+        }
+        
     }
 }

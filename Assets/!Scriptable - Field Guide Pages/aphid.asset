@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf5f5d66e68d77428ba16c876147ab0, type: 3}
+  m_Name: aphid
+  m_EditorClassIdentifier: 
+  title: Green Peach Aphid - <i>Myzus persicae</i>
+  body: '<line-indent=15%><line-height=110%>- Aphids are not native to the amethyst
+    archipelago, but have become ingrained in its ecosystem as an invasive species.<br>-
+    Aphids usually just stick to munching on leaves, but with enough numbers, they
+    can cause tree destruction on a dangerously large scale.<br>- Aphids are a common
+    pest insect that is eaten by Ladybird Beetles.  </line-height> '
+  phantomBody: '<line-indent=15%><line-height=110%>- In their phantom forms, Peach
+    Aphids have moved on from chewing leaves, and are now sucking the trees themselves
+    dry!<br>- The Phantom Peach Aphids appear to be too small to hit with your bug
+    net! Maybe freeing some phantom Ladybird Beetles would help!</line-height> '
+  spr: {fileID: 21300000, guid: f0f7b6d4b86da6d42acce5fdd94edffb, type: 3}

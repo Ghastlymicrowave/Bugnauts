@@ -47,6 +47,12 @@ public class PlayerBulletManager : MonoBehaviour
         return b;
     }
 
+    public void SetBullets(List<Bullet> nbullets)
+    {
+        storedBullets = nbullets;
+        bulletUI.UpdateUI(storedBullets.ToArray());
+    }
+
     public Bullet PhantomizeBullets()
     {
         if (storedBullets.Count < maxBullets)
@@ -193,10 +199,11 @@ public class PlayerBulletManager : MonoBehaviour
     void Start()
     {
         storedBullets = new List<Bullet>();
+        /*
         AddBullet(new Bullet(Bullet.bulletTypes.Blue));
         AddBullet(new Bullet(Bullet.bulletTypes.Blue));
         AddBullet(new Bullet(Bullet.bulletTypes.Green));
-        AddBullet(new Bullet(Bullet.bulletTypes.Red));
+        AddBullet(new Bullet(Bullet.bulletTypes.Red));*/
 
         bulletUI.UpdateUI(storedBullets.ToArray());
     }

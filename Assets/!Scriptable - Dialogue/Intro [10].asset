@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10e4b9c27c9b72a4c9219612696ddd66, type: 3}
-  m_Name: Intro [02]
+  m_Name: Intro [10]
   m_EditorClassIdentifier: 
   text:
-  - What are these curious little creatures? They appear to be phantom bugs, but
-    what kind?
+  - 'Oh no! There''s way too many aphids here! '

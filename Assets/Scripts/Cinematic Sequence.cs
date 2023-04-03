@@ -14,6 +14,7 @@ public class CinematicSequence
     [SerializeField] bool pauseGame =true;
     [SerializeField] bool startSequenceOnDialougeEnd = false;
     [SerializeField] bool playerCanUnpause = true;
+    [SerializeField] bool overrideShowPopup = false;
 
     public string triggerID => customTriggerID;
     public string ActiveCameraName => activeCameraName;
@@ -24,4 +25,5 @@ public class CinematicSequence
     public bool StartSequenceOnDialougeEnd => startSequenceOnDialougeEnd;
     public int IndexOfAction_basetoTrigger => indexOfAction_basetoTrigger;
     public bool PlayerCanUnpause => playerCanUnpause;
+    public bool OverrideShowPopup => overrideShowPopup;
 }

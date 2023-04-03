@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf5f5d66e68d77428ba16c876147ab0, type: 3}
   m_Name: ladybird
   m_EditorClassIdentifier: 
-  title: Seven-Spotted Ladybird - <i>Coccinella septempunctata)</i>
+  title: Seven-Spotted Ladybird - <i>Coccinella septempunctata</i>
   body: "<line-indent=15%><line-height=110%>- The Seven-Spotted Ladybird beetle,
     also known as a Ladybug, is a common beetle in most parts of the world.<br>-
     Seven-Spotted Ladybirds are carnivorous and eat other insects such as aphids,

@@ -10,8 +10,12 @@ public class FieldGuide : MonoBehaviour
     [SerializeField] TextMeshPro phantomBody;
     [SerializeField] SpriteRenderer spr;
 
-    [SerializeField] List<FieldGuideScriptableObject> pages;
+    [SerializeField] Renderer a;
+    [SerializeField] Renderer b;
 
+
+    [SerializeField] List<FieldGuideScriptableObject> pages;
+    public int NumOfPages => pages.Count;
     int pageIndex = 0;
     public void PageRight()
     {
@@ -32,5 +36,13 @@ public class FieldGuide : MonoBehaviour
         title.ForceMeshUpdate();
         body.ForceMeshUpdate();
         phantomBody.ForceMeshUpdate();
+        spr.sprite = p.spr;
+        a.sortingOrder = 10;
+        b.sortingOrder = 15;
+    }
+
+    public void AddPage(FieldGuideScriptableObject obj)
+    {
+        pages.Add(obj);
     }
 }

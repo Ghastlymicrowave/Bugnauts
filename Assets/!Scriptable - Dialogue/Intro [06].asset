@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf5f5d66e68d77428ba16c876147ab0, type: 3}
-  m_Name: something else
+  m_Script: {fileID: 11500000, guid: 10e4b9c27c9b72a4c9219612696ddd66, type: 3}
+  m_Name: Intro [06]
   m_EditorClassIdentifier: 
-  title: bart simpson
-  body: eat my shorts!
-  phantomBody: blarb!
-  spr: {fileID: 21300000, guid: b3c947acb144e16418ae37e68fa2345c, type: 3}
+  text:
+  - Great work! With the aphid population stabilized, the vines can can continue
+    to grow, creating a path forward for you!

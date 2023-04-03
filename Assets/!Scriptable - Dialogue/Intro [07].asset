@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e4b9c27c9b72a4c9219612696ddd66, type: 3}
+  m_Name: Intro [07]
+  m_EditorClassIdentifier: 
+  text:
+  - 'Freeing the real bugs allows them to return to doing their natural work in the
+    ecosystem, keeping it in balance. This work can take the form of controlling
+    invasive bugs, pollinating plants, nourishing soil, and more! '
+  - "As you traverse the world of BUGNAUTS! you will encounter a variety of new bugs.
+    As you do, you\u2019ll gain information about them by interacting with Locals,
+    gaining new info for your Field Guide."
+  - The next area has a much larger infestation of both aphids and phantom ladybugs!
+    Your next task is to go over and clear it out.
+  - "But before that, allow me to demonstrate <color=red>your net\u2019s SECONDARY
+    ABILITY.</color>"

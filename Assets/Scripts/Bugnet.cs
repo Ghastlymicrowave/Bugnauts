@@ -7,6 +7,7 @@ public class Bugnet : MonoBehaviour
     [SerializeField] PlayerBulletManager catcher;
     // Start is called before the first frame update
     [SerializeField] float collectCooldown;
+    [SerializeField] SoundPlayer snd;
     float t = 0f;
     void Update(){
         if(t>0){
@@ -26,6 +27,7 @@ public class Bugnet : MonoBehaviour
                     Bullet b = e.Bullet();
                     catcher.AddBullet(b);
                     t = collectCooldown;
+                    snd.PlayClip(2);
                 }
                 
                 
