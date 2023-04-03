@@ -29,6 +29,8 @@ public class BugAI : MonoBehaviour
     [SerializeField] float maxSearchingWanderTime;
     [SerializeField] GameObject healthbarContainer;
 
+    [SerializeField] Animator anim;
+
     bool isDead = false;
 
     [SerializeField] GameObject particlesObj;
@@ -185,6 +187,7 @@ public class BugAI : MonoBehaviour
                 {
                     if (spawner.isFiring())
                     {
+                        anim.SetTrigger("fire");
                         if (!stopRotatingWhenFiring)
                         {
                             RotateTowards(player.transform);
@@ -265,6 +268,16 @@ public class BugAI : MonoBehaviour
             }
         }
         healthbarContainer.transform.LookAt(player.transform);
+
+        if (agent.remainingDistance > attackRange)
+        {
+            anim.SetFloat("speed", 1);
+        }
+        else
+        {
+            anim.SetFloat("speed", 0f);
+        }
+
     }
 
     private void RotateTowards(Transform target)
@@ -306,6 +319,7 @@ public class BugAI : MonoBehaviour
             gt.KillBug();
         }
         GameObject.Find("visionRange").GetComponent<FindNearestEnemy>().ClearActive(gameObject);
+        anim.SetTrigger("die");
     }
 
     public void DestroyThis()
