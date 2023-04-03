@@ -337,7 +337,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: b2a81e041eab18b4dbdc672702bbae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5347,7 +5347,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: 198f291c4331c314a8ca640e9e9361cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10407,7 +10407,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: b2a81e041eab18b4dbdc672702bbae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10919,8 +10919,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.8743253, g: 0.514151, b: 1, a: 1}
-      maxColor: {r: 0.28664452, g: 0, b: 0.49056602, a: 1}
+      minColor: {r: 0.8743253, g: 0.514151, b: 1, a: 0.62352943}
+      maxColor: {r: 0.28664452, g: 0, b: 0.49056602, a: 0.5254902}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15801,7 +15801,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: b2a81e041eab18b4dbdc672702bbae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16019,7 +16019,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: b2a81e041eab18b4dbdc672702bbae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16365,7 +16365,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: 2de9b8d2db629a947857ebec9d1bdb09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16624,7 +16624,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: b2a81e041eab18b4dbdc672702bbae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16698,7 +16698,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: b2a81e041eab18b4dbdc672702bbae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17106,7 +17106,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: 2de9b8d2db629a947857ebec9d1bdb09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17227,7 +17227,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: b2a81e041eab18b4dbdc672702bbae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17412,7 +17412,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba5146959d43784496a2e5402fe9ec1, type: 2}
+  - {fileID: 2100000, guid: b2a81e041eab18b4dbdc672702bbae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17770,6 +17770,10 @@ PrefabInstance:
     - target: {fileID: 1613871664990451542, guid: e33dbad035071b840aa36d8332fed3d0, type: 3}
       propertyPath: m_Name
       value: Phantom Post Processing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613871664990451543, guid: e33dbad035071b840aa36d8332fed3d0, type: 3}
+      propertyPath: weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e33dbad035071b840aa36d8332fed3d0, type: 3}
