@@ -6,12 +6,17 @@ public class ScreenBlank : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
     {
-        EnemyProjectile eP = other.gameObject.GetComponent<EnemyProjectile>();
 
-        if (eP != null)
+        Debug.Log(other.name+ "stay");
+        if (other.tag =="EnemyBullet")
         {
             Debug.Log("ScreenBlank");
-            Destroy(eP.gameObject);
+            Destroy(other.gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name + "enter");
     }
 }

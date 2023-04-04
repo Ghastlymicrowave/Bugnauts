@@ -315,7 +315,7 @@ public class PlayerControls : MonoBehaviour
         if (playerBulletManager.currentBuff != PlayerBulletManager.Buff.None)
         {
             ParticleSystem.EmissionModule module = buffSys.emission;
-            module.rateOverTimeMultiplier = 1f;
+            module.rateOverTimeMultiplier = 50f;
 
             ParticleSystem.MainModule main = buffSys.main;
 
@@ -338,7 +338,7 @@ public class PlayerControls : MonoBehaviour
 
 
     void OnTriggerEnter(Collider collision){
-        if (collision.gameObject.tag == "Bullet" && !invincible)
+        if (collision.gameObject.tag == "EnemyBullet" && !invincible)
         {
             Debug.Log("hit bullet");
             knockbackTime = maxKnockbackTime;

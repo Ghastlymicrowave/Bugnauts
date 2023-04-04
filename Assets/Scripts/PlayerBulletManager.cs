@@ -218,10 +218,10 @@ public class PlayerBulletManager : MonoBehaviour
     {
         storedBullets = new List<Bullet>();
         /*
-        AddBullet(new Bullet(Bullet.bulletTypes.Blue));
-        AddBullet(new Bullet(Bullet.bulletTypes.Blue));
         AddBullet(new Bullet(Bullet.bulletTypes.Green));
-        AddBullet(new Bullet(Bullet.bulletTypes.Red));*/
+        AddBullet(new Bullet(Bullet.bulletTypes.Green));
+        AddBullet(new Bullet(Bullet.bulletTypes.Green));
+        AddBullet(new Bullet(Bullet.bulletTypes.Green));*/
 
         bulletUI.UpdateUI(storedBullets.ToArray());
     }

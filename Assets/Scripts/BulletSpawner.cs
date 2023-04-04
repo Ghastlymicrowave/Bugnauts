@@ -11,7 +11,7 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] float burstLength;
     [SerializeField] int bulletsPerBurst;
     [SerializeField] float initalDelay;
-    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject[] bulletPrefab;
     [SerializeField] ParticleSystem FireParticles;
     [SerializeField] Vector3 RotationStart;
     [SerializeField] Vector3 RotationEnd;
@@ -103,7 +103,7 @@ public class BulletSpawner : MonoBehaviour
 
     void CreateBullet(int n)
     {
-        GameObject obj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(bulletPrefab[Random.Range(0,bulletPrefab.Length)], transform.position, Quaternion.identity);
         EnemyProjectile pro = obj.GetComponent<EnemyProjectile>();
         //Rigidbody rb = obj.GetComponent<Rigidbody>();
         //rb.AddTorque(angularVelocity,ForceMode.Acceleration);

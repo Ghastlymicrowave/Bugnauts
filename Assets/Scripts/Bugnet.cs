@@ -16,7 +16,7 @@ public class Bugnet : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Bullet")
+        if(other.tag == "EnemyBullet")
         {
             EnemyProjectile e = other.transform.parent.gameObject.GetComponent<EnemyProjectile>();
 

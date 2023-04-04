@@ -40,7 +40,7 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player") { return; }
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player" || collision.gameObject.tag=="EnemyBullet" || collision.gameObject.tag == "PlayerBullet" || collision.gameObject.tag == "Bullet") { return; }
         Destroy(gameObject);
     }
 

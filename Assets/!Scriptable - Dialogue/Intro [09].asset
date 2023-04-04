@@ -17,7 +17,9 @@ MonoBehaviour:
     stored projectiles at once to give you an edge in combat.</color> Different projectile
     combinations give different results, ranging from a temporary buff in power,
     to healing, to a multi-shot attack and more! '
-  - After phantomizing, your attacks have <color=#c58bed>new abilities!</color> Try
-    shooting out a projectile to see what happens!
-  - '<color=#c58bed>Press C to OPEN THE CONTROLS & PROJECTILE COMBINATIONS MENU</color>
-    if you need to review anything! '
+  - After phantomizing, your attacks have <color=#c58bed>new abilities!</color> While
+    Phantomized, try shooting out a projectile to see what happens!
+  - "While you\u2019re at it, also try playing around with phantomizing a full hold
+    bar of blue, yellow, or green projectiles to get different buffs! <color=#c58bed>Press
+    C to OPEN THE CONTROLS & PROJECTILE COMBINATIONS MENU</color> if you need to
+    review anything!"
