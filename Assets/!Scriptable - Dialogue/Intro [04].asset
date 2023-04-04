@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Intro [04]
   m_EditorClassIdentifier: 
   text:
-  - "<color=red>You\u2019ve just unlocked a field guide entry for APHIDS.</color>"
+  - "<color=#c58bed>You\u2019ve just unlocked a field guide entry for APHIDS.</color>"

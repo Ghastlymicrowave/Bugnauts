@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text:
   - "In BUGNAUTS!, our hero Chloe must contend with monstrous Phantom Bugs that have
-    invaded her home island. <color=red>Phantom Bugs are magical bug-shaped constructs
-    with the real bugs of the island trapped inside.</color> Think of them as giant
-    evil pi\xF1atas."
+    invaded her home island. <color=#c58bedff>Phantom Bugs are magical bug-shaped
+    constructs with the real bugs of the island trapped inside.</color> Think of
+    them as giant evil pi\xF1atas."
   - "By defeating the Phantom Bugs, the REAL bugs will be freed, allowing them to
     return to their natural place in the ecosystem. Let\u2019s learn a bit about
     the bugs in front of us! "

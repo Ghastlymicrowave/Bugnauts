@@ -20,6 +20,18 @@ public class PlayerBulletManager : MonoBehaviour
 
     public bool notHit = true;
 
+    public Buff currentBuff;
+
+    public enum Buff
+    {
+        None,
+        Red,
+        Green,
+        Blue,
+        Yellow,
+        Quad
+    }
+
     public bool GetMultiShot() => multiShot;
     public float GetDamageMult() => damageMultiplier;
     public float GetSpeedMult() => speedMultiplier;
@@ -124,15 +136,16 @@ public class PlayerBulletManager : MonoBehaviour
         notHit = true;
         damageMultiplier = 3.0f;
         speedMultiplier = 1.5f;
+        currentBuff = Buff.Red;
 
-        while(notHit)
+        while (notHit)
         {
             yield return null;
         }
 
         damageMultiplier = 1.0f;
         speedMultiplier = 1.0f;
-
+        currentBuff = Buff.None;
         yield return null;
     }
 
@@ -140,19 +153,21 @@ public class PlayerBulletManager : MonoBehaviour
     {
         notHit = true;
         multiShot = true;
-
+        currentBuff = Buff.Green;
         while (notHit)
         {
             yield return null;
         }
 
         multiShot = false;
-
+        currentBuff = Buff.None;
         yield return null;
     }
 
     IEnumerator BlueBuff_ScreenNuke()
     {
+        currentBuff = Buff.Blue;
+
         ScreenBlankTrigger.SetActive(true);
         BulletSpawner.canFire = false;
         playerControls.SetInvincibility(true);
@@ -163,6 +178,8 @@ public class PlayerBulletManager : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         BulletSpawner.canFire = true;
+        currentBuff = Buff.None;
+
         yield return null;
     }
 
@@ -174,12 +191,13 @@ public class PlayerBulletManager : MonoBehaviour
 
     IEnumerator TriBuff_SuperBullet()
     {
+        currentBuff = Buff.Quad;
         playerControls.FireTriBullet();
 
         playerControls.SetInvincibility(true);
         yield return new WaitForSeconds(1.0f);
         playerControls.SetInvincibility(false);
-
+        currentBuff = Buff.None;
         yield return null;
     }
 

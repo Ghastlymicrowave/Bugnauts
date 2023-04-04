@@ -52,6 +52,7 @@ public class GameTracker : MonoBehaviour
             bugsLeftDisplay.SetActive(false);
         }else if (amt != -2)
         {
+            bugsLeftDisplay.SetActive(true);
             bugsLeft = amt;
             UpdateText();
         }

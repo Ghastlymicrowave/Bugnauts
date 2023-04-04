@@ -13,6 +13,7 @@ public class DialogueSystem : MonoBehaviour
     Action_openDialouge opener;
     [SerializeField] AnimatextUGUI anima;
     [SerializeField] GameTracker tracker;
+    [SerializeField] GameObject EbuttonPrompt;
 
     int line;
 
@@ -28,7 +29,7 @@ public class DialogueSystem : MonoBehaviour
     public void NextLine(InputAction.CallbackContext ctx)
     {
         if(obj==null || !ctx.started){return;}
-        if (anima.effects[0].state == Animatext.EffectState.End)
+        if (anima.effects[0].state == Animatext.EffectState.End || anima.effects[0].time>0.04f*obj.text[line].Length)
         {
             line++;
             if (line >= obj.text.Count)
@@ -71,6 +72,24 @@ public class DialogueSystem : MonoBehaviour
         {
             opener.Trigger();
             opener = null;
+        }
+    }
+
+    private void Update()
+    {
+        if (obj != null)
+        {
+            if(anima.effects[0].state == Animatext.EffectState.End || anima.effects[0].time > 0.04f * obj.text[line].Length)
+            {
+                if (!EbuttonPrompt.activeSelf) 
+                { 
+                    EbuttonPrompt.SetActive(true); 
+                }
+            }
+            else if (EbuttonPrompt.activeSelf)
+            {
+                EbuttonPrompt.SetActive(false);
+            }
         }
     }
 }

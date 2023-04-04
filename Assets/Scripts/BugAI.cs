@@ -64,7 +64,7 @@ public class BugAI : MonoBehaviour
     Smoothing healthSmooth;
     float startPercent;
     float targetPercent;
-
+    [SerializeField] SoundPlayer sfx;
     float PercentHealth()
     {
         return Health / MaxHealth;
@@ -299,6 +299,7 @@ public class BugAI : MonoBehaviour
             Destroy(b.gameObject);
             if (isActiveAndEnabled)
             {
+                sfx.PlayClip(0);
                 TakeDamage(b.GetDamage);
             }
             

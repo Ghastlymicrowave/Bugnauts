@@ -63,6 +63,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] FieldGuide guide;
 
     [SerializeField] SingleKey key;
+    [SerializeField] ParticleSystem buffSys;
 
     public void SetSingleKey(SingleKey nkey)
     {
@@ -311,6 +312,28 @@ public class PlayerControls : MonoBehaviour
             //Debug.Log("new s");
         }
 
+        if (playerBulletManager.currentBuff != PlayerBulletManager.Buff.None)
+        {
+            ParticleSystem.EmissionModule module = buffSys.emission;
+            module.rateOverTimeMultiplier = 1f;
+
+            ParticleSystem.MainModule main = buffSys.main;
+
+            switch (playerBulletManager.currentBuff)
+            {
+                case PlayerBulletManager.Buff.Blue: main.startColor = Color.blue;break;
+                case PlayerBulletManager.Buff.Red: main.startColor = Color.red;break;
+                case PlayerBulletManager.Buff.Green: main.startColor = Color.green;break;
+                case PlayerBulletManager.Buff.Yellow: main.startColor = Color.yellow;break;
+                default: main.startColor = Color.white; break;
+            }
+
+        }
+        else
+        {
+            ParticleSystem.EmissionModule module = buffSys.emission;
+            module.rateOverTimeMultiplier = 0f;
+        }
     }
 
 

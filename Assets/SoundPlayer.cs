@@ -6,6 +6,8 @@ public class SoundPlayer : MonoBehaviour
 {
     [SerializeField] List<AudioClip> clips;
     AudioSource source;
+    [SerializeField] float minPitch = 1f;
+    [SerializeField] float maxPitch = 1f;
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -13,6 +15,7 @@ public class SoundPlayer : MonoBehaviour
 
     public void PlayClip(int index)
     {
+        source.pitch = Random.Range(minPitch, maxPitch);
         source.PlayOneShot(clips[index]);
     }
 }

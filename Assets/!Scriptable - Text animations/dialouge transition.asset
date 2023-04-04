@@ -20,7 +20,7 @@ MonoBehaviour:
   loopBackInterval: 0
   pingpongLoop: 0
   continuousLoop: 0
-  interval: 0.05
+  interval: 0.04
   singleTime: 0.6
   sortType: 0
   positionA: {x: 0, y: 0}
